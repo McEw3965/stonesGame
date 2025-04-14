@@ -10,10 +10,12 @@ public class gameManager : MonoBehaviour
     public static gameManager Instance { get; private set; }
 
     //VARIABLES FOR STONES AND SCALES
+    [SerializeField]
     private GameObject leftScale;
     private GameObject rightScale;
-    private GameObject selectedStone { get; set; }
-    private GameObject selectedScale { get; set; }
+
+    public GameObject selectedStone;
+    public GameObject selectedScale;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class gameManager : MonoBehaviour
             Debug.LogError("More than one GameManager Instance");
         }
         Instance = this;
+
     }
     void Start()
     {
@@ -33,7 +36,51 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    //GAME EVENTS
+
+    private void addWeightToScale()
+    {
+        Debug.Log("Adding Weight");
+        selectedScale.GetComponent<interactableObject>().weight += selectedStone.GetComponent<interactableObject>().weight;
+        Destroy(selectedStone);
+        selectedStone = null;
+        selectedScale = null;
+    }
+
+    private void calculateDifference()
+    {
+        float leftScaleWeight = leftScale.GetComponent<interactableObject>().weight;
+        float rightScaleWeight = rightScale.GetComponent<interactableObject>().weight;
+        float difference = 0;
+
+        if (leftScaleWeight > rightScaleWeight)
+        {
+            difference = leftScaleWeight - rightScaleWeight;
+        }
+        else if (rightScaleWeight > leftScaleWeight)
+        {
+            difference = rightScaleWeight - leftScaleWeight;
+        }
+        checkWinCondition(difference);
+    }
+
+    private void checkWinCondition(float difference)
+    {
+        if (difference > 6)
+        {
+            Debug.Log("Game Over");
+        } else
+        {
+            Debug.Log("Next Turn");
+        }
+    }
+
+    public void endTurn()
+    {
+        addWeightToScale();
+        calculateDifference();
     }
 
     //SCENE MANAGEMENT
@@ -42,6 +89,8 @@ public class gameManager : MonoBehaviour
         if (scene.name == "MultiplayerScene")
         {
             Debug.Log("Multiplayer Scene Loaded");
+            leftScale = GameObject.Find("Left Scale");
+            rightScale = GameObject.Find("Right Scale");
         }
     }
 
