@@ -348,11 +348,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
---- !u!1 &474494973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
-  m_PrefabInstance: {fileID: 474494972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stone: {fileID: 0}
-  testStone: {fileID: 474494973}
+  testStone: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

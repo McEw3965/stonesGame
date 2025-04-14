@@ -28,7 +28,7 @@ public class boardGenerator : MonoBehaviour
         {
             Debug.Log("Multiplayer Scene Loaded");
 
-            stone = GameObject.Find("Stone");
+            stone = testStone;
             Transform stoneTransform = stone.GetComponent<Transform>();
 
 
