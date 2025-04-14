@@ -8,6 +8,7 @@ public class gameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public static gameManager Instance { get; private set; }
+    private GameObject networkManager;
 
     //VARIABLES FOR STONES AND SCALES
     [SerializeField]
@@ -19,7 +20,10 @@ public class gameManager : MonoBehaviour
 
     private void Awake()
     {
+        networkManager = GameObject.Find("NetworkManager");
+
         DontDestroyOnLoad(this);
+        DontDestroyOnLoad(networkManager);
 
         if (Instance != null)
         {
