@@ -9,6 +9,12 @@ public class gameManager : MonoBehaviour
 
     public static gameManager Instance { get; private set; }
 
+    //VARIABLES FOR STONES AND SCALES
+    private GameObject leftScale;
+    private GameObject rightScale;
+    private GameObject selectedStone { get; set; }
+    private GameObject selectedScale { get; set; }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -29,6 +35,8 @@ public class gameManager : MonoBehaviour
     {
         
     }
+
+    //SCENE MANAGEMENT
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MultiplayerScene")
