@@ -9,9 +9,15 @@ public class multiplayerManager : NetworkBehaviour
     public static multiplayerManager Instance { get; private set; }
     private string sceneName = "MultiplayerScene";
 
-    private List<ulong> connectedClientIds = new List<ulong>(); //Stores ClientID's of connected players
+    public NetworkList<ulong> connectedClientIds = new NetworkList<ulong>();
+    //public List<ulong> connectedClientIds = new List<ulong>(); //Stores ClientID's of connected players
     private Dictionary<ulong, NetworkObject> playerStates = new Dictionary<ulong, NetworkObject>(); //MapsClientID's to associated networkObjects
     private bool gameStarted = false;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public override void OnNetworkSpawn()
     {

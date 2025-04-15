@@ -3,6 +3,8 @@ using Unity.Netcode;
 using UnityEngine.SceneManagement;
 using System.Net.Sockets;
 using System.Linq;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class gameManager : NetworkBehaviour
@@ -17,8 +19,19 @@ public class gameManager : NetworkBehaviour
     private GameObject leftScale;
     private GameObject rightScale;
 
-    public GameObject selectedStone;
-    public GameObject selectedScale;
+    public GameObject player1SelectedStone;
+    public GameObject player1SelectedScale;
+    public GameObject player2SelectedStone;
+    public GameObject player2SelectedScale;
+
+    public Dictionary<ulong, GameObject> clientIdToStone;
+    public Dictionary<ulong, GameObject> clientIdToScale;
+
+    //public NetworkVariable<Dictionary<ulong, string>> NetworkDictionaryTest;
+
+    private ulong player1ID;
+    private ulong player2ID;
+    private ulong localClientId;
 
     private void Awake()
     {
@@ -42,17 +55,41 @@ public class gameManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     //GAME EVENTS
 
-    private void addWeightToScale()
+    
+
+    //[Rpc(SendTo.Server)]
+    //public void callEndTurn()
+    //{
+    //    if(IsServer && IsClient)
+    //    {
+    //        endTurnRpc();
+    //    } else if(IsServer && !IsClient)
+    //    {
+    //        endTurnRpc();
+    //    }
+    //}
+
+    [Rpc(SendTo.Server)]
+    public void endTurnRpc()
+    {
+        Debug.Log("Local Client ID: " + localClientId);
+        addWeightToScaleRpc();
+        calculateDifference();
+    }
+
+    [Rpc(SendTo.Server)]
+    private void addWeightToScaleRpc()
     {
         Debug.Log("Adding Weight");
-        selectedScale.GetComponent<interactableObject>().weight += selectedStone.GetComponent<interactableObject>().weight;
-        Destroy(selectedStone);
-        selectedStone = null;
-        selectedScale = null;
+        clientIdToScale[localClientId].GetComponent<interactableObject>().weight += clientIdToStone[localClientId].GetComponent<interactableObject>().weight;
+        Destroy(clientIdToStone[localClientId]);
+        clientIdToStone[localClientId] = null;
+        clientIdToScale[localClientId] = null;
     }
 
     private void calculateDifference()
@@ -77,29 +114,45 @@ public class gameManager : NetworkBehaviour
         if (difference > 6)
         {
             Debug.Log("Game Over");
-        } else
+        }
+        else
         {
             Debug.Log("Next Turn");
         }
     }
 
-    [Rpc(SendTo.Server)]
-    public void endTurnRpc()
-    {
-        addWeightToScale();
-        calculateDifference();
-    }
-
     //SCENE MANAGEMENT
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MultiplayerScene" && IsServer)
+
+
+        if (scene.name == "MultiplayerScene")
         {
-            Debug.Log("Multiplayer Scene Loaded");
-            leftScale = GameObject.Find("Left Scale");
-            rightScale = GameObject.Find("Right Scale");
-            Debug.Log(boardGenerator.Instance);
-            boardGenerator.Instance.SpawnStonesRpc();
+            player1ID = multiplayerManager.Instance.connectedClientIds[0];
+            Debug.Log("Player 1 CLientId: " + player1ID);
+            player2ID = multiplayerManager.Instance.connectedClientIds[1];
+            Debug.Log("Player 2 ClientId " + player2ID);
+
+            //NetworkDictionaryTest.Value[player1ID] = "Successful";
+            //Debug.Log("Network Dictionary Test: " + NetworkDictionaryTest.Value[player1ID]);
+
+            clientIdToStone[player1ID] = null;
+            clientIdToStone[player2ID] = null;
+
+
+            if (IsServer)
+            {
+                Debug.Log("Multiplayer Scene Loaded");
+                leftScale = GameObject.Find("Left Scale");
+                rightScale = GameObject.Find("Right Scale");
+
+                Debug.Log(boardGenerator.Instance);
+                boardGenerator.Instance.SpawnStonesRpc();
+            }
+
+            GameObject endTurnObj = GameObject.Find("End Turn Button");
+            Button endTurnBtn = endTurnObj.GetComponent<Button>();
+            endTurnBtn.onClick.AddListener(endTurnRpc);
 
         }
     }
