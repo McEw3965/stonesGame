@@ -96,7 +96,9 @@ public class gameManager : MonoBehaviour
             Debug.Log("Multiplayer Scene Loaded");
             leftScale = GameObject.Find("Left Scale");
             rightScale = GameObject.Find("Right Scale");
-            
+            Debug.Log(boardGenerator.Instance);
+            boardGenerator.Instance.SpawnStonesRpc();
+
         }
     }
 

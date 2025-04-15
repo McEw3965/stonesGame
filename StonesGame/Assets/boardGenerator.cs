@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 
 
-public class boardGenerator : MonoBehaviour
+public class boardGenerator : NetworkBehaviour
 {
 
     public static boardGenerator Instance { get; private set; }
@@ -15,6 +15,10 @@ public class boardGenerator : MonoBehaviour
 
     private Vector3 SpawnPoint = new Vector3(2f, 2f, 0f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
 
@@ -50,16 +54,15 @@ public class boardGenerator : MonoBehaviour
     public void SpawnStonesRpc()
     {
         Debug.Log("Spawn Stones RPC Running...");
-        Transform stoneTransform = testStone.GetComponent<Transform>();
-
+        //GameObject stone = GameObject.Find("Stone");
 
         for (int i = 0; i < 6; i++)
         {
-            Transform TransformClone = Instantiate(stoneTransform);
-            var stoneCloneNetworkObject = TransformClone.GetComponent<NetworkObject>();
-            TransformClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            TransformClone.name = "Stone " + i + 1;
+            GameObject stoneClone = Instantiate(stone);
+            var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
             stoneCloneNetworkObject.Spawn();
+            stoneClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
+            stoneClone.name = "Stone " + i + 1;
         }
     }
 

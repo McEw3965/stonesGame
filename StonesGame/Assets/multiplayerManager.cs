@@ -46,18 +46,14 @@ public class multiplayerManager : NetworkBehaviour
         Debug.Log("Start Game Running...");
         gameStarted = true;
         NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single); //Called on server, instructs all clients to load scene
+
     }
 
     private void OnGameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (IsServer && scene.name == sceneName)
+        if (scene.name == sceneName)
         {
-            boardGenerator.Instance.SpawnStonesRpc();
-
-            foreach(ulong clientId in connectedClientIds)
-            {
-                //playerStates[clientId] = NetworkObject;
-            }
+            Debug.Log(sceneName + " Has Loaded...");
         }
     }
 
