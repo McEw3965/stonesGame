@@ -4754,8 +4754,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1863787080}
-  - component: {fileID: 1863787079}
   - component: {fileID: 1863787082}
+  - component: {fileID: 1863787079}
   - component: {fileID: 1863787081}
   m_Layer: 0
   m_Name: GameManager
@@ -4776,6 +4776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccb7d138870ef1469aef8879c3f4982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   leftScale: {fileID: 0}
   selectedStone: {fileID: 0}
   selectedScale: {fileID: 0}

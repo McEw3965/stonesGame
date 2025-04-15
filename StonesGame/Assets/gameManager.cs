@@ -2,8 +2,10 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 using System.Net.Sockets;
+using System.Linq;
 
-public class gameManager : MonoBehaviour
+
+public class gameManager : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -82,7 +84,7 @@ public class gameManager : MonoBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    public void endTurn()
+    public void endTurnRpc()
     {
         addWeightToScale();
         calculateDifference();
@@ -91,7 +93,7 @@ public class gameManager : MonoBehaviour
     //SCENE MANAGEMENT
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MultiplayerScene")
+        if (scene.name == "MultiplayerScene" && IsServer)
         {
             Debug.Log("Multiplayer Scene Loaded");
             leftScale = GameObject.Find("Left Scale");

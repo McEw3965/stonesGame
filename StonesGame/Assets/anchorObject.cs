@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Netcode;
 
 [ExecuteInEditMode]
-public class anchorObject : MonoBehaviour
+public class anchorObject : NetworkBehaviour
 {
     public enum AnchorType
     {
@@ -20,7 +21,7 @@ public class anchorObject : MonoBehaviour
     public bool executeInUpdate;
 
     public AnchorType anchorType;
-    public Vector3 anchorOffset;
+    public NetworkVariable<Vector3> anchorOffset;
 
     IEnumerator updateAnchorRoutine; //Coroutine handle so we don't start it if it's already running
 
@@ -92,7 +93,7 @@ public class anchorObject : MonoBehaviour
 
     void SetAnchor(Vector3 anchor)
     {
-        Vector3 newPos = anchor + anchorOffset;
+        Vector3 newPos = anchor + anchorOffset.Value;
         if (!transform.position.Equals(newPos))
         {
             transform.position = newPos;

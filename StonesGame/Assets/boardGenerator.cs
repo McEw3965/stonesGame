@@ -61,8 +61,8 @@ public class boardGenerator : NetworkBehaviour
             GameObject stoneClone = Instantiate(stone);
             var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
             stoneCloneNetworkObject.Spawn();
-            stoneClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            stoneClone.name = "Stone " + i + 1;
+            stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+            stoneCloneNetworkObject.name = "Stone " + i + 1;
         }
     }
 
