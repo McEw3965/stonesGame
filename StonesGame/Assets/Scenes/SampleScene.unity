@@ -1229,6 +1229,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
+--- !u!1 &474494973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
+  m_PrefabInstance: {fileID: 474494972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &478560473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4607,9 +4612,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863787079}
-        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
-        m_MethodName: onlineGame
+      - m_Target: {fileID: 1969464752}
+        m_TargetAssemblyTypeName: multiplayerManager, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4874,7 +4879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b2ee0d3d6ed99449448544ae21172d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stone: {fileID: 0}
+  stone: {fileID: 474494973}
   testStone: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
 --- !u!1 &1969464751
 GameObject:

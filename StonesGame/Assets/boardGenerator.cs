@@ -7,6 +7,9 @@ using Unity.Netcode;
 
 public class boardGenerator : MonoBehaviour
 {
+
+    public static boardGenerator Instance { get; private set; }
+
     public GameObject stone;
     public GameObject testStone;
 
@@ -22,7 +25,7 @@ public class boardGenerator : MonoBehaviour
     {
 
     }
-    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    /*private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MultiplayerScene")
         {
@@ -36,15 +39,17 @@ public class boardGenerator : MonoBehaviour
             {
                 Transform TransformClone = Instantiate(stoneTransform);
                 var stoneCloneNetworkObject = TransformClone.GetComponent<NetworkObject>();
-                //stoneClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
-                //stoneClone.name = "Stone " + i + 1;
+                TransformClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
+                TransformClone.name = "Stone " + i + 1;
                 stoneCloneNetworkObject.Spawn();
             }
         }
-    }
+    } */
 
-    public void testSpawn()
+    [Rpc(SendTo.Server)]
+    public void SpawnStonesRpc()
     {
+        Debug.Log("Spawn Stones RPC Running...");
         Transform stoneTransform = testStone.GetComponent<Transform>();
 
 
@@ -52,8 +57,8 @@ public class boardGenerator : MonoBehaviour
         {
             Transform TransformClone = Instantiate(stoneTransform);
             var stoneCloneNetworkObject = TransformClone.GetComponent<NetworkObject>();
-            //stoneClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            //stoneClone.name = "Stone " + i + 1;
+            TransformClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
+            TransformClone.name = "Stone " + i + 1;
             stoneCloneNetworkObject.Spawn();
         }
     }
@@ -61,11 +66,11 @@ public class boardGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += onSceneLoaded; // Corrected line
+        //SceneManager.sceneLoaded += onSceneLoaded; // Corrected line
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= onSceneLoaded; // Corrected line
+        //SceneManager.sceneLoaded -= onSceneLoaded; // Corrected line
     }
 }
