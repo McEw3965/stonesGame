@@ -19,10 +19,15 @@ public class gameManager : NetworkBehaviour
     private GameObject leftScale;
     private GameObject rightScale;
 
-    public GameObject player1SelectedStone;
-    public GameObject player1SelectedScale;
-    public GameObject player2SelectedStone;
-    public GameObject player2SelectedScale;
+
+    public GameObject selectedStone;
+    public GameObject selectedScale;
+
+    private NetworkObjectReference player1SelectedStone;
+    private NetworkObjectReference player1SelectedScale;
+
+    private NetworkObjectReference player2SelectedStone;
+    private NetworkObjectReference player2SelectedScale;
 
     public Dictionary<ulong, GameObject> clientIdToStone;
     public Dictionary<ulong, GameObject> clientIdToScale;
@@ -31,7 +36,15 @@ public class gameManager : NetworkBehaviour
 
     private ulong player1ID;
     private ulong player2ID;
-    private ulong localClientId;
+    public ulong localClientId;
+
+    whichPlayer currentPlayer;
+
+    public enum whichPlayer
+    {
+        player1,
+        player2
+    }
 
     private void Awake()
     {
@@ -49,7 +62,7 @@ public class gameManager : NetworkBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -60,7 +73,7 @@ public class gameManager : NetworkBehaviour
 
     //GAME EVENTS
 
-    
+
 
     //[Rpc(SendTo.Server)]
     //public void callEndTurn()
@@ -78,11 +91,11 @@ public class gameManager : NetworkBehaviour
     public void endTurnRpc()
     {
         Debug.Log("Local Client ID: " + localClientId);
-        addWeightToScaleRpc();
+        //addWeightToScaleRpc();
         calculateDifference();
     }
 
-    [Rpc(SendTo.Server)]
+    /*[Rpc(SendTo.Server)]
     private void addWeightToScaleRpc()
     {
         Debug.Log("Adding Weight");
@@ -90,6 +103,33 @@ public class gameManager : NetworkBehaviour
         Destroy(clientIdToStone[localClientId]);
         clientIdToStone[localClientId] = null;
         clientIdToScale[localClientId] = null;
+    } */
+
+    //[Rpc(SendTo.Server)]
+    //private void addPlayerWeightRpc(GameObject stone, GameObject scale)
+    //{
+    //    Debug.Log("Adding Weight");
+    //    scale.GetComponent<interactableObject>().weight += stone.GetComponent<interactableObject>().weight;
+    //    Destroy(stone);
+
+    //}
+
+    [Rpc(SendTo.Server)]
+    private void assignStonesRpc()
+    {
+        
+
+        if (localClientId == multiplayerManager.Instance.connectedClientIds[0])
+        {
+            player1SelectedStone = selectedStone;
+            player1SelectedScale = selectedScale;
+
+        }
+        else if (localClientId == multiplayerManager.Instance.connectedClientIds[1])
+        {
+            player2SelectedStone = selectedStone;
+            player2SelectedScale = selectedScale;
+        }
     }
 
     private void calculateDifference()
@@ -128,16 +168,32 @@ public class gameManager : NetworkBehaviour
 
         if (scene.name == "MultiplayerScene")
         {
-            player1ID = multiplayerManager.Instance.connectedClientIds[0];
-            Debug.Log("Player 1 CLientId: " + player1ID);
-            player2ID = multiplayerManager.Instance.connectedClientIds[1];
-            Debug.Log("Player 2 ClientId " + player2ID);
+            localClientId = NetworkManager.Singleton.LocalClientId;
 
-            //NetworkDictionaryTest.Value[player1ID] = "Successful";
-            //Debug.Log("Network Dictionary Test: " + NetworkDictionaryTest.Value[player1ID]);
+            switch (localClientId)
+            {
+                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
+                    currentPlayer = whichPlayer.player1;
+                    Debug.Log("Current player is player 1");
+                    break;
 
-            clientIdToStone[player1ID] = null;
-            clientIdToStone[player2ID] = null;
+                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
+                    currentPlayer = whichPlayer.player2;
+                    Debug.Log("Current player is player 2");
+
+                    break;
+            }
+
+            ////playerOne.Value.playerId = multiplayerManager.Instance.connectedClientIds[0];
+            //Debug.Log("Player 1 CLientId: " + player1ID);
+            //player2ID = multiplayerManager.Instance.connectedClientIds[1];
+            //Debug.Log("Player 2 ClientId " + player2ID);
+
+            ////NetworkDictionaryTest.Value[player1ID] = "Successful";
+            ////Debug.Log("Network Dictionary Test: " + NetworkDictionaryTest.Value[player1ID]);
+
+            ////clientIdToStone[player1ID] = null;
+            ////clientIdToStone[player2ID] = null;
 
 
             if (IsServer)

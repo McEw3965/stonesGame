@@ -8,7 +8,6 @@ public class interactableObject : MonoBehaviour
     private bool isSelected = false;
 
     private ulong localClientID;
-
     private Vector3 originalScale;
     private Vector3 focusScale;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +18,7 @@ public class interactableObject : MonoBehaviour
     }
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -35,13 +35,13 @@ public class interactableObject : MonoBehaviour
             if (this.tag == "Stone")
             {
                 
-                //gameManager.Instance.selectedStone = this.gameObject;
-                gameManager.Instance.clientIdToStone[localClientID] = this.gameObject;
+                gameManager.Instance.selectedStone = this.gameObject;
+                //gameManager.Instance.clientIdToStone[localClientID] = this.gameObject;
             }
             else if (this.tag == "Scale")
             {
-                //gameManager.Instance.selectedScale = this.gameObject;
-                gameManager.Instance.clientIdToScale[localClientID] = this.gameObject;
+                gameManager.Instance.selectedScale = this.gameObject;
+                //gameManager.Instance.clientIdToScale[localClientID] = this.gameObject;
 
 
             }
