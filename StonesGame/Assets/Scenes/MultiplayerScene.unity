@@ -679,7 +679,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   executeInUpdate: 1
   anchorType: 4
-  anchorOffset: {x: 0, y: 0, z: 0}
+  anchorOffset:
+    m_InternalValue: {x: 0, y: 0, z: 0}
 --- !u!114 &650068666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1111,12 @@ MonoBehaviour:
   leftScale: {fileID: 0}
   selectedStone: {fileID: 0}
   selectedScale: {fileID: 0}
+  player1SelectedStone: {fileID: 0}
+  player1SelectedScale: {fileID: 0}
+  player2SelectedStone: {fileID: 0}
+  player2SelectedScale: {fileID: 0}
+  localClientId: 0
+  currentPlayer: 0
 --- !u!4 &2039087744
 Transform:
   m_ObjectHideFlags: 0
@@ -1151,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6095250185813587991, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5
+      value: -10.5
       objectReference: {fileID: 0}
     - target: {fileID: 6095250185813587991, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5131316
+      value: -4.853132
       objectReference: {fileID: 0}
     - target: {fileID: 6095250185813587991, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
       propertyPath: m_LocalPosition.z

@@ -23,11 +23,11 @@ public class gameManager : NetworkBehaviour
     public GameObject selectedStone;
     public GameObject selectedScale;
 
-    private NetworkObjectReference player1SelectedStone;
-    private NetworkObjectReference player1SelectedScale;
+    public NetworkObject player1SelectedStone;
+    public NetworkObject player1SelectedScale;
 
-    private NetworkObjectReference player2SelectedStone;
-    private NetworkObjectReference player2SelectedScale;
+    public NetworkObject player2SelectedStone;
+    public NetworkObject player2SelectedScale;
 
     public Dictionary<ulong, GameObject> clientIdToStone;
     public Dictionary<ulong, GameObject> clientIdToScale;
@@ -38,7 +38,7 @@ public class gameManager : NetworkBehaviour
     private ulong player2ID;
     public ulong localClientId;
 
-    whichPlayer currentPlayer;
+    public whichPlayer currentPlayer;
 
     public enum whichPlayer
     {
@@ -90,49 +90,46 @@ public class gameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void endTurnRpc()
     {
-        Debug.Log("Local Client ID: " + localClientId);
         //addWeightToScaleRpc();
-        calculateDifference();
+        //assignStonesRpc();
+        addWeightRpc();
+        calculateDifferenceRpc();
+        Destroy(player1SelectedStone.gameObject);
+        Destroy(player2SelectedStone.gameObject);
+        player1SelectedScale = null;
+        player2SelectedScale = null;
+        selectedStone = null;
+        selectedScale = null;
     }
 
-    /*[Rpc(SendTo.Server)]
-    private void addWeightToScaleRpc()
+    [Rpc(SendTo.Server)]
+    private void addWeightRpc() //May need to be split intop two separate methods for use with animation triggers
     {
-        Debug.Log("Adding Weight");
-        clientIdToScale[localClientId].GetComponent<interactableObject>().weight += clientIdToStone[localClientId].GetComponent<interactableObject>().weight;
-        Destroy(clientIdToStone[localClientId]);
-        clientIdToStone[localClientId] = null;
-        clientIdToScale[localClientId] = null;
-    } */
+        player1SelectedScale.gameObject.GetComponent<interactableObject>().weight += player1SelectedStone.gameObject.GetComponent<interactableObject>().weight;
+        player2SelectedScale.gameObject.GetComponent<interactableObject>().weight += player2SelectedStone.gameObject.GetComponent<interactableObject>().weight;
 
-    //[Rpc(SendTo.Server)]
-    //private void addPlayerWeightRpc(GameObject stone, GameObject scale)
-    //{
-    //    Debug.Log("Adding Weight");
-    //    scale.GetComponent<interactableObject>().weight += stone.GetComponent<interactableObject>().weight;
-    //    Destroy(stone);
-
-    //}
+    }
 
     [Rpc(SendTo.Server)]
     private void assignStonesRpc()
     {
-        
 
-        if (localClientId == multiplayerManager.Instance.connectedClientIds[0])
+        switch (currentPlayer)
         {
-            player1SelectedStone = selectedStone;
-            player1SelectedScale = selectedScale;
+            case whichPlayer.player1:
+                player1SelectedStone = selectedStone.GetComponent<NetworkObject>();
+                player1SelectedScale = selectedScale.GetComponent<NetworkObject>();
+                break;
+            case whichPlayer.player2:
+                player2SelectedStone = selectedStone.GetComponent<NetworkObject>();
+                player2SelectedScale = selectedScale.GetComponent<NetworkObject>();
+                break;
 
-        }
-        else if (localClientId == multiplayerManager.Instance.connectedClientIds[1])
-        {
-            player2SelectedStone = selectedStone;
-            player2SelectedScale = selectedScale;
         }
     }
 
-    private void calculateDifference()
+    [Rpc(SendTo.Server)]
+    private void calculateDifferenceRpc()
     {
         float leftScaleWeight = leftScale.GetComponent<interactableObject>().weight;
         float rightScaleWeight = rightScale.GetComponent<interactableObject>().weight;

@@ -13,6 +13,8 @@ public class boardGenerator : NetworkBehaviour
     public GameObject stone;
     public GameObject testStone;
 
+    gameManager.whichPlayer currentPlayer;
+
     private Vector3 SpawnPoint = new Vector3(2f, 2f, 0f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -21,7 +23,7 @@ public class boardGenerator : NetworkBehaviour
     }
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -29,26 +31,30 @@ public class boardGenerator : NetworkBehaviour
     {
 
     }
-    /*private void onSceneLoaded(Scene scene, LoadSceneMode mode)
+
+    private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MultiplayerScene")
         {
-            Debug.Log("Multiplayer Scene Loaded");
+            ulong localClientId;
 
-            stone = testStone;
-            Transform stoneTransform = stone.GetComponent<Transform>();
+            localClientId = NetworkManager.Singleton.LocalClientId;
 
-
-            for (int i = 0; i < 6; i++)
+            switch (localClientId)
             {
-                Transform TransformClone = Instantiate(stoneTransform);
-                var stoneCloneNetworkObject = TransformClone.GetComponent<NetworkObject>();
-                TransformClone.GetComponent<anchorObject>().anchorOffset = new Vector3(4 + (i * 2f), 1.5f, 0f);
-                TransformClone.name = "Stone " + i + 1;
-                stoneCloneNetworkObject.Spawn();
+                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
+                    currentPlayer = gameManager.whichPlayer.player1;
+                    Debug.Log("Current player is player 1: Board Generator");
+                    break;
+
+                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
+                    currentPlayer = gameManager.whichPlayer.player2;
+                    Debug.Log("Current player is player 2. Board Generator");
+
+                    break;
             }
         }
-    } */
+    } 
 
     [Rpc(SendTo.Server)]
     public void SpawnStonesRpc()
@@ -60,9 +66,26 @@ public class boardGenerator : NetworkBehaviour
         {
             GameObject stoneClone = Instantiate(stone);
             var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-            stoneCloneNetworkObject.Spawn();
-            stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            stoneCloneNetworkObject.name = "Stone " + i + 1;
+
+            //SPAWN ON NETWORK
+            //stoneCloneNetworkObject.Spawn();
+            //stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+            //stoneCloneNetworkObject.name = "Stone " + i + 1;
+
+            switch(currentPlayer) //Spawns different set of stones for each player
+            {
+                case gameManager.whichPlayer.player1:
+                    stoneCloneNetworkObject.Spawn();
+                    stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+                    stoneCloneNetworkObject.name = "Stone " + i + 1;
+                    break;
+
+                case gameManager.whichPlayer.player2:
+                    stoneCloneNetworkObject.Spawn();
+                    stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+                    stoneCloneNetworkObject.name = "Stone " + i + 1;
+                    break;
+            }
         }
     }
 

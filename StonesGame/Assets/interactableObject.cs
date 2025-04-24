@@ -10,6 +10,9 @@ public class interactableObject : MonoBehaviour
     private ulong localClientID;
     private Vector3 originalScale;
     private Vector3 focusScale;
+
+    gameManager.whichPlayer currentPlayer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -18,7 +21,23 @@ public class interactableObject : MonoBehaviour
     }
     void Start()
     {
+        ulong localClientId;
 
+        localClientId = NetworkManager.Singleton.LocalClientId;
+
+        switch (localClientId)
+        {
+            case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
+                currentPlayer = gameManager.whichPlayer.player1;
+                Debug.Log("Current player is player 1: Board Generator");
+                break;
+
+            case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
+                currentPlayer = gameManager.whichPlayer.player2;
+                Debug.Log("Current player is player 2. Board Generator");
+
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -27,34 +46,67 @@ public class interactableObject : MonoBehaviour
         focusEffect();
     }
 
+    //private void OnMouseOver()
+    //{
+    //    localClientID = NetworkManager.Singleton.LocalClientId;
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        if (this.tag == "Stone")
+    //        {
+
+    //            gameManager.Instance.selectedStone = this.gameObject;
+    //            //gameManager.Instance.clientIdToStone[localClientID] = this.gameObject;
+    //        }
+    //        else if (this.tag == "Scale")
+    //        {
+    //            gameManager.Instance.selectedScale = this.gameObject;
+    //            //gameManager.Instance.clientIdToScale[localClientID] = this.gameObject;
+
+
+    //        }
+
+    //        if(isSelected)
+    //        {
+    //            isSelected = false;
+    //        } else if (!isSelected)
+    //        {
+    //            isSelected = true;
+    //        }
+    //    }
+    //}
+
     private void OnMouseOver()
     {
-        localClientID = NetworkManager.Singleton.LocalClientId;
         if (Input.GetMouseButtonDown(0))
         {
-            if (this.tag == "Stone")
+            switch (currentPlayer)
             {
-                
-                gameManager.Instance.selectedStone = this.gameObject;
-                //gameManager.Instance.clientIdToStone[localClientID] = this.gameObject;
-            }
-            else if (this.tag == "Scale")
-            {
-                gameManager.Instance.selectedScale = this.gameObject;
-                //gameManager.Instance.clientIdToScale[localClientID] = this.gameObject;
+                case gameManager.whichPlayer.player1:
+                    if(this.tag == "Stone")
+                    {
+                        gameManager.Instance.player1SelectedStone = this.gameObject.GetComponent<NetworkObject>();
+                    } else if (this.tag == "Scale")
+                    {
+                        gameManager.Instance.player1SelectedScale = this.gameObject.GetComponent<NetworkObject>();
+                    }
+                    break;
 
-
-            }
-
-            if(isSelected)
-            {
-                isSelected = false;
-            } else if (!isSelected)
-            {
-                isSelected = true;
+                case gameManager.whichPlayer.player2:
+                    if (this.tag == "Stone")
+                    {
+                        gameManager.Instance.player2SelectedStone = this.gameObject.GetComponent<NetworkObject>();
+                    }
+                    else if (this.tag == "Scale")
+                    {
+                        gameManager.Instance.player2SelectedScale = this.gameObject.GetComponent<NetworkObject>();
+                    }
+                    break;
             }
         }
     }
+
+
+
 
 
     private void focusEffect()
