@@ -26,6 +26,9 @@ public class mainMenuBehaviour : MonoBehaviour
     private List<GameObject> stoneClones;
     private int numOfStones = 0;
 
+    [SerializeField]
+    private Sprite[] stoneSprites;
+
     private Vector3 ClickPos;
     void Start()
     {
@@ -38,10 +41,13 @@ public class mainMenuBehaviour : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ClickPos = Input.mousePosition;
+            ClickPos.z = 10f;
             Vector3 spawnPoint = Camera.main.ScreenToWorldPoint(ClickPos);
             Debug.Log("Mouse clicked at: " + ClickPos);
             numOfStones++;
             GameObject stoneClone = Instantiate(Stone, spawnPoint, Quaternion.identity);
+            int spriteIndex = Random.Range(0, stoneSprites.Length);
+            stoneClone.GetComponent<SpriteRenderer>().sprite = stoneSprites[0];
             stoneClones.Add(stoneClone);
 
             if (numOfStones > 8)

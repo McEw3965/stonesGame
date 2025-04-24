@@ -1,0 +1,543 @@
+fileFormatVersion: 2
+guid: 1f62a7f0cd7a2d547b8feb8b37ba6f5e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8357181800371098040
+    second: Easter Island Heads_0
+  - first:
+      213: 2985365021182482427
+    second: Easter Island Heads_1
+  - first:
+      213: 1859442060992689337
+    second: Easter Island Heads_2
+  - first:
+      213: -7309546037016015179
+    second: Easter Island Heads_3
+  - first:
+      213: 1697022097223845194
+    second: Easter Island Heads_4
+  - first:
+      213: 2106661978508632622
+    second: Easter Island Heads_5
+  - first:
+      213: 7697649887321754908
+    second: Easter Island Heads_6
+  - first:
+      213: -5210794427204190232
+    second: Easter Island Heads_7
+  - first:
+      213: 4732644664191447950
+    second: Easter Island Heads_8
+  - first:
+      213: -8850512914260541897
+    second: Easter Island Heads_9
+  - first:
+      213: -1753637876450627250
+    second: Easter Island Heads_10
+  - first:
+      213: 6071048045313090675
+    second: Easter Island Heads_11
+  - first:
+      213: -7884145254727366940
+    second: Easter Island Heads_12
+  - first:
+      213: 7856031869771327410
+    second: Easter Island Heads_13
+  - first:
+      213: -8527306095359325771
+    second: Easter Island Heads_14
+  - first:
+      213: -3899160142802912453
+    second: Easter Island Heads_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Easter Island Heads_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1389
+        width: 947
+        height: 1121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e65894e63550c80800000000000000
+      internalID: -8357181800371098040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_1
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1511
+        width: 743
+        height: 1047
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7557c6ba52e6920800000000000000
+      internalID: 2985365021182482427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_2
+      rect:
+        serializedVersion: 2
+        x: 1934
+        y: 932
+        width: 726
+        height: 1407
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b4b3e5e3b01ec910800000000000000
+      internalID: 1859442060992689337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_3
+      rect:
+        serializedVersion: 2
+        x: 2661
+        y: 988
+        width: 772
+        height: 1343
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5becb426b964f8a90800000000000000
+      internalID: -7309546037016015179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_4
+      rect:
+        serializedVersion: 2
+        x: 3214
+        y: 1654
+        width: 892
+        height: 889
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4504013b980d8710800000000000000
+      internalID: 1697022097223845194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_5
+      rect:
+        serializedVersion: 2
+        x: 4041
+        y: 939
+        width: 906
+        height: 1324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2224da68ed5c3d10800000000000000
+      internalID: 2106661978508632622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_6
+      rect:
+        serializedVersion: 2
+        x: 4817
+        y: 1495
+        width: 983
+        height: 1063
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d8323e9cb83da60800000000000000
+      internalID: 7697649887321754908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_7
+      rect:
+        serializedVersion: 2
+        x: 5770
+        y: 1606
+        width: 94
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8efb8e0931a8fa7b0800000000000000
+      internalID: -5210794427204190232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1409
+        width: 133
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8377495f3bbda140800000000000000
+      internalID: 4732644664191447950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 149
+        width: 987
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73e3e718569ac2580800000000000000
+      internalID: -8850512914260541897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_10
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 78
+        width: 766
+        height: 1253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e417d7d74a3d9a7e0800000000000000
+      internalID: -1753637876450627250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_11
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 0
+        width: 1320
+        height: 683
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374673b0802b04450800000000000000
+      internalID: 6071048045313090675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_12
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 405
+        width: 195
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e6c46ea9a3e59290800000000000000
+      internalID: -7884145254727366940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_13
+      rect:
+        serializedVersion: 2
+        x: 3284
+        y: 18
+        width: 1351
+        height: 1043
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b72eddcc5b360d60800000000000000
+      internalID: 7856031869771327410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_14
+      rect:
+        serializedVersion: 2
+        x: 4780
+        y: 2
+        width: 1067
+        height: 1027
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9851f294ce8a980800000000000000
+      internalID: -8527306095359325771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Easter Island Heads_15
+      rect:
+        serializedVersion: 2
+        x: 3138
+        y: 347
+        width: 88
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3bfedd328663e9c0800000000000000
+      internalID: -3899160142802912453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
