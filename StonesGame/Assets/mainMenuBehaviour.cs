@@ -47,7 +47,7 @@ public class mainMenuBehaviour : MonoBehaviour
             numOfStones++;
             GameObject stoneClone = Instantiate(Stone, spawnPoint, Quaternion.identity);
             int spriteIndex = Random.Range(0, stoneSprites.Length);
-            stoneClone.GetComponent<SpriteRenderer>().sprite = stoneSprites[0];
+            stoneClone.GetComponent<SpriteRenderer>().sprite = stoneSprites[spriteIndex];
             stoneClones.Add(stoneClone);
 
             if (numOfStones > 8)
