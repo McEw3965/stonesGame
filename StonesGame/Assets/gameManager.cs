@@ -38,6 +38,7 @@ public class gameManager : NetworkBehaviour
     private ulong player2ID;
     public ulong localClientId;
 
+    [SerializeField]
     public whichPlayer currentPlayer;
 
     public enum whichPlayer

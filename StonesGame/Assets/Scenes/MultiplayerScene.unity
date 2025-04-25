@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 69377705}
   - component: {fileID: 69377704}
   - component: {fileID: 69377706}
+  - component: {fileID: 69377707}
   m_Layer: 0
   m_Name: Left Scale
   m_TagString: Scale
@@ -359,6 +360,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
+  currentPlayer: 0
+--- !u!114 &69377707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69377702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3244829532
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &75240748
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +469,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2039087743}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
         m_MethodName: endTurn
         m_Mode: 1
@@ -769,7 +796,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.853132
+  orthographic size: 4.851896
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -952,6 +979,7 @@ GameObject:
   - component: {fileID: 1803439416}
   - component: {fileID: 1803439415}
   - component: {fileID: 1803439417}
+  - component: {fileID: 1803439418}
   m_Layer: 0
   m_Name: Right Scale
   m_TagString: Scale
@@ -1078,60 +1106,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
---- !u!1 &2039087742
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2039087744}
-  - component: {fileID: 2039087743}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2039087743
+  currentPlayer: 0
+--- !u!114 &1803439418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039087742}
+  m_GameObject: {fileID: 1803439413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ccb7d138870ef1469aef8879c3f4982, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  leftScale: {fileID: 0}
-  selectedStone: {fileID: 0}
-  selectedScale: {fileID: 0}
-  player1SelectedStone: {fileID: 0}
-  player1SelectedScale: {fileID: 0}
-  player2SelectedStone: {fileID: 0}
-  player2SelectedScale: {fileID: 0}
-  localClientId: 0
-  currentPlayer: 0
---- !u!4 &2039087744
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039087742}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20858273, y: -0.45050153, z: -9.975423}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  GlobalObjectIdHash: 843732293
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1001 &580658855550639812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6095250185813587991, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.853132
+      value: -4.851896
       objectReference: {fileID: 0}
     - target: {fileID: 6095250185813587991, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1208,6 +1208,5 @@ SceneRoots:
   - {fileID: 754494776}
   - {fileID: 650068664}
   - {fileID: 580658855550639812}
-  - {fileID: 2039087744}
   - {fileID: 35484027}
   - {fileID: 824808516}

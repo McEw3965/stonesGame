@@ -11,6 +11,7 @@ public class interactableObject : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 focusScale;
 
+    [SerializeField]
     gameManager.whichPlayer currentPlayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
