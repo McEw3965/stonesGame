@@ -38,25 +38,25 @@ public class mainMenuBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ClickPos = Input.mousePosition;
-            ClickPos.z = 10f;
-            Vector3 spawnPoint = Camera.main.ScreenToWorldPoint(ClickPos);
-            Debug.Log("Mouse clicked at: " + ClickPos);
-            numOfStones++;
-            GameObject stoneClone = Instantiate(Stone, spawnPoint, Quaternion.identity);
-            int spriteIndex = Random.Range(0, stoneSprites.Length);
-            stoneClone.GetComponent<SpriteRenderer>().sprite = stoneSprites[spriteIndex];
-            stoneClones.Add(stoneClone);
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    ClickPos = Input.mousePosition;
+        //    ClickPos.z = 10f;
+        //    Vector3 spawnPoint = Camera.main.ScreenToWorldPoint(ClickPos);
+        //    Debug.Log("Mouse clicked at: " + ClickPos);
+        //    numOfStones++;
+        //    GameObject stoneClone = Instantiate(Stone, spawnPoint, Quaternion.identity);
+        //    int spriteIndex = Random.Range(0, stoneSprites.Length);
+        //    stoneClone.GetComponent<SpriteRenderer>().sprite = stoneSprites[spriteIndex];
+        //    stoneClones.Add(stoneClone);
 
-            if (numOfStones > 8)
-            {
-                Destroy(stoneClones[numOfStones - 1]);
-                stoneClones.Remove(stoneClones[numOfStones -1]);
-                numOfStones--;
-            }
-        }
+        //    if (numOfStones > 8)
+        //    {
+        //        Destroy(stoneClones[numOfStones - 1]);
+        //        stoneClones.Remove(stoneClones[numOfStones -1]);
+        //        numOfStones--;
+        //    }
+        //}
     }
 
     public void multiplayerMenu()
