@@ -6366,8 +6366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  stone: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
-  testStone: {fileID: 335296129605711164, guid: 9c5a75b7c37e3ca4fa4b0fca4e5abcca, type: 3}
+  player1Stone: {fileID: 7080062484616901983, guid: 60cf7e41c67a82445858e00d931a5214, type: 3}
+  player2Stone: {fileID: 1069138663131701557, guid: f9e0ef8a4bac52a4482d0da4b32fe115, type: 3}
 --- !u!114 &1863787082
 MonoBehaviour:
   m_ObjectHideFlags: 0

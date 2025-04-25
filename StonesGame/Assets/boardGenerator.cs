@@ -10,8 +10,8 @@ public class boardGenerator : NetworkBehaviour
 
     public static boardGenerator Instance { get; private set; }
 
-    public GameObject stone;
-    public GameObject testStone;
+    public GameObject player1Stone;
+    public GameObject player2Stone;
 
     gameManager.whichPlayer currentPlayer;
 
@@ -64,9 +64,9 @@ public class boardGenerator : NetworkBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            GameObject stoneClone = Instantiate(stone);
-            var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
 
+            GameObject stoneClone;
+            var stoneCloneNetworkObject = player1Stone.GetComponent<NetworkObject>();
             //SPAWN ON NETWORK
             //stoneCloneNetworkObject.Spawn();
             //stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
@@ -75,12 +75,15 @@ public class boardGenerator : NetworkBehaviour
             switch(currentPlayer) //Spawns different set of stones for each player
             {
                 case gameManager.whichPlayer.player1:
+                    stoneClone = Instantiate(player1Stone);
+                    stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
                     stoneCloneNetworkObject.Spawn();
                     stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
                     stoneCloneNetworkObject.name = "Stone " + i + 1;
                     break;
-
                 case gameManager.whichPlayer.player2:
+                    stoneClone = Instantiate(player2Stone);
+                    stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
                     stoneCloneNetworkObject.Spawn();
                     stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
                     stoneCloneNetworkObject.name = "Stone " + i + 1;

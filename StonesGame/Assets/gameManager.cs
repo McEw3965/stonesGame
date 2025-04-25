@@ -29,6 +29,11 @@ public class gameManager : NetworkBehaviour
     public NetworkObject player2SelectedStone;
     public NetworkObject player2SelectedScale;
 
+    [SerializeField]
+    private NetworkVariable<bool> player1Ready;
+    [SerializeField]
+    private NetworkVariable<bool> player2Ready;
+
     public Dictionary<ulong, GameObject> clientIdToStone;
     public Dictionary<ulong, GameObject> clientIdToScale;
 
@@ -89,25 +94,67 @@ public class gameManager : NetworkBehaviour
     //}
 
     [Rpc(SendTo.Server)]
+    public void endTurnActionsRpc()
+    {
+        if (player1Ready.Value == true || player2Ready.Value == true)
+        {
+            //addWeightToScaleRpc();
+            //assignStonesRpc();
+            addWeightRpc();
+            calculateDifferenceRpc();
+            Destroy(player1SelectedStone.gameObject);
+            Destroy(player2SelectedStone.gameObject);
+            player1SelectedScale = null;
+            player2SelectedScale = null;
+            selectedStone = null;
+            selectedScale = null;
+            player1Ready.Value = false;
+            player2Ready.Value = false;
+        }
+        else
+        {
+            Debug.Log("Both Players must be ready to end turn");
+        }
+    }
+
+    [Rpc(SendTo.Server)]
     public void endTurnRpc()
     {
-        //addWeightToScaleRpc();
-        //assignStonesRpc();
-        addWeightRpc();
-        calculateDifferenceRpc();
-        Destroy(player1SelectedStone.gameObject);
-        Destroy(player2SelectedStone.gameObject);
-        player1SelectedScale = null;
-        player2SelectedScale = null;
-        selectedStone = null;
-        selectedScale = null;
+        switch (currentPlayer)
+        {
+            case whichPlayer.player1:
+                if (player1SelectedScale != null && player1SelectedStone != null)
+                {
+                    player1Ready.Value = true;
+
+                }
+                else
+                {
+                    Debug.Log(currentPlayer + " must select a stone and a scale");
+                }
+                break;
+
+            case whichPlayer.player2:
+                if (player2SelectedScale != null && player2SelectedStone != null)
+                {
+                    player2Ready.Value = true;
+                }
+                else
+                {
+                    Debug.Log(currentPlayer + " must select a stone and a scale");
+                }
+
+                break;
+        }
+
+        endTurnRpc();
     }
 
     [Rpc(SendTo.Server)]
     private void addWeightRpc() //May need to be split intop two separate methods for use with animation triggers
     {
-        player1SelectedScale.gameObject.GetComponent<interactableObject>().weight += player1SelectedStone.gameObject.GetComponent<interactableObject>().weight;
-        player2SelectedScale.gameObject.GetComponent<interactableObject>().weight += player2SelectedStone.gameObject.GetComponent<interactableObject>().weight;
+        player1SelectedScale.gameObject.GetComponent<interactableObject>().weight.Value += player1SelectedStone.gameObject.GetComponent<interactableObject>().weight.Value;
+        player2SelectedScale.gameObject.GetComponent<interactableObject>().weight.Value += player2SelectedStone.gameObject.GetComponent<interactableObject>().weight.Value;
 
     }
 
@@ -132,8 +179,8 @@ public class gameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void calculateDifferenceRpc()
     {
-        float leftScaleWeight = leftScale.GetComponent<interactableObject>().weight;
-        float rightScaleWeight = rightScale.GetComponent<interactableObject>().weight;
+        float leftScaleWeight = leftScale.GetComponent<interactableObject>().weight.Value;
+        float rightScaleWeight = rightScale.GetComponent<interactableObject>().weight.Value;
         float difference = 0;
 
         if (leftScaleWeight > rightScaleWeight)
@@ -167,6 +214,9 @@ public class gameManager : NetworkBehaviour
         if (scene.name == "MultiplayerScene")
         {
             localClientId = NetworkManager.Singleton.LocalClientId;
+
+            player1Ready.Value = false;
+            player2Ready.Value = false;
 
             switch (localClientId)
             {

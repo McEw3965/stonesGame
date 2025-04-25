@@ -1,9 +1,10 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class interactableObject : MonoBehaviour
+public class interactableObject : NetworkBehaviour
 {
-    public float weight;
+    //public float weight;
+    public NetworkVariable<float> weight;
 
     private bool isSelected = false;
 
@@ -76,6 +77,40 @@ public class interactableObject : MonoBehaviour
     //    }
     //}
 
+    [Rpc(SendTo.Server)]
+    private void assignPlayer1ObjectsRpc()
+    {
+        if (this.tag == "Stone")
+        {
+            gameManager.Instance.player1SelectedStone = this.gameObject.GetComponent<NetworkObject>();
+            Debug.Log("Player 1 Stone assigned");
+
+        }
+        else if (this.tag == "Scale")
+        {
+            gameManager.Instance.player1SelectedScale = this.gameObject.GetComponent<NetworkObject>();
+            Debug.Log("Player 1 Scale assigned");
+
+        }
+
+    }
+
+    [Rpc(SendTo.Server)]
+    private void assignPlayer2ObjectsRpc()
+    {
+        if (this.tag == "Stone")
+        {
+            gameManager.Instance.player2SelectedStone = this.gameObject.GetComponent<NetworkObject>();
+            Debug.Log("Player 2 stone assigned");
+        }
+        else if (this.tag == "Scale")
+        {
+            gameManager.Instance.player2SelectedScale = this.gameObject.GetComponent<NetworkObject>();
+            Debug.Log("Player 2 Scale assigned");
+
+        }
+    }
+
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
@@ -83,24 +118,11 @@ public class interactableObject : MonoBehaviour
             switch (currentPlayer)
             {
                 case gameManager.whichPlayer.player1:
-                    if(this.tag == "Stone")
-                    {
-                        gameManager.Instance.player1SelectedStone = this.gameObject.GetComponent<NetworkObject>();
-                    } else if (this.tag == "Scale")
-                    {
-                        gameManager.Instance.player1SelectedScale = this.gameObject.GetComponent<NetworkObject>();
-                    }
+                    assignPlayer1ObjectsRpc();
                     break;
 
                 case gameManager.whichPlayer.player2:
-                    if (this.tag == "Stone")
-                    {
-                        gameManager.Instance.player2SelectedStone = this.gameObject.GetComponent<NetworkObject>();
-                    }
-                    else if (this.tag == "Scale")
-                    {
-                        gameManager.Instance.player2SelectedScale = this.gameObject.GetComponent<NetworkObject>();
-                    }
+                    assignPlayer2ObjectsRpc();
                     break;
             }
         }
