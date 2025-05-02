@@ -22,7 +22,6 @@ public class buttonAssignment : MonoBehaviour
 
     private void callEndTurn()
     {
-        gameManager.Instance.endTurnRpc();
-        Debug.Log("End Turn Called from Button");
+        gameManager.Instance.callEndTurn();
     }
 }

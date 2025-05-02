@@ -111,6 +111,7 @@ public class gameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void endTurnActionsRpc()
     {
+        Debug.Log("Turn Ended");
         if (player1Ready.Value == true || player2Ready.Value == true)
         {
             switch(playerTorevealFirst)
@@ -123,9 +124,6 @@ public class gameManager : NetworkBehaviour
                     break;
 
             }
-
-            revealFirst.GetComponent<Animator>().SetBool("Reveal?", true);
-            revealSecond.GetComponent<Animator>().SetBool("Reveal?", true);
 
             if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
@@ -151,9 +149,9 @@ public class gameManager : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    public void endTurnRpc()
+    public void endTurnRpc(whichPlayer tempPlayer)
     {
-        switch (currentPlayer)
+        switch (tempPlayer)
         {
             case whichPlayer.player1:
                 if (player1SelectedScale != null && player1SelectedStone != null)
@@ -180,8 +178,22 @@ public class gameManager : NetworkBehaviour
                 break;
         }
 
+        if (player1Ready.Value && player2Ready.Value)
+        {
+            endTurnActionsRpc();
+        } else
+        {
+            Debug.Log("Wait for other player to be ready");
+        }
+
         
     }
+
+    public void callEndTurn()
+    {
+        endTurnRpc(currentPlayer);
+    }
+
 
     [Rpc(SendTo.Server)]
     public void addWeightRpc() //May need to be split intop two separate methods for use with animation triggers
@@ -294,7 +306,12 @@ public class gameManager : NetworkBehaviour
 
             ////clientIdToStone[player1ID] = null;
             ////clientIdToStone[player2ID] = null;
-            //Invoke(nameof(InitialiseSceneObjects), 0.5f);
+            ///
+            Invoke(nameof(InitialiseSceneObjects), 0.5f);
+
+            Debug.Log("Scene Loaded");
+            boardGenerator.Instance.callSpawnStones(currentPlayer);
+
         }
     }
 
@@ -306,14 +323,9 @@ public class gameManager : NetworkBehaviour
             leftScale = GameObject.Find("Left Scale");
             rightScale = GameObject.Find("Right Scale");
 
-            Debug.Log(boardGenerator.Instance);
-            boardGenerator.Instance.SpawnStonesRpc();
         }
 
 
-        GameObject endTurnObj = GameObject.Find("End Turn Button");
-        Button endTurnBtn = endTurnObj.GetComponent<Button>();
-        endTurnBtn.onClick.AddListener(endTurnRpc);
     }
 
     private void OnEnable()

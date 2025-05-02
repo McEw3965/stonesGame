@@ -56,37 +56,41 @@ public class boardGenerator : NetworkBehaviour
         }
     } 
 
-    [Rpc(SendTo.Server)]
-    public void SpawnStonesRpc()
+    public void callSpawnStones(gameManager.whichPlayer tempPlayer)
     {
-        Debug.Log("Spawn Stones RPC Running...");
-        //GameObject stone = GameObject.Find("Stone");
+        spawnStonesRpc(tempPlayer);
+    }
 
+    [Rpc(SendTo.Server)]
+   public void spawnStonesRpc(gameManager.whichPlayer tempPlayer)
+    {
         for (int i = 0; i < 6; i++)
         {
 
             GameObject stoneClone;
-            var stoneCloneNetworkObject = player1Stone.GetComponent<NetworkObject>();
-            //SPAWN ON NETWORK
-            //stoneCloneNetworkObject.Spawn();
-            //stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            //stoneCloneNetworkObject.name = "Stone " + i + 1;
 
-            switch(currentPlayer) //Spawns different set of stones for each player
+            Debug.Log("TempPlayer Value == " + tempPlayer);
+
+
+            switch (tempPlayer) //Spawns different set of stones for each player
             {
                 case gameManager.whichPlayer.player1:
+                    Debug.Log("Spawning Stones for player 1");
+                    var stoneCloneNetworkObject = player1Stone.GetComponent<NetworkObject>();
                     stoneClone = Instantiate(player1Stone);
                     stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
                     stoneCloneNetworkObject.Spawn();
                     stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-                    stoneCloneNetworkObject.name = "Stone " + i + 1;
+                    stoneCloneNetworkObject.name = "Player 2 Stone " + i + 1;
                     break;
                 case gameManager.whichPlayer.player2:
+                    Debug.Log("Spawning Stones for player 2");
+                    var P2stoneCloneNetworkObject = player2Stone.GetComponent<NetworkObject>();
                     stoneClone = Instantiate(player2Stone);
-                    stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-                    stoneCloneNetworkObject.Spawn();
-                    stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-                    stoneCloneNetworkObject.name = "Stone " + i + 1;
+                    P2stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
+                    P2stoneCloneNetworkObject.Spawn();
+                    P2stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+                    P2stoneCloneNetworkObject.name = "Player 2 Stone " + i + 1;
                     break;
             }
         }
