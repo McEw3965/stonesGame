@@ -111,6 +111,11 @@ public class interactableObject : NetworkBehaviour
         }
     }
 
+    private void callAddWeight()
+    {
+        gameManager.Instance.addWeightRpc();
+    }
+
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Net.Sockets;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.UI;
 
 
@@ -13,6 +14,8 @@ public class gameManager : NetworkBehaviour
 
     public static gameManager Instance { get; private set; }
     private GameObject networkManager;
+
+    private Coroutine revealStonesCoroutine;
 
     //VARIABLES FOR STONES AND SCALES
     [SerializeField]
@@ -28,6 +31,9 @@ public class gameManager : NetworkBehaviour
 
     public NetworkObject player2SelectedStone;
     public NetworkObject player2SelectedScale;
+
+    private GameObject revealFirst;
+    private GameObject revealSecond;
 
     [SerializeField]
     private NetworkVariable<bool> player1Ready;
@@ -45,6 +51,7 @@ public class gameManager : NetworkBehaviour
 
     [SerializeField]
     public whichPlayer currentPlayer;
+    public whichPlayer playerTorevealFirst;
 
     public enum whichPlayer
     {
@@ -68,13 +75,13 @@ public class gameManager : NetworkBehaviour
     }
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //endTurnActionsRpc();
     }
 
     //GAME EVENTS
@@ -93,15 +100,41 @@ public class gameManager : NetworkBehaviour
     //    }
     //}
 
+
+    public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone) 
+    {
+        firstStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+        yield return new WaitForSeconds(2.0f); //Suspends execution for 2 seconds
+        secondStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+    }
+
     [Rpc(SendTo.Server)]
     public void endTurnActionsRpc()
     {
         if (player1Ready.Value == true || player2Ready.Value == true)
         {
-            //addWeightToScaleRpc();
-            //assignStonesRpc();
-            addWeightRpc();
-            calculateDifferenceRpc();
+            switch(playerTorevealFirst)
+            {
+                case whichPlayer.player1:
+                    revealStonesCoroutine = StartCoroutine(revealStones(player1SelectedStone, player2SelectedStone));
+                    break;
+                case whichPlayer.player2:
+                    revealStonesCoroutine = StartCoroutine(revealStones(player2SelectedStone, player1SelectedStone));
+                    break;
+
+            }
+
+            revealFirst.GetComponent<Animator>().SetBool("Reveal?", true);
+            revealSecond.GetComponent<Animator>().SetBool("Reveal?", true);
+
+            if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
+            {
+                playerTorevealFirst = whichPlayer.player1;
+            } else if(player2SelectedStone.GetComponent<interactableObject>().weight.Value > player1SelectedStone.GetComponent<interactableObject>().weight.Value)
+            {
+                playerTorevealFirst = whichPlayer.player2;
+            }
+
             Destroy(player1SelectedStone.gameObject);
             Destroy(player2SelectedStone.gameObject);
             player1SelectedScale = null;
@@ -147,15 +180,31 @@ public class gameManager : NetworkBehaviour
                 break;
         }
 
-        endTurnRpc();
+        
     }
 
     [Rpc(SendTo.Server)]
-    private void addWeightRpc() //May need to be split intop two separate methods for use with animation triggers
+    public void addWeightRpc() //May need to be split intop two separate methods for use with animation triggers
+    {
+        if (currentPlayer == whichPlayer.player1)
+        {
+            addPlayer1WeightRpc();
+        } else if (currentPlayer == whichPlayer.player2)
+        {
+            addPlayer2WeightRpc();
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    private void addPlayer1WeightRpc()
     {
         player1SelectedScale.gameObject.GetComponent<interactableObject>().weight.Value += player1SelectedStone.gameObject.GetComponent<interactableObject>().weight.Value;
-        player2SelectedScale.gameObject.GetComponent<interactableObject>().weight.Value += player2SelectedStone.gameObject.GetComponent<interactableObject>().weight.Value;
+    }
 
+    [Rpc(SendTo.Server)]
+    private void addPlayer2WeightRpc()
+    {
+        player2SelectedScale.gameObject.GetComponent<interactableObject>().weight.Value += player2SelectedStone.gameObject.GetComponent<interactableObject>().weight.Value;
     }
 
     [Rpc(SendTo.Server)]
@@ -214,9 +263,12 @@ public class gameManager : NetworkBehaviour
         if (scene.name == "MultiplayerScene")
         {
             localClientId = NetworkManager.Singleton.LocalClientId;
-
-            player1Ready.Value = false;
-            player2Ready.Value = false;
+        
+            if (IsServer)
+            {
+                player1Ready.Value = false;
+                player2Ready.Value = false;
+            }
 
             switch (localClientId)
             {
@@ -242,23 +294,26 @@ public class gameManager : NetworkBehaviour
 
             ////clientIdToStone[player1ID] = null;
             ////clientIdToStone[player2ID] = null;
-
-
-            if (IsServer)
-            {
-                Debug.Log("Multiplayer Scene Loaded");
-                leftScale = GameObject.Find("Left Scale");
-                rightScale = GameObject.Find("Right Scale");
-
-                Debug.Log(boardGenerator.Instance);
-                boardGenerator.Instance.SpawnStonesRpc();
-            }
-
-            GameObject endTurnObj = GameObject.Find("End Turn Button");
-            Button endTurnBtn = endTurnObj.GetComponent<Button>();
-            endTurnBtn.onClick.AddListener(endTurnRpc);
-
+            //Invoke(nameof(InitialiseSceneObjects), 0.5f);
         }
+    }
+
+    private void InitialiseSceneObjects()
+    {
+        if (IsServer)
+        {
+            Debug.Log("Multiplayer Scene Loaded");
+            leftScale = GameObject.Find("Left Scale");
+            rightScale = GameObject.Find("Right Scale");
+
+            Debug.Log(boardGenerator.Instance);
+            boardGenerator.Instance.SpawnStonesRpc();
+        }
+
+
+        GameObject endTurnObj = GameObject.Find("End Turn Button");
+        Button endTurnBtn = endTurnObj.GetComponent<Button>();
+        endTurnBtn.onClick.AddListener(endTurnRpc);
     }
 
     private void OnEnable()
