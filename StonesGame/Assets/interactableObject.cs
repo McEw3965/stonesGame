@@ -14,12 +14,14 @@ public class interactableObject : NetworkBehaviour
 
     [SerializeField]
     gameManager.whichPlayer currentPlayer;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
+
     }
     void Start()
     {
@@ -31,21 +33,29 @@ public class interactableObject : NetworkBehaviour
         {
             case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
                 currentPlayer = gameManager.whichPlayer.player1;
-                Debug.Log("Current player is player 1: Board Generator");
                 break;
 
             case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
                 currentPlayer = gameManager.whichPlayer.player2;
-                Debug.Log("Current player is player 2. Board Generator");
 
                 break;
         }
+
+        if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
+        {
+            this.gameObject.SetActive(false);
+        } else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
+        {
+            this.gameObject.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         focusEffect();
+
     }
 
     //private void OnMouseOver()

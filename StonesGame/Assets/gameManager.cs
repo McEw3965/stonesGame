@@ -311,6 +311,7 @@ public class gameManager : NetworkBehaviour
 
             Debug.Log("Scene Loaded");
             boardGenerator.Instance.callSpawnStones(currentPlayer);
+            //boardGenerator.Instance.spawnStonesOnClientRpc();
 
         }
     }
