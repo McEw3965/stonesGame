@@ -86,26 +86,21 @@ public class gameManager : NetworkBehaviour
 
     //GAME EVENTS
 
-
-
-    //[Rpc(SendTo.Server)]
-    //public void callEndTurn()
-    //{
-    //    if(IsServer && IsClient)
-    //    {
-    //        endTurnRpc();
-    //    } else if(IsServer && !IsClient)
-    //    {
-    //        endTurnRpc();
-    //    }
-    //}
-
-
-    public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone) 
-    {
+        public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone) {
+    
         firstStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
-        yield return new WaitForSeconds(2.0f); //Suspends execution for 2 seconds
+        yield return new WaitForSecondsRealtime(2.0f); //Suspends execution for 2 seconds
         secondStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+        yield return new WaitForSecondsRealtime(3.0f);
+
+        Destroy(player1SelectedStone.gameObject);
+        Destroy(player2SelectedStone.gameObject);
+        player1SelectedScale = null;
+        player2SelectedScale = null;
+        selectedStone = null;
+        selectedScale = null;
+        player1Ready.Value = false;
+        player2Ready.Value = false;
     }
 
     [Rpc(SendTo.Server)]
@@ -257,7 +252,7 @@ public class gameManager : NetworkBehaviour
 
     private void checkWinCondition(float difference)
     {
-        if (difference > 6)
+        if (rightScale.GetComponent<interactableObject>().weight.Value == 10 || leftScale.GetComponent<interactableObject>().weight.Value == 10)
         {
             Debug.Log("Game Over");
         }
