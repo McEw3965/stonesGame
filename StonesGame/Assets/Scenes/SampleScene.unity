@@ -6336,8 +6336,13 @@ MonoBehaviour:
   player1SelectedScale: {fileID: 0}
   player2SelectedStone: {fileID: 0}
   player2SelectedScale: {fileID: 0}
+  player1Ready:
+    m_InternalValue: 0
+  player2Ready:
+    m_InternalValue: 0
   localClientId: 0
   currentPlayer: 0
+  playerTorevealFirst: 0
 --- !u!4 &1863787080
 Transform:
   m_ObjectHideFlags: 0

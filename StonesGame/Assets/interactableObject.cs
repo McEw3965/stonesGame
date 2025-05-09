@@ -22,9 +22,6 @@ public class interactableObject : NetworkBehaviour
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
 
-    }
-    void Start()
-    {
         ulong localClientId;
 
         localClientId = NetworkManager.Singleton.LocalClientId;
@@ -41,13 +38,12 @@ public class interactableObject : NetworkBehaviour
                 break;
         }
 
-        if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
-        {
-            this.gameObject.SetActive(false);
-        } else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
-        {
-            this.gameObject.SetActive(false);
-        }
+    }
+    void Start()
+    {
+
+
+        //disableStoneRpc();
 
     }
 
@@ -57,6 +53,42 @@ public class interactableObject : NetworkBehaviour
         focusEffect();
 
     }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void player1ActiveRpc()
+    {
+
+        if (currentPlayer == gameManager.whichPlayer.player1)
+        {
+            Debug.Log("Enabling Stone for player 1. CurrentPlayer: " + currentPlayer);
+
+            this.gameObject.SetActive(true);
+        } else
+        {
+            Debug.Log("Disabling Stone for player 1. CurrentPlayer: " + currentPlayer);
+
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void player2ActiveRpc()
+    {
+
+        if (currentPlayer == gameManager.whichPlayer.player2)
+        {
+            Debug.Log("Enabling Stone for player 2. CurrentPlayer: " + currentPlayer);
+
+            this.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Disabling Stone for player 2. CurrentPlayer: " + currentPlayer);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
 
     //private void OnMouseOver()
     //{
@@ -86,6 +118,22 @@ public class interactableObject : NetworkBehaviour
     //        }
     //    }
     //}
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void disableStoneRpc()
+    {
+        if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
+        {
+            this.name = "Player 1 Stone"; 
+            this.gameObject.SetActive(false);
+        }
+        else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
+        {
+            this.name = "Player 2 Stone";
+            this.gameObject.SetActive(false);
+        }
+    }
+
 
     [Rpc(SendTo.Server)]
     private void assignPlayer1ObjectsRpc()

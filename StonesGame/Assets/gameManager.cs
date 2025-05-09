@@ -310,7 +310,10 @@ public class gameManager : NetworkBehaviour
             Invoke(nameof(InitialiseSceneObjects), 0.5f);
 
             Debug.Log("Scene Loaded");
-            boardGenerator.Instance.callSpawnStones(currentPlayer);
+            if (IsServer)
+            {
+                boardGenerator.Instance.callSpawnStones(currentPlayer);
+            }
             //boardGenerator.Instance.spawnStonesOnClientRpc();
 
         }
@@ -320,7 +323,6 @@ public class gameManager : NetworkBehaviour
     {
         if (IsServer)
         {
-            Debug.Log("Multiplayer Scene Loaded");
             leftScale = GameObject.Find("Left Scale");
             rightScale = GameObject.Find("Right Scale");
 

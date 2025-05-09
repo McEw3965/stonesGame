@@ -64,86 +64,33 @@ public class boardGenerator : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void spawnStonesRpc(gameManager.whichPlayer tempPlayer)
     {
-
+        float offsetAdjustment = 0f;
 
 
         for (int i = 0; i < 11; i++)
         {
 
             GameObject stoneClone;
-
-            Debug.Log("TempPlayer Value == " + tempPlayer);
-
-            var stoneCloneNetworkObject = player1Stone.GetComponent<NetworkObject>();
             stoneClone = Instantiate(player1Stone);
-            stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-            stoneCloneNetworkObject.Spawn();
-            stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
+
+            var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
             stoneCloneNetworkObject.gameObject.name = "Stone " + i + 1;
+            stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (offsetAdjustment), 1.5f, 0f);
 
-            if ((i + 1) % 2 ==  0)
-            {
-                stoneCloneNetworkObject.gameObject.layer = 6;
-            } else if ((i + 1) % 2 == 1)
-            {
-                stoneCloneNetworkObject.gameObject.layer = 7;
-            }   
+            stoneCloneNetworkObject.Spawn();
 
-            //switch (tempPlayer) //Spawns different set of stones for each player
-            //{
-            //    case gameManager.whichPlayer.player1:
-            //        Debug.Log("Spawning Stones for player 1");
-            //        var stoneCloneNetworkObject = player1Stone.GetComponent<NetworkObject>();
-            //        stoneClone = Instantiate(player1Stone);
-            //        stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-            //        stoneCloneNetworkObject.Spawn();
-            //        stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            //        stoneCloneNetworkObject.name = "Player 2 Stone " + i + 1;
-            //        break;
-            //    case gameManager.whichPlayer.player2:
-            //        Debug.Log("Spawning Stones for player 2");
-            //        var P2stoneCloneNetworkObject = player2Stone.GetComponent<NetworkObject>();
-            //        stoneClone = Instantiate(player2Stone);
-            //        P2stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-            //        P2stoneCloneNetworkObject.Spawn();
-            //        P2stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-            //        P2stoneCloneNetworkObject.name = "Player 2 Stone " + i + 1;
-            //        break;
-            //}
+            if ((i + 1) % 2 == 0)
+            {
+                offsetAdjustment += 2f;
+                stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
+            } else
+            {
+                stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
+            }
+
         }
     }
 
-
-        //[Rpc(SendTo.ClientsAndHost)]
-        //public void spawnStonesOnClientRpc()
-        //{
-
-        //    Debug.Log("Your Client Id is: " + multiplayerManager.Instance.connectedClientIds[1]);
-
-        //    if (NetworkManager.Singleton.LocalClientId == multiplayerManager.Instance.connectedClientIds[0])
-        //    {
-
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            GameObject stoneClone = Instantiate(player2Stone);
-        //            var stoneNetworkObject = stoneClone.GetComponent<NetworkObject>();
-        //            stoneNetworkObject.Spawn();
-
-        //            //stoneClone.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-        //            //stoneClone.name = "Player 1 Stone: " + (i + 1);
-        //        }
-
-        //    }
-        //    else if (NetworkManager.Singleton.LocalClientId == multiplayerManager.Instance.connectedClientIds[1])
-        //    {
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            //var stoneClone = Instantiate(player2Stone);
-        //            //stoneClone.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (i * 2f), 1.5f, 0f);
-        //            //stoneClone.name = "Player 2 Stone: " + (i + 1);
-        //        }
-        //    }
-        //}
 
 
         private void OnEnable()
