@@ -20,6 +20,7 @@ public class gameManager : NetworkBehaviour
     //VARIABLES FOR STONES AND SCALES
     [SerializeField]
     private GameObject leftScale;
+    [SerializeField]
     private GameObject rightScale;
 
 
@@ -51,7 +52,7 @@ public class gameManager : NetworkBehaviour
 
     [SerializeField]
     public whichPlayer currentPlayer;
-    public whichPlayer playerTorevealFirst;
+    public whichPlayer playerTorevealFirst = gameManager.whichPlayer.player1;
 
     public enum whichPlayer
     {
@@ -86,21 +87,16 @@ public class gameManager : NetworkBehaviour
 
     //GAME EVENTS
 
-        public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone) {
-    
-        firstStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
-        yield return new WaitForSecondsRealtime(2.0f); //Suspends execution for 2 seconds
-        secondStone.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
-        yield return new WaitForSecondsRealtime(3.0f);
-
-        Destroy(player1SelectedStone.gameObject);
-        Destroy(player2SelectedStone.gameObject);
-        player1SelectedScale = null;
-        player2SelectedScale = null;
-        selectedStone = null;
-        selectedScale = null;
-        player1Ready.Value = false;
-        player2Ready.Value = false;
+        public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone, NetworkObject firstScale, NetworkObject secondScale) {
+        firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
+        yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
+        firstScale.GetComponent<interactableObject>().weight.Value += firstStone.GetComponent<interactableObject>().weight.Value;
+        yield return new WaitForSecondsRealtime(1.0f);
+        secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
+        yield return new WaitForSecondsRealtime(1.0f);
+        secondScale.GetComponent<interactableObject>().weight.Value += secondStone.GetComponent<interactableObject>().weight.Value;
+        yield return new WaitForSecondsRealtime(2.0f);
+        resetVarsRpc();
     }
 
     [Rpc(SendTo.Server)]
@@ -112,12 +108,11 @@ public class gameManager : NetworkBehaviour
             switch(playerTorevealFirst)
             {
                 case whichPlayer.player1:
-                    revealStonesCoroutine = StartCoroutine(revealStones(player1SelectedStone, player2SelectedStone));
+                    revealStonesCoroutine = StartCoroutine(revealStones(player1SelectedStone, player2SelectedStone, player1SelectedScale, player2SelectedScale));
                     break;
                 case whichPlayer.player2:
-                    revealStonesCoroutine = StartCoroutine(revealStones(player2SelectedStone, player1SelectedStone));
+                    revealStonesCoroutine = StartCoroutine(revealStones(player2SelectedStone, player1SelectedStone, player2SelectedScale, player1SelectedScale)); ;
                     break;
-
             }
 
             if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
@@ -128,19 +123,36 @@ public class gameManager : NetworkBehaviour
                 playerTorevealFirst = whichPlayer.player2;
             }
 
-            Destroy(player1SelectedStone.gameObject);
-            Destroy(player2SelectedStone.gameObject);
-            player1SelectedScale = null;
-            player2SelectedScale = null;
-            selectedStone = null;
-            selectedScale = null;
-            player1Ready.Value = false;
-            player2Ready.Value = false;
         }
         else
         {
             Debug.Log("Both Players must be ready to end turn");
         }
+    }
+
+    [Rpc(SendTo.Server)]
+    private void resetVarsRpc()
+    {
+        //Destroy(player1SelectedStone.gameObject);
+        //Destroy(player2SelectedStone.gameObject);
+        //if (currentPlayer == gameManager.whichPlayer.player1)
+        //{
+        //    player1SelectedStone.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
+        //}
+        //else if (currentPlayer == gameManager.whichPlayer.player2)
+        //{
+        //    player2SelectedStone.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
+        //}
+
+        player1SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
+        player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
+
+        player1SelectedScale = null;
+        player2SelectedScale = null;
+        selectedStone = null;
+        selectedScale = null;
+        player1Ready.Value = false;
+        player2Ready.Value = false;
     }
 
     [Rpc(SendTo.Server)]
@@ -152,7 +164,6 @@ public class gameManager : NetworkBehaviour
                 if (player1SelectedScale != null && player1SelectedStone != null)
                 {
                     player1Ready.Value = true;
-
                 }
                 else
                 {

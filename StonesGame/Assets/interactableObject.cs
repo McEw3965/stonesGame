@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.Networking;
 
 public class interactableObject : NetworkBehaviour
 {
@@ -14,7 +15,31 @@ public class interactableObject : NetworkBehaviour
 
     [SerializeField]
     gameManager.whichPlayer currentPlayer;
-    
+
+    public NetworkVariable<bool> isDisabled = new NetworkVariable<bool>(false);
+    public NetworkVariable<bool> isPlayed = new NetworkVariable<bool>(false);  
+
+    private void disableStone(bool previousValue, bool newValue)
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    private void playStone(bool previousValue, bool newValue)
+    {
+        this.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+    }
+    public override void OnNetworkSpawn()
+    {
+            isDisabled.OnValueChanged += disableStone;
+            isPlayed.OnValueChanged += playStone;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+            isDisabled.OnValueChanged -= disableStone;
+            isPlayed.OnValueChanged -= playStone;
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
