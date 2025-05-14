@@ -103,6 +103,7 @@ public class gameManager : NetworkBehaviour
         }
         yield return new WaitForSecondsRealtime(2.0f);
         resetVarsRpc();
+        checkWinCondition();
     }
 
     [Rpc(SendTo.Server)]
@@ -264,14 +265,15 @@ public class gameManager : NetworkBehaviour
         {
             difference = rightScaleWeight - leftScaleWeight;
         }
-        checkWinCondition(difference);
+        checkWinCondition();
     }
 
-    private void checkWinCondition(float difference)
+    private void checkWinCondition()
     {
-        if (rightScale.GetComponent<interactableObject>().weight.Value == 10 || leftScale.GetComponent<interactableObject>().weight.Value == 10)
+        if (rightScale.GetComponent<interactableObject>().weight.Value >= 10 || leftScale.GetComponent<interactableObject>().weight.Value >= 10)
         {
             Debug.Log("Game Over");
+            NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
         else
         {
@@ -282,7 +284,6 @@ public class gameManager : NetworkBehaviour
     //SCENE MANAGEMENT
     private void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
 
         if (scene.name == "MultiplayerScene")
         {
@@ -308,17 +309,6 @@ public class gameManager : NetworkBehaviour
                     break;
             }
 
-            ////playerOne.Value.playerId = multiplayerManager.Instance.connectedClientIds[0];
-            //Debug.Log("Player 1 CLientId: " + player1ID);
-            //player2ID = multiplayerManager.Instance.connectedClientIds[1];
-            //Debug.Log("Player 2 ClientId " + player2ID);
-
-            ////NetworkDictionaryTest.Value[player1ID] = "Successful";
-            ////Debug.Log("Network Dictionary Test: " + NetworkDictionaryTest.Value[player1ID]);
-
-            ////clientIdToStone[player1ID] = null;
-            ////clientIdToStone[player2ID] = null;
-            ///
             Invoke(nameof(InitialiseSceneObjects), 0.5f);
 
             Debug.Log("Scene Loaded");
@@ -326,8 +316,9 @@ public class gameManager : NetworkBehaviour
             {
                 boardGenerator.Instance.callSpawnStones(currentPlayer);
             }
-            //boardGenerator.Instance.spawnStonesOnClientRpc();
-
+        } else if (scene.name == "GameOver")
+        {
+            Debug.Log("GameOver Scene loaded");
         }
     }
 
