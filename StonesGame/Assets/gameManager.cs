@@ -90,11 +90,17 @@ public class gameManager : NetworkBehaviour
         public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone, NetworkObject firstScale, NetworkObject secondScale) {
         firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
-        firstScale.GetComponent<interactableObject>().weight.Value += firstStone.GetComponent<interactableObject>().weight.Value;
+        if (IsServer)
+        {
+            firstScale.GetComponent<interactableObject>().weight.Value += firstStone.GetComponent<interactableObject>().weight.Value;
+        }
         yield return new WaitForSecondsRealtime(1.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f);
-        secondScale.GetComponent<interactableObject>().weight.Value += secondStone.GetComponent<interactableObject>().weight.Value;
+        if (IsServer)
+        {
+            secondScale.GetComponent<interactableObject>().weight.Value += secondStone.GetComponent<interactableObject>().weight.Value;
+        }
         yield return new WaitForSecondsRealtime(2.0f);
         resetVarsRpc();
     }

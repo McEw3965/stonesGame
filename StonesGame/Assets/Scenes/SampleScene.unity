@@ -6330,6 +6330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   leftScale: {fileID: 0}
+  rightScale: {fileID: 0}
   selectedStone: {fileID: 0}
   selectedScale: {fileID: 0}
   player1SelectedStone: {fileID: 0}
@@ -6373,6 +6374,12 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   player1Stone: {fileID: 7080062484616901983, guid: 60cf7e41c67a82445858e00d931a5214, type: 3}
   player2Stone: {fileID: 1069138663131701557, guid: f9e0ef8a4bac52a4482d0da4b32fe115, type: 3}
+  stoneSprites:
+  - {fileID: 6898035379108858973, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: -8868248462342347919, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: 142484157382429818, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: -6436523234113188850, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: 7747454605161465366, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
 --- !u!114 &1863787082
 MonoBehaviour:
   m_ObjectHideFlags: 0

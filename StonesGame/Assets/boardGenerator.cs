@@ -13,6 +13,9 @@ public class boardGenerator : NetworkBehaviour
     public GameObject player1Stone;
     public GameObject player2Stone;
 
+    [SerializeField]
+    private Sprite[] stoneSprites;
+
     gameManager.whichPlayer currentPlayer;
 
     private Vector3 SpawnPoint = new Vector3(2f, 2f, 0f);
@@ -66,7 +69,7 @@ public class boardGenerator : NetworkBehaviour
     {
         float offsetAdjustment = 0f;
         float stoneWeight = 0f;
-
+        int stoneIndex = 0;
 
         for (int i = 0; i < 10; i++)
         {
@@ -78,6 +81,7 @@ public class boardGenerator : NetworkBehaviour
             stoneCloneNetworkObject.gameObject.name = "Stone " + i + 1;
             stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (offsetAdjustment), 1.5f, 0f);
             stoneCloneNetworkObject.GetComponent<interactableObject>().weight.Value = stoneWeight;
+            stoneCloneNetworkObject.GetComponent<SpriteRenderer>().sprite = stoneSprites[stoneIndex];
 
             stoneCloneNetworkObject.Spawn();
 
@@ -85,6 +89,7 @@ public class boardGenerator : NetworkBehaviour
             {
                 stoneWeight++;
                 offsetAdjustment += 2f;
+                stoneIndex ++;
                 stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
             } else
             {
