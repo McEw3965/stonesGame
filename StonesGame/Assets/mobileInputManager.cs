@@ -51,7 +51,17 @@ public class mobileInputManager : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(worldPosition2D, Vector2.zero);
         {
             Debug.Log("Object Hit");
-            interactableObject interactable = hit.collider.GetComponent<interactableObject>();
+
+            interactableObject interactable;
+
+            if (hit.collider.TryGetComponent<interactableObject>(out interactableObject interactableObject) == true)
+            {
+                interactable = hit.collider.GetComponent<interactableObject>();
+            } else
+            {
+                interactable = null;
+            }
+
 
             if (interactable != null)
             {
