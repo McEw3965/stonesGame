@@ -5281,6 +5281,7 @@ GameObject:
   - component: {fileID: 1699288274}
   - component: {fileID: 1699288273}
   - component: {fileID: 1699288277}
+  - component: {fileID: 1699288278}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5423,6 +5424,18 @@ MonoBehaviour:
   constraint: 0
   camera: {fileID: 1699288275}
   executeInUpdate: 1
+--- !u!114 &1699288278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699288272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a66b2af4490514ab6bb8970bbd0a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1702362287
 GameObject:
   m_ObjectHideFlags: 0
@@ -5504,7 +5517,7 @@ Transform:
   m_GameObject: {fileID: 1702362287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.12}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1.0369155, y: 0.93205893, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6396,6 +6409,7 @@ GameObject:
   - component: {fileID: 1863787082}
   - component: {fileID: 1863787079}
   - component: {fileID: 1863787081}
+  - component: {fileID: 1863787083}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6492,6 +6506,18 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1863787083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863787078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2de8fd4beea514db4b6de859c0758b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969464751
 GameObject:
   m_ObjectHideFlags: 0

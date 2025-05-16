@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Networking;
 
+
 public class interactableObject : NetworkBehaviour
 {
     //public float weight;
@@ -17,33 +18,13 @@ public class interactableObject : NetworkBehaviour
     gameManager.whichPlayer currentPlayer;
 
     public NetworkVariable<bool> isDisabled = new NetworkVariable<bool>(false);
-    public NetworkVariable<bool> isPlayed = new NetworkVariable<bool>(false);  
+    public NetworkVariable<bool> isPlayed = new NetworkVariable<bool>(false);
 
-    private void disableStone(bool previousValue, bool newValue)
-    {
-        this.gameObject.SetActive(false);
-    }
 
-    private void playStone(bool previousValue, bool newValue)
-    {
-        this.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
-    }
-    public override void OnNetworkSpawn()
-    {
-            isDisabled.OnValueChanged += disableStone;
-            isPlayed.OnValueChanged += playStone;
-    }
 
-    public override void OnNetworkDespawn()
-    {
-            isDisabled.OnValueChanged -= disableStone;
-            isPlayed.OnValueChanged -= playStone;
-
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
 
@@ -64,6 +45,31 @@ public class interactableObject : NetworkBehaviour
         }
 
     }
+
+    private void disableStone(bool previousValue, bool newValue)
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    private void playStone(bool previousValue, bool newValue)
+    {
+        this.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+    }
+    public override void OnNetworkSpawn()
+    {
+        isDisabled.OnValueChanged += disableStone;
+        isPlayed.OnValueChanged += playStone;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        isDisabled.OnValueChanged -= disableStone;
+        isPlayed.OnValueChanged -= playStone;
+
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
 
@@ -88,7 +94,8 @@ public class interactableObject : NetworkBehaviour
             Debug.Log("Enabling Stone for player 1. CurrentPlayer: " + currentPlayer);
 
             this.gameObject.SetActive(true);
-        } else
+        }
+        else
         {
             Debug.Log("Disabling Stone for player 1. CurrentPlayer: " + currentPlayer);
 
@@ -113,43 +120,18 @@ public class interactableObject : NetworkBehaviour
         }
     }
 
+    //TOUCHSCREEN CONTROLS (NEW INPUT SYSTEM)
 
 
-    //private void OnMouseOver()
-    //{
-    //    localClientID = NetworkManager.Singleton.LocalClientId;
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        if (this.tag == "Stone")
-    //        {
-
-    //            gameManager.Instance.selectedStone = this.gameObject;
-    //            //gameManager.Instance.clientIdToStone[localClientID] = this.gameObject;
-    //        }
-    //        else if (this.tag == "Scale")
-    //        {
-    //            gameManager.Instance.selectedScale = this.gameObject;
-    //            //gameManager.Instance.clientIdToScale[localClientID] = this.gameObject;
 
 
-    //        }
-
-    //        if(isSelected)
-    //        {
-    //            isSelected = false;
-    //        } else if (!isSelected)
-    //        {
-    //            isSelected = true;
-    //        }
-    //    }
-    //}
 
     [Rpc(SendTo.ClientsAndHost)]
     private void disableStoneRpc()
     {
         if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
         {
-            this.name = "Player 1 Stone"; 
+            this.name = "Player 1 Stone";
             this.gameObject.SetActive(false);
         }
         else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
@@ -201,24 +183,34 @@ public class interactableObject : NetworkBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            switch (currentPlayer)
-            {
-                case gameManager.whichPlayer.player1:
-                    assignPlayer1ObjectsRpc();
-                    break;
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    switch (currentPlayer)
+        //    {
+        //        case gameManager.whichPlayer.player1:
+        //            assignPlayer1ObjectsRpc();
+        //            break;
 
-                case gameManager.whichPlayer.player2:
-                    assignPlayer2ObjectsRpc();
-                    break;
-            }
-        }
+        //        case gameManager.whichPlayer.player2:
+        //            assignPlayer2ObjectsRpc();
+        //            break;
+        //    }
+        //}
     }
 
+    public void handleTap()
+    {
+        switch (currentPlayer)
+        {
+            case gameManager.whichPlayer.player1:
+                assignPlayer1ObjectsRpc();
+                break;
 
-
-
+            case gameManager.whichPlayer.player2:
+                assignPlayer2ObjectsRpc();
+                break;
+        }
+    }
 
     private void focusEffect()
     {

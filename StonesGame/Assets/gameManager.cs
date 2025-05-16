@@ -66,6 +66,7 @@ public class gameManager : NetworkBehaviour
 
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(networkManager);
+        //DontDestroyOnLoad(Camera.main);
 
         if (Instance != null)
         {

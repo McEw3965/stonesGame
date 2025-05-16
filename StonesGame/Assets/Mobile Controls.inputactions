@@ -1,0 +1,46 @@
+{
+    "name": "Mobile Controls",
+    "maps": [
+        {
+            "name": "Mobile",
+            "id": "43823b65-ce77-4aa3-a9b4-f648b70c4cf5",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Value",
+                    "id": "47c7bcc9-a09e-4aec-a9b0-e3c54d03c1a4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "95680fe5-1fee-45b9-a0e9-ab8c2b6db01f",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mobile",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
