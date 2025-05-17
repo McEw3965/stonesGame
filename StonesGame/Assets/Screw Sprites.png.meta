@@ -1,0 +1,1768 @@
+fileFormatVersion: 2
+guid: 996897a050eea4646bc983f5fe95ae64
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4627525561117224835
+    second: Screw Sprites_0
+  - first:
+      213: -6816021290481775974
+    second: Screw Sprites_1
+  - first:
+      213: -6346971796656286822
+    second: Screw Sprites_2
+  - first:
+      213: -1444789708354402582
+    second: Screw Sprites_3
+  - first:
+      213: 5797944756986279336
+    second: Screw Sprites_4
+  - first:
+      213: 6561967149438937958
+    second: Screw Sprites_5
+  - first:
+      213: 4302872628907202011
+    second: Screw Sprites_6
+  - first:
+      213: 4496293426125792914
+    second: Screw Sprites_7
+  - first:
+      213: -7853540763748433007
+    second: Screw Sprites_8
+  - first:
+      213: -6549182279396242587
+    second: Screw Sprites_9
+  - first:
+      213: 4739690235203238427
+    second: Screw Sprites_10
+  - first:
+      213: -8593675686587957583
+    second: Screw Sprites_11
+  - first:
+      213: -7361391304079987373
+    second: Screw Sprites_12
+  - first:
+      213: 7242524562081621311
+    second: Screw Sprites_13
+  - first:
+      213: 6253954946717927942
+    second: Screw Sprites_14
+  - first:
+      213: 6144254122521225586
+    second: Screw Sprites_15
+  - first:
+      213: -8343873516584655394
+    second: Screw Sprites_16
+  - first:
+      213: -7816830895266727528
+    second: Screw Sprites_17
+  - first:
+      213: -6424850455982325757
+    second: Screw Sprites_18
+  - first:
+      213: 2722674078318898454
+    second: Screw Sprites_19
+  - first:
+      213: 6879280615227204487
+    second: Screw Sprites_20
+  - first:
+      213: 6247134343070539211
+    second: Screw Sprites_21
+  - first:
+      213: 3342073441890863824
+    second: Screw Sprites_22
+  - first:
+      213: 1771324822672647371
+    second: Screw Sprites_23
+  - first:
+      213: -4262846601599358167
+    second: Screw Sprites_24
+  - first:
+      213: 7103373053704275312
+    second: Screw Sprites_25
+  - first:
+      213: -1171482780903487473
+    second: Screw Sprites_26
+  - first:
+      213: 9204798641237204309
+    second: Screw Sprites_27
+  - first:
+      213: 3323568378884469012
+    second: Screw Sprites_28
+  - first:
+      213: -2427919965249688050
+    second: Screw Sprites_29
+  - first:
+      213: -4956585331540421462
+    second: Screw Sprites_30
+  - first:
+      213: 418889923352980797
+    second: Screw Sprites_31
+  - first:
+      213: -5332501126586940952
+    second: Screw Sprites_32
+  - first:
+      213: 227942824112679318
+    second: Screw Sprites_33
+  - first:
+      213: 6250253449646542977
+    second: Screw Sprites_34
+  - first:
+      213: 210157156478140038
+    second: Screw Sprites_35
+  - first:
+      213: -3607570042948126666
+    second: Screw Sprites_36
+  - first:
+      213: 6698492630046216240
+    second: Screw Sprites_37
+  - first:
+      213: -2849170225859406301
+    second: Screw Sprites_38
+  - first:
+      213: -3844240823025523523
+    second: Screw Sprites_39
+  - first:
+      213: 7045685833135872805
+    second: Screw Sprites_40
+  - first:
+      213: -4495355814911160080
+    second: Screw Sprites_41
+  - first:
+      213: 8933992970525075746
+    second: Screw Sprites_42
+  - first:
+      213: 6892719618290334003
+    second: Screw Sprites_43
+  - first:
+      213: 3270212370552931582
+    second: Screw Sprites_44
+  - first:
+      213: -2856107184964126513
+    second: Screw Sprites_45
+  - first:
+      213: 4914417404939101990
+    second: Screw Sprites_46
+  - first:
+      213: -4275456202229525475
+    second: Screw Sprites_47
+  - first:
+      213: 9090192279800720680
+    second: Screw Sprites_48
+  - first:
+      213: 6927675457952045670
+    second: Screw Sprites_49
+  - first:
+      213: -1281206511438115211
+    second: Screw Sprites_50
+  - first:
+      213: -7234273194090765837
+    second: Screw Sprites_51
+  - first:
+      213: -4899894566745297723
+    second: Screw Sprites_52
+  - first:
+      213: -463161757296346795
+    second: Screw Sprites_53
+  - first:
+      213: 3079136860095685149
+    second: Screw Sprites_54
+  - first:
+      213: 8741462809998924810
+    second: Screw Sprites_55
+  - first:
+      213: 8013841491908648506
+    second: Screw Sprites_56
+  - first:
+      213: -7296465852149106827
+    second: Screw Sprites_57
+  - first:
+      213: -3766492199413767201
+    second: Screw Sprites_58
+  - first:
+      213: 3832509577701054627
+    second: Screw Sprites_59
+  - first:
+      213: -2893044483185575992
+    second: Screw Sprites_60
+  - first:
+      213: -5340669910532501501
+    second: Screw Sprites_61
+  - first:
+      213: -188653763877293929
+    second: Screw Sprites_62
+  - first:
+      213: 5658942694268742368
+    second: Screw Sprites_63
+  - first:
+      213: -6329512004784443680
+    second: Screw Sprites_64
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Screw Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 2612
+        width: 377
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d705194150ab7cfb0800000000000000
+      internalID: -4627525561117224835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2986
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a8557cfb0a861a0800000000000000
+      internalID: -6816021290481775974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 2612
+        width: 373
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9311e457c60be7a0800000000000000
+      internalID: -6346971796656286822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 2986
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae645624a6313fbe0800000000000000
+      internalID: -1444789708354402582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 2612
+        width: 372
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a57183a900767050800000000000000
+      internalID: 5797944756986279336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 2170
+        y: 2612
+        width: 375
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b271a0b5ac01b50800000000000000
+      internalID: 6561967149438937958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 2612
+        width: 371
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5d3cfbbdfd6bb30800000000000000
+      internalID: 4302872628907202011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 3426
+        y: 2612
+        width: 377
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296e6267c0b066e30800000000000000
+      internalID: 4496293426125792914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 3585
+        y: 2986
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19389b3094e920390800000000000000
+      internalID: -7853540763748433007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 3954
+        y: 2542
+        width: 581
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56bcd4b7a61ac15a0800000000000000
+      internalID: -6549182279396242587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 2842
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a3dae2823c6c140800000000000000
+      internalID: 4739690235203238427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 2826
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1be730a8e712db880800000000000000
+      internalID: -8593675686587957583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 2826
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35da9ab7c9517d990800000000000000
+      internalID: -7361391304079987373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 3953
+        y: 2818
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f35aae777bd928460800000000000000
+      internalID: 7242524562081621311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 1960
+        width: 578
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a4b60a3e28ac650800000000000000
+      internalID: 6253954946717927942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 4122
+        y: 2475
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2796b9e1296c44550800000000000000
+      internalID: 6144254122521225586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 4105
+        y: 2466
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5ae219e3b943c80800000000000000
+      internalID: -8343873516584655394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 2762
+        y: 1996
+        width: 443
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899f35257b9058390800000000000000
+      internalID: -7816830895266727528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_18
+      rect:
+        serializedVersion: 2
+        x: 2938
+        y: 2435
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300ca24fc8856d6a0800000000000000
+      internalID: -6424850455982325757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 2004
+        width: 428
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61dac5d16a1e8c520800000000000000
+      internalID: 2722674078318898454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 2426
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78329d4854d187f50800000000000000
+      internalID: 6879280615227204487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_21
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 2004
+        width: 426
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcddcd6169742b650800000000000000
+      internalID: 6247134343070539211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_22
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 2426
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0da0c2d961e616e20800000000000000
+      internalID: 3342073441890863824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_23
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 2004
+        width: 428
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc42c359a82059810800000000000000
+      internalID: 1771324822672647371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_24
+      rect:
+        serializedVersion: 2
+        x: 1658
+        y: 2426
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b60b3f99357d4c0800000000000000
+      internalID: -4262846601599358167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_25
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 2004
+        width: 423
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07500253820449260800000000000000
+      internalID: 7103373053704275312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_26
+      rect:
+        serializedVersion: 2
+        x: 2299
+        y: 2427
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08c2c71e9e0ebfe0800000000000000
+      internalID: -1171482780903487473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_27
+      rect:
+        serializedVersion: 2
+        x: 3434
+        y: 2030
+        width: 373
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d11f758930ebf70800000000000000
+      internalID: 9204798641237204309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_28
+      rect:
+        serializedVersion: 2
+        x: 3977
+        y: 1356
+        width: 576
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4113122e4dfaf1e20800000000000000
+      internalID: 3323568378884469012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_29
+      rect:
+        serializedVersion: 2
+        x: 4113
+        y: 1868
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0ea630c7ab4e4ed0800000000000000
+      internalID: -2427919965249688050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_30
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1426
+        width: 370
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa41f9ee6eba63bb0800000000000000
+      internalID: -4956585331540421462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_31
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1426
+        width: 377
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3de1797a2230d500800000000000000
+      internalID: 418889923352980797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_32
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1426
+        width: 372
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e14a696a762ff5b0800000000000000
+      internalID: -5332501126586940952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_33
+      rect:
+        serializedVersion: 2
+        x: 2194
+        y: 1426
+        width: 373
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 699e5547ac0d92300800000000000000
+      internalID: 227942824112679318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_34
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 1426
+        width: 375
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 180975ea56c5db650800000000000000
+      internalID: 6250253449646542977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_35
+      rect:
+        serializedVersion: 2
+        x: 3445
+        y: 1426
+        width: 372
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68eb2e202d0aae200800000000000000
+      internalID: 210157156478140038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_36
+      rect:
+        serializedVersion: 2
+        x: 3577
+        y: 1796
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6387cbfd8265fedc0800000000000000
+      internalID: -3607570042948126666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_37
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1660
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0301a709e83d5fc50800000000000000
+      internalID: 6698492630046216240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_38
+      rect:
+        serializedVersion: 2
+        x: 3441
+        y: 1660
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326d70f66c6b578d0800000000000000
+      internalID: -2849170225859406301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_39
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 776
+        width: 431
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db42280d65386aac0800000000000000
+      internalID: -3844240823025523523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_40
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 776
+        width: 424
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bd0138fed47c160800000000000000
+      internalID: 7045685833135872805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_41
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 776
+        width: 424
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0db3924b94d91c0800000000000000
+      internalID: -4495355814911160080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_42
+      rect:
+        serializedVersion: 2
+        x: 2170
+        y: 776
+        width: 423
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 229ebf9b54bebfb70800000000000000
+      internalID: 8933992970525075746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_43
+      rect:
+        serializedVersion: 2
+        x: 2818
+        y: 770
+        width: 439
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339bf8049fbd7af50800000000000000
+      internalID: 6892719618290334003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_44
+      rect:
+        serializedVersion: 2
+        x: 3440
+        y: 804
+        width: 371
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef445ee13d0226d20800000000000000
+      internalID: 3270212370552931582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_45
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 734
+        width: 575
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc8b5c7c5a11d58d0800000000000000
+      internalID: -2856107184964126513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_46
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 638
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62764639794833440800000000000000
+      internalID: 4914417404939101990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_47
+      rect:
+        serializedVersion: 2
+        x: 2971
+        y: 186
+        width: 640
+        height: 554
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d145e558c378aa4c0800000000000000
+      internalID: -4275456202229525475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_48
+      rect:
+        serializedVersion: 2
+        x: 3338
+        y: 130
+        width: 639
+        height: 554
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d258177b9d62e70800000000000000
+      internalID: 9090192279800720680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_49
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 120
+        width: 578
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a5c66ef1c042060800000000000000
+      internalID: 6927675457952045670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_50
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 630
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e40d9477d383ee0800000000000000
+      internalID: -1281206511438115211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_51
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 118
+        width: 580
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1e61adbd2ba9b90800000000000000
+      internalID: -7234273194090765837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_52
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 606
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cca7403ad3100cb0800000000000000
+      internalID: -4899894566745297723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_53
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 606
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5593ecee5d48299f0800000000000000
+      internalID: -463161757296346795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_54
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 162
+        width: 438
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d12a0d809aa4bba20800000000000000
+      internalID: 3079136860095685149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_55
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 162
+        width: 440
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c16478c1aef4970800000000000000
+      internalID: 8741462809998924810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_56
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 598
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3e5083b062e63f60800000000000000
+      internalID: 8013841491908648506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_57
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 162
+        width: 438
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57772ee37febdba90800000000000000
+      internalID: -7296465852149106827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_58
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 598
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd3a9a4ec4bbabbc0800000000000000
+      internalID: -3766492199413767201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_59
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 438
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a85729c72fcf2530800000000000000
+      internalID: 3832509577701054627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_60
+      rect:
+        serializedVersion: 2
+        x: 2434
+        y: 162
+        width: 437
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7f15cde57d9d7d0800000000000000
+      internalID: -2893044483185575992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_61
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 430
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300d710330122e5b0800000000000000
+      internalID: -5340669910532501501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_62
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 430
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790bd8ab664c16df0800000000000000
+      internalID: -188653763877293929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_63
+      rect:
+        serializedVersion: 2
+        x: 2426
+        y: 414
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea2e28e56a988e40800000000000000
+      internalID: 5658942694268742368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screw Sprites_64
+      rect:
+        serializedVersion: 2
+        x: 3986
+        y: 398
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eea049ed5e0928a0800000000000000
+      internalID: -6329512004784443680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
