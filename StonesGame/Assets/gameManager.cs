@@ -107,14 +107,17 @@ public class gameManager : NetworkBehaviour
             if (firstScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTarget(-firstStoneWeight);
+
             }
             else if (firstScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTarget(firstStoneWeight);
+
             }
         }
 
-        seesaw.GetComponent<tiltController>().FindTarget(firstStoneWeight);
 
         yield return new WaitForSecondsRealtime(1.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
@@ -128,14 +131,17 @@ public class gameManager : NetworkBehaviour
             if (secondScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTarget(-secondStoneWeight);
+
             }
             else if (secondScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTarget(secondStoneWeight);
+
             }
         }
 
-        seesaw.GetComponent<tiltController>().FindTarget(secondStoneWeight);
 
         yield return new WaitForSecondsRealtime(2.0f);
         resetVarsRpc();

@@ -23,7 +23,7 @@ public class tiltController : MonoBehaviour
 
     public void FindTarget(float weight)
     {
-        targetRotation.z *= weight;
+        targetRotation.z *= weight / 2;
         targetQuart = Quaternion.Euler(targetRotation);
         isTilting = true;
 
