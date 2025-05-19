@@ -15,11 +15,14 @@ public class gameManager : NetworkBehaviour
     public static gameManager Instance { get; private set; }
     private GameObject networkManager;
 
+    [SerializeField]
+    private GameObject seesaw;
+
     private Coroutine revealStonesCoroutine;
 
     //VARIABLES FOR STONES AND SCALES
     [SerializeField]
-    private GameObject leftScale;
+    private static GameObject leftScale;
     [SerializeField]
     private GameObject rightScale;
 
@@ -77,7 +80,7 @@ public class gameManager : NetworkBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -88,20 +91,52 @@ public class gameManager : NetworkBehaviour
 
     //GAME EVENTS
 
-        public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone, NetworkObject firstScale, NetworkObject secondScale) {
+    public IEnumerator revealStones(NetworkObject firstStone, NetworkObject secondStone, NetworkObject firstScale, NetworkObject secondScale)
+    {
+
+        float firstStoneWeight = firstStone.GetComponent<interactableObject>().weight.Value;
+        float secondStoneWeight = secondStone.GetComponent<interactableObject>().weight.Value;
+
         firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
         if (IsServer)
         {
-            firstScale.GetComponent<interactableObject>().weight.Value += firstStone.GetComponent<interactableObject>().weight.Value;
+
+            firstScale.GetComponent<interactableObject>().weight.Value += firstStoneWeight;
+
+            if (firstScale.gameObject == rightScale)
+            {
+                leftScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
+            }
+            else if (firstScale.gameObject == leftScale)
+            {
+                rightScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
+            }
         }
+
+        seesaw.GetComponent<tiltController>().FindTarget(firstStoneWeight);
+
         yield return new WaitForSecondsRealtime(1.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f);
+
         if (IsServer)
         {
-            secondScale.GetComponent<interactableObject>().weight.Value += secondStone.GetComponent<interactableObject>().weight.Value;
+            secondScale.GetComponent<interactableObject>().weight.Value += secondStoneWeight;
+
+
+            if (secondScale.gameObject == rightScale)
+            {
+                leftScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
+            }
+            else if (secondScale.gameObject == leftScale)
+            {
+                rightScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
+            }
         }
+
+        seesaw.GetComponent<tiltController>().FindTarget(secondStoneWeight);
+
         yield return new WaitForSecondsRealtime(2.0f);
         resetVarsRpc();
         checkWinCondition();
@@ -113,7 +148,7 @@ public class gameManager : NetworkBehaviour
         Debug.Log("Turn Ended");
         if (player1Ready.Value == true || player2Ready.Value == true)
         {
-            switch(playerTorevealFirst)
+            switch (playerTorevealFirst)
             {
                 case whichPlayer.player1:
                     revealStonesCoroutine = StartCoroutine(revealStones(player1SelectedStone, player2SelectedStone, player1SelectedScale, player2SelectedScale));
@@ -126,7 +161,8 @@ public class gameManager : NetworkBehaviour
             if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
                 playerTorevealFirst = whichPlayer.player1;
-            } else if(player2SelectedStone.GetComponent<interactableObject>().weight.Value > player1SelectedStone.GetComponent<interactableObject>().weight.Value)
+            }
+            else if (player2SelectedStone.GetComponent<interactableObject>().weight.Value > player1SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
                 playerTorevealFirst = whichPlayer.player2;
             }
@@ -195,12 +231,13 @@ public class gameManager : NetworkBehaviour
         if (player1Ready.Value && player2Ready.Value)
         {
             endTurnActionsRpc();
-        } else
+        }
+        else
         {
             Debug.Log("Wait for other player to be ready");
         }
 
-        
+
     }
 
     public void callEndTurn()
@@ -215,7 +252,8 @@ public class gameManager : NetworkBehaviour
         if (currentPlayer == whichPlayer.player1)
         {
             addPlayer1WeightRpc();
-        } else if (currentPlayer == whichPlayer.player2)
+        }
+        else if (currentPlayer == whichPlayer.player2)
         {
             addPlayer2WeightRpc();
         }
@@ -289,7 +327,7 @@ public class gameManager : NetworkBehaviour
         if (scene.name == "MultiplayerScene")
         {
             localClientId = NetworkManager.Singleton.LocalClientId;
-        
+
             if (IsServer)
             {
                 player1Ready.Value = false;
@@ -317,7 +355,8 @@ public class gameManager : NetworkBehaviour
             {
                 boardGenerator.Instance.callSpawnStones(currentPlayer);
             }
-        } else if (scene.name == "GameOver")
+        }
+        else if (scene.name == "GameOver")
         {
             Debug.Log("GameOver Scene loaded");
         }
@@ -329,6 +368,7 @@ public class gameManager : NetworkBehaviour
         {
             leftScale = GameObject.Find("Left Scale");
             rightScale = GameObject.Find("Right Scale");
+            seesaw = GameObject.Find("SeeSaw");
 
         }
 

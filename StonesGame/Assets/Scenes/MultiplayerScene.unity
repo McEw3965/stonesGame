@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 650068666}
   - component: {fileID: 650068665}
   - component: {fileID: 650068667}
+  - component: {fileID: 650068668}
   m_Layer: 0
   m_Name: SeeSaw
   m_TagString: Untagged
@@ -770,6 +771,20 @@ MonoBehaviour:
   anchorType: 4
   anchorOffset:
     m_InternalValue: {x: -0.01, y: -0.3, z: 0}
+--- !u!114 &650068668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650068661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8cd7d73e3f0134fbcda5958af27496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRotation: {x: 0, y: 0, z: 5}
+  rotationSpeed: 1
 --- !u!1 &754494773
 GameObject:
   m_ObjectHideFlags: 0
