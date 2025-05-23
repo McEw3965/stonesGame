@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Networking;
+using TMPro;
 
 
 public class interactableObject : NetworkBehaviour
@@ -20,6 +21,8 @@ public class interactableObject : NetworkBehaviour
     public NetworkVariable<bool> isDisabled = new NetworkVariable<bool>(false);
     public NetworkVariable<bool> isPlayed = new NetworkVariable<bool>(false);
 
+    private TextMeshPro weightLabel;
+
 
 
     private void Awake()
@@ -27,6 +30,8 @@ public class interactableObject : NetworkBehaviour
 
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
+
+        weightLabel = this.gameObject.GetComponentInChildren<TextMeshPro>();
 
         ulong localClientId;
 
@@ -59,12 +64,14 @@ public class interactableObject : NetworkBehaviour
     {
         isDisabled.OnValueChanged += disableStone;
         isPlayed.OnValueChanged += playStone;
+        weight.OnValueChanged += updateWeightLabel;
     }
 
     public override void OnNetworkDespawn()
     {
         isDisabled.OnValueChanged -= disableStone;
         isPlayed.OnValueChanged -= playStone;
+        weight.OnValueChanged -= updateWeightLabel;
 
     }
 
@@ -72,9 +79,6 @@ public class interactableObject : NetworkBehaviour
 
     void Start()
     {
-
-
-        //disableStoneRpc();
 
     }
 
@@ -120,11 +124,20 @@ public class interactableObject : NetworkBehaviour
         }
     }
 
+    //TEXT UPDATING
+
+    private void updateWeightLabel(float previousValue, float newValue)
+    {
+        if (weight != null)
+        {
+            weightLabel.text = weight.Value.ToString();
+        } else
+        {
+            Debug.LogWarning("Cannot update label to null");
+        }
+    }
+
     //TOUCHSCREEN CONTROLS (NEW INPUT SYSTEM)
-
-
-
-
 
     [Rpc(SendTo.ClientsAndHost)]
     private void disableStoneRpc()

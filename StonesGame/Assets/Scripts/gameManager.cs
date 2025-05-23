@@ -144,7 +144,7 @@ public class gameManager : NetworkBehaviour
         }
 
 
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(3.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f);
 
@@ -170,7 +170,7 @@ public class gameManager : NetworkBehaviour
         }
 
 
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(3.0f);
         resetVarsRpc();
         checkWinCondition();
     }
