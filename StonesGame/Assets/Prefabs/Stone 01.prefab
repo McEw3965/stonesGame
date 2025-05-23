@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5800126309079779837}
   - component: {fileID: 4841389404720674609}
   - component: {fileID: 6330235028452033700}
+  - component: {fileID: 1809053272752397254}
   m_Layer: 0
   m_Name: Stone 01
   m_TagString: Stone
@@ -238,3 +239,22 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 4841389404720674609}
+--- !u!114 &1809053272752397254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080062484616901983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73338b50b5eacae4fb4f7b86c701e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  stoneSprites:
+  - {fileID: 6898035379108858973, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: -8868248462342347919, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: 142484157382429818, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: -6436523234113188850, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}
+  - {fileID: 7747454605161465366, guid: 5c971b2111204304c8d0b3db14c5c330, type: 3}

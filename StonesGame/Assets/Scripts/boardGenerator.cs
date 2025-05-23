@@ -77,19 +77,20 @@ public class boardGenerator : NetworkBehaviour
             GameObject stoneClone;
             stoneClone = Instantiate(player1Stone);
 
+            Debug.Log("Stone Index before calliing setSpriteOnSpawn: " + stoneIndex);
             var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
+            stoneCloneNetworkObject.gameObject.GetComponent<networkSpriteChanger>().SetSpriteOnSpawn(stoneIndex);
             stoneCloneNetworkObject.gameObject.name = "Stone " + i + 1;
             stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(4 + (offsetAdjustment), 1.5f, 0f);
             stoneCloneNetworkObject.GetComponent<interactableObject>().weight.Value = stoneWeight;
-            stoneCloneNetworkObject.GetComponent<SpriteRenderer>().sprite = stoneSprites[stoneIndex];
-
             stoneCloneNetworkObject.Spawn();
+
 
             if ((i + 1) % 2 == 0)
             {
                 stoneWeight++;
                 offsetAdjustment += 2f;
-                stoneIndex ++;
+                stoneIndex++;
                 stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
             } else
             {

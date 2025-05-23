@@ -432,46 +432,6 @@ public class gameManager : NetworkBehaviour
         }
 
     }
-    //private void onSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-
-    //    if (scene.name == "MultiplayerScene")
-    //    {
-    //        localClientId = NetworkManager.Singleton.LocalClientId;
-
-    //        if (IsServer)
-    //        {
-    //            player1Ready.Value = false;
-    //            player2Ready.Value = false;
-    //        }
-
-    //        switch (localClientId)
-    //        {
-    //            case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
-    //                currentPlayer = whichPlayer.player1;
-    //                Debug.Log("Current player is player 1");
-    //                break;
-
-    //            case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
-    //                currentPlayer = whichPlayer.player2;
-    //                Debug.Log("Current player is player 2");
-
-    //                break;
-    //        }
-
-    //        Invoke(nameof(InitialiseSceneObjects), 0.5f);
-
-    //        Debug.Log("Scene Loaded");
-    //        if (IsServer)
-    //        {
-    //            boardGenerator.Instance.callSpawnStones(currentPlayer);
-    //        }
-    //    }
-    //    else if (scene.name == "GameOver")
-    //    {
-    //        Debug.Log("GameOver Scene loaded");
-    //    }
-    //}
 
     private void InitialiseSceneObjects()
     {
@@ -485,17 +445,6 @@ public class gameManager : NetworkBehaviour
 
 
     }
-
-    //private void OnEnable()
-    //{
-    //    SceneManager.sceneLoaded += onSceneLoaded; // Corrected line
-    //}
-
-    //private void OnDisable()
-    //{
-    //    SceneManager.sceneLoaded -= onSceneLoaded; // Corrected line
-    //}
-
     public void onlineGame()
     {
         if (IsServer)
