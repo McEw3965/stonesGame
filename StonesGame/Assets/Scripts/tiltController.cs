@@ -1,46 +1,52 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class tiltController : MonoBehaviour
+public class tiltController : NetworkBehaviour
 {
     private Animator animator;
 
     [SerializeField]
-    private Vector3 targetRotation = new Vector3(0f, 0f, 5f);
+    //private Vector3 targetRotation = new Vector3(0f, 0f, 5f);
+
+    public NetworkVariable<Vector3> targetRotation;
     [SerializeField]
     private float rotationSpeed = 1f;
 
-    public float weight;
+    public NetworkVariable<float> weight;
 
     private Quaternion targetQuart;
 
-    private bool isTilting = false;
+    [SerializeField]
+    private NetworkVariable<bool> isTilting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-     
+        targetRotation.Value = new Vector3(0f, 0f, 2.5f);
+        isTilting.Value = false;
     }
 
-    public void FindTarget(float weight)
+    [Rpc(SendTo.Everyone)]
+    public void FindTargetRpc()
     {
-        targetRotation.z *= weight / 2;
-        targetQuart = Quaternion.Euler(targetRotation);
-        isTilting = true;
-
-
+        Vector3 tempRotation = targetRotation.Value;
+        tempRotation.z *= weight.Value / 2;
+        targetRotation.Value = tempRotation;
+        targetQuart = Quaternion.Euler(targetRotation.Value);
+        isTilting.Value = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isTilting && transform.rotation != targetQuart)
+        if (isTilting.Value && transform.rotation != targetQuart)
         {
             Debug.Log("Tilting Seesaw: " + targetQuart);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetQuart, Time.deltaTime * rotationSpeed);
         } else if (transform.rotation == targetQuart)
         {
-            isTilting = false;
+            isTilting.Value = false;
             targetQuart = Quaternion.identity;
         }
     }

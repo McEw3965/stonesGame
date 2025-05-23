@@ -130,13 +130,15 @@ public class gameManager : NetworkBehaviour
             if (firstScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().FindTarget(-firstStoneWeight);
+                seesaw.GetComponent<tiltController>().weight.Value = -firstStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (firstScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().FindTarget(firstStoneWeight);
+                seesaw.GetComponent<tiltController>().weight.Value = firstStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
         }
@@ -154,13 +156,15 @@ public class gameManager : NetworkBehaviour
             if (secondScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().FindTarget(-secondStoneWeight);
+                seesaw.GetComponent<tiltController>().weight.Value = -secondStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (secondScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().FindTarget(secondStoneWeight);
+                seesaw.GetComponent<tiltController>().weight.Value = secondStoneWeight;
+                seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
         }
