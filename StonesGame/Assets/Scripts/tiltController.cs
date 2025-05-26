@@ -26,7 +26,7 @@ public class tiltController : NetworkBehaviour
         isTilting.Value = false;
     }
 
-    [Rpc(SendTo.Everyone)]
+    [Rpc(SendTo.Server)]
     public void FindTargetRpc()
     {
         Vector3 tempRotation = targetRotation.Value;

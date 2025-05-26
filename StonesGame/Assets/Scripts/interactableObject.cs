@@ -128,7 +128,7 @@ public class interactableObject : NetworkBehaviour
 
     private void updateWeightLabel(float previousValue, float newValue)
     {
-        if (weight != null)
+        if (weight != null && this.tag == "Stone")
         {
             weightLabel.text = weight.Value.ToString();
         } else
