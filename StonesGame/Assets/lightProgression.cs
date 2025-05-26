@@ -17,34 +17,29 @@ public class lightProgression : NetworkBehaviour
         
     }
 
-    public void activateLights()
+    [Rpc(SendTo.Server)]
+    public void activateLightsRpc()
     {
         Debug.Log("Activate Lights Active");
 
         for(int i = 0; i < lights.Length; i++)
         {
-            lights[i].gameObject.SetActive(false);
+            lights[i].gameObject.GetComponent<lightController>().isActive.Value = false;
         }
-        float weight = 0;
         float scaleWeight = this.gameObject.GetComponent<interactableObject>().weight.Value;
-
-        if (scaleWeight < 0) //If weight is negative, convert to positive value
-        {
-            weight -= scaleWeight;
-        } else if (scaleWeight >= 0)
-        {
-            weight += scaleWeight;
-        }
+        Debug.Log("ScaleWeight: " + scaleWeight);
         
-        int lightIndex = 0;
+        float lightQuantity = scaleWeight / 2;
+        Debug.Log("lightQuantity: " + lightQuantity);
 
-        for (int i = 0; i < weight; i++)
+        int roundedDownInt = Mathf.FloorToInt(lightQuantity);
+        Debug.Log("RoundedDownInt: " + roundedDownInt);
+
+        for (int i = 0; i < roundedDownInt; i++)
         {
-            if((i + 1) % 2 == 0 && lightIndex < lights.Length)
-            {
-                lights[lightIndex].gameObject.SetActive(true);
-                lightIndex++;
-            }
+            Debug.Log("Turning on light: " + lights[i].gameObject.name);
+            lights[i].gameObject.GetComponent<lightController>().isActive.Value = true;
+
         }
     }
 }

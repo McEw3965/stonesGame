@@ -22,13 +22,14 @@ public class tiltController : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        targetRotation.Value = new Vector3(0f, 0f, 2.5f);
+        targetRotation.Value = new Vector3(0f, 0f, 1.5f);
         isTilting.Value = false;
     }
 
     [Rpc(SendTo.Server)]
     public void FindTargetRpc()
     {
+        targetRotation.Value = new Vector3 (0f, 0f, 1.5f);
         Vector3 tempRotation = targetRotation.Value;
         tempRotation.z *= weight.Value / 2;
         targetRotation.Value = tempRotation;
@@ -41,7 +42,7 @@ public class tiltController : NetworkBehaviour
     {
         if (isTilting.Value && transform.rotation != targetQuart)
         {
-            Debug.Log("Tilting Seesaw: " + targetQuart);
+            //Debug.Log("Tilting Seesaw: " + targetQuart);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetQuart, Time.deltaTime * rotationSpeed);
         } else if (transform.rotation == targetQuart)

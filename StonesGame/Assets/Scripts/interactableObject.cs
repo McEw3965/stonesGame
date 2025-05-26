@@ -28,6 +28,11 @@ public class interactableObject : NetworkBehaviour
     private void Awake()
     {
 
+        if (this.gameObject.tag == "Scale")
+        {
+            weight.Value = 10;
+        }
+
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
 

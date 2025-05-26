@@ -130,14 +130,14 @@ public class gameManager : NetworkBehaviour
             if (firstScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = -firstStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = firstStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (firstScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = firstStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = -firstStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
@@ -156,14 +156,14 @@ public class gameManager : NetworkBehaviour
             if (secondScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = -secondStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = secondStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (secondScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = secondStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = -secondStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
@@ -171,6 +171,7 @@ public class gameManager : NetworkBehaviour
 
 
         yield return new WaitForSecondsRealtime(3.0f);
+        rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
         resetVarsRpc();
         checkWinCondition();
     }
@@ -342,7 +343,7 @@ public class gameManager : NetworkBehaviour
 
     private void checkWinCondition()
     {
-        if (rightScale.GetComponent<interactableObject>().weight.Value >= 10 || leftScale.GetComponent<interactableObject>().weight.Value >= 10)
+        if (rightScale.GetComponent<interactableObject>().weight.Value >= 20 || leftScale.GetComponent<interactableObject>().weight.Value >= 20)
         {
             Debug.Log("Game Over");
             NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
