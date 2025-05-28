@@ -35,11 +35,18 @@ public class lightProgression : NetworkBehaviour
         int roundedDownInt = Mathf.FloorToInt(lightQuantity);
         Debug.Log("RoundedDownInt: " + roundedDownInt);
 
-        for (int i = 0; i < roundedDownInt; i++)
+        if (roundedDownInt <= 10)
         {
-            Debug.Log("Turning on light: " + lights[i].gameObject.name);
-            lights[i].gameObject.GetComponent<lightController>().isActive.Value = true;
 
+            for (int i = 0; i < roundedDownInt; i++)
+            {
+                Debug.Log("Turning on light: " + lights[i].gameObject.name);
+                lights[i].gameObject.GetComponent<lightController>().isActive.Value = true;
+
+            }
+        } else if (roundedDownInt > 10)
+        {
+            
         }
     }
 }

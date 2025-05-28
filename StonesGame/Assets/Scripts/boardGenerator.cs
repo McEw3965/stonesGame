@@ -76,6 +76,7 @@ public class boardGenerator : NetworkBehaviour
 
             GameObject stoneClone;
             stoneClone = Instantiate(player1Stone);
+            roundManager.Instance.stones.Add(stoneClone);
 
             Debug.Log("Stone Index before calliing setSpriteOnSpawn: " + stoneIndex);
             var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();

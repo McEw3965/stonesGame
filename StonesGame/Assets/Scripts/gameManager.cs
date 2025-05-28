@@ -53,9 +53,15 @@ public class gameManager : NetworkBehaviour
     private ulong player2ID;
     public ulong localClientId;
 
+    Text winnerText;
+    Text countdown;
+    Text subheading;
+
     [SerializeField]
     public whichPlayer currentPlayer;
     public whichPlayer playerTorevealFirst = gameManager.whichPlayer.player1;
+    public whichPlayer playerToRevealSecond = gameManager.whichPlayer.player2;
+
 
     public enum whichPlayer
     {
@@ -143,6 +149,8 @@ public class gameManager : NetworkBehaviour
             }
         }
 
+        checkWinCondition(playerTorevealFirst);
+
 
         yield return new WaitForSecondsRealtime(3.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
@@ -169,12 +177,13 @@ public class gameManager : NetworkBehaviour
             }
         }
 
+        checkWinCondition(playerToRevealSecond);
 
         yield return new WaitForSecondsRealtime(3.0f);
         rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
         resetVarsRpc();
-        checkWinCondition();
     }
+
 
     [Rpc(SendTo.Server)]
     public void endTurnActionsRpc()
@@ -195,10 +204,12 @@ public class gameManager : NetworkBehaviour
             if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
                 playerTorevealFirst = whichPlayer.player1;
+                playerToRevealSecond = whichPlayer.player2;
             }
             else if (player2SelectedStone.GetComponent<interactableObject>().weight.Value > player1SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
                 playerTorevealFirst = whichPlayer.player2;
+                playerToRevealSecond = whichPlayer.player1;
             }
 
         }
@@ -211,16 +222,6 @@ public class gameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void resetVarsRpc()
     {
-        //Destroy(player1SelectedStone.gameObject);
-        //Destroy(player2SelectedStone.gameObject);
-        //if (currentPlayer == gameManager.whichPlayer.player1)
-        //{
-        //    player1SelectedStone.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
-        //}
-        //else if (currentPlayer == gameManager.whichPlayer.player2)
-        //{
-        //    player2SelectedStone.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
-        //}
 
         player1SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
         player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
@@ -323,30 +324,44 @@ public class gameManager : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.Server)]
-    private void calculateDifferenceRpc()
+    private void checkWinCondition(whichPlayer player)
     {
-        float leftScaleWeight = leftScale.GetComponent<interactableObject>().weight.Value;
-        float rightScaleWeight = rightScale.GetComponent<interactableObject>().weight.Value;
-        float difference = 0;
+        float rightWeight = rightScale.GetComponent<interactableObject>().weight.Value;
+        float leftWeight = leftScale.GetComponent<interactableObject>().weight.Value;
 
-        if (leftScaleWeight > rightScaleWeight)
-        {
-            difference = leftScaleWeight - rightScaleWeight;
-        }
-        else if (rightScaleWeight > leftScaleWeight)
-        {
-            difference = rightScaleWeight - leftScaleWeight;
-        }
-        checkWinCondition();
-    }
 
-    private void checkWinCondition()
-    {
-        if (rightScale.GetComponent<interactableObject>().weight.Value >= 20 || leftScale.GetComponent<interactableObject>().weight.Value >= 20)
+
+        if (rightWeight >= 20 || leftWeight >= 20) //If scale is over weight limit
         {
-            Debug.Log("Game Over");
-            NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+            switch(player)
+            {
+                case whichPlayer.player1: //If player 1 causes loss, player 2 is the winner and score goes up
+                    scoreManager.Instance.winner = gameManager.whichPlayer.player2;
+                    scoreManager.Instance.player2Score.Value++;
+                    break;
+                case whichPlayer.player2:
+                    scoreManager.Instance.winner = gameManager.whichPlayer.player1;
+                    scoreManager.Instance.player1Score.Value++;
+                    break;
+            }
+
+            if (scoreManager.Instance.player1Score.Value >= 2 || scoreManager.Instance.player2Score.Value >= 2)
+            {
+
+                Debug.Log("Game Over");
+                //roundManager.Instance.disableSceneObjectsRpc();
+                NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+            } else
+            {
+                //seesaw.gameObject.SetActive(false);
+
+                Debug.Log("Scene relaod being called");
+                roundManager.Instance.callCountdownCoroutineRpc();
+                StopCoroutine(revealStonesCoroutine);
+                //scoreManager.Instance.callReloadScene();
+                //string currentSceneName = SceneManager.GetActiveScene().name;
+                //NetworkManager.SceneManager.LoadScene(currentSceneName, LoadSceneMode.Single);
+            }
         }
         else
         {
@@ -445,6 +460,12 @@ public class gameManager : NetworkBehaviour
             leftScale = GameObject.Find("Left Scale");
             rightScale = GameObject.Find("Right Scale");
             seesaw = GameObject.Find("SeeSaw");
+            //winnerText = GameObject.Find("Winner Text").GetComponent<Text>();
+            //countdown = GameObject.Find("Countdown").GetComponent<Text>();
+            //subheading = GameObject.Find("Subheading").GetComponent<Text>();
+            //scoreManager.Instance.winnerText = winnerText;
+            //scoreManager.Instance.countdown = countdown;
+            //scoreManager.Instance.subheading = subheading;
 
         }
 
