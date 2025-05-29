@@ -1064,8 +1064,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adc58221dbed0542ac3aa70ce3a43aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winnerText: {fileID: 0}
-  countdownText: {fileID: 0}
+  player1Points:
+  - {fileID: 8069646596843430223}
+  - {fileID: 8069646596843430222}
+  player2Points:
+  - {fileID: 6159374756919710803}
+  - {fileID: 949801291091831994}
+  pointSprites:
+  - {fileID: -4199412444772304624, guid: 8aae8023ef73b7f409e13607abf5b2e7, type: 3}
+  - {fileID: 3670983443883741859, guid: 8aae8023ef73b7f409e13607abf5b2e7, type: 3}
+  player1Score:
+    m_InternalValue: 0
+  player2Score:
+    m_InternalValue: 0
 --- !u!4 &368406393
 Transform:
   m_ObjectHideFlags: 0
@@ -2307,6 +2318,8 @@ MonoBehaviour:
   countdownText: {fileID: 1633454696}
   countdownShadow: {fileID: 158839751}
   seesaw: {fileID: 650068661}
+  rightScale: {fileID: 1803439413}
+  leftScale: {fileID: 69377702}
   stones: []
   roundWinner: 0
 --- !u!4 &841315678
@@ -3360,360 +3373,6 @@ MonoBehaviour:
   - {fileID: 823888092}
   - {fileID: 1545904201}
   - {fileID: 56706498}
---- !u!1 &1846201524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1846201527}
-  - component: {fileID: 1846201525}
-  - component: {fileID: 1846201526}
-  m_Layer: 0
-  m_Name: scoreManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1846201525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846201524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 372789357
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
---- !u!114 &1846201526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846201524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4201f3c50cd7694fbfe22de7b9e1d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  player1Score:
-    m_InternalValue: 0
-  player2Score:
-    m_InternalValue: 0
-  roundNum: 1
-  winner: 0
-  test: {fileID: 0}
-  winnerText: {fileID: 0}
-  countdown: {fileID: 0}
-  winnerString:
-    m_InternalValue:
-      utf8LengthInBytes: 11
-      bytes:
-        offset0000:
-          byte0000: 80
-          byte0001: 108
-          byte0002: 97
-          byte0003: 99
-          byte0004: 101
-          byte0005: 104
-          byte0006: 111
-          byte0007: 108
-          byte0008: 100
-          byte0009: 101
-          byte0010: 114
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0016:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0032:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0048:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0064:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0080:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0096:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        byte0112: 0
-        byte0113: 0
-        byte0114: 0
-        byte0115: 0
-        byte0116: 0
-        byte0117: 0
-        byte0118: 0
-        byte0119: 0
-        byte0120: 0
-        byte0121: 0
-        byte0122: 0
-        byte0123: 0
-        byte0124: 0
-        byte0125: 0
-  countdownString:
-    m_InternalValue:
-      utf8LengthInBytes: 11
-      bytes:
-        offset0000:
-          byte0000: 80
-          byte0001: 108
-          byte0002: 97
-          byte0003: 99
-          byte0004: 101
-          byte0005: 104
-          byte0006: 111
-          byte0007: 108
-          byte0008: 100
-          byte0009: 101
-          byte0010: 114
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0016:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0032:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0048:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0064:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0080:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        offset0096:
-          byte0000: 0
-          byte0001: 0
-          byte0002: 0
-          byte0003: 0
-          byte0004: 0
-          byte0005: 0
-          byte0006: 0
-          byte0007: 0
-          byte0008: 0
-          byte0009: 0
-          byte0010: 0
-          byte0011: 0
-          byte0012: 0
-          byte0013: 0
-          byte0014: 0
-          byte0015: 0
-        byte0112: 0
-        byte0113: 0
-        byte0114: 0
-        byte0115: 0
-        byte0116: 0
-        byte0117: 0
-        byte0118: 0
-        byte0119: 0
-        byte0120: 0
-        byte0121: 0
-        byte0122: 0
-        byte0123: 0
-        byte0124: 0
-        byte0125: 0
---- !u!4 &1846201527
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846201524}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1389, y: 642, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933117615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,6 +3631,11 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   isActive:
     m_InternalValue: 0
+--- !u!1 &949801291091831994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541101548755757403, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+  m_PrefabInstance: {fileID: 4626109122933320109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4626109122933320109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4072,6 +3736,11 @@ PrefabInstance:
 --- !u!224 &5933986068667233215 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5579780558636432347, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+  m_PrefabInstance: {fileID: 4626109122933320109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6159374756919710803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945449686627874880, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
   m_PrefabInstance: {fileID: 4626109122933320109}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8069646596843430220
@@ -4200,6 +3869,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 378108450415779531, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
   m_PrefabInstance: {fileID: 8069646596843430220}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8069646596843430222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6505678909342843342, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
+  m_PrefabInstance: {fileID: 8069646596843430220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8069646596843430223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152262530652764455, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
+  m_PrefabInstance: {fileID: 8069646596843430220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4210,5 +3889,4 @@ SceneRoots:
   - {fileID: 824808516}
   - {fileID: 1095883118}
   - {fileID: 368406393}
-  - {fileID: 1846201527}
   - {fileID: 841315678}

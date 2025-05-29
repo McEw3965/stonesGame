@@ -21,6 +21,10 @@ public class roundManager : NetworkBehaviour
     private GameObject countdownShadow;
     [SerializeField]
     private GameObject seesaw;
+    [SerializeField]
+    private GameObject rightScale;
+    [SerializeField]
+    private GameObject leftScale;
 
     [SerializeField]
     public List<GameObject> stones;
@@ -55,6 +59,7 @@ public class roundManager : NetworkBehaviour
 
     private IEnumerator countdown()
     {
+        currentTime = 5f;
         Debug.Log("Countdown Running");
         //GameObject winnerText = GameObject.Find("Winner Text");
         //GameObject countdownText = GameObject.Find("Countdown Text");
@@ -83,7 +88,11 @@ public class roundManager : NetworkBehaviour
         //currentTime = 5f;
         winnerText.SetActive(false);
         countdownText.SetActive(false);
+        rightScale.GetComponent<interactableObject>().weight.Value = 10;
+        leftScale.GetComponent<interactableObject>().weight.Value = 10;
+        rightScale.GetComponent<lightProgression>().activateLightsRpc();
         enableSceneObjectsRpc();
+        scoreboardManager.Instance.updateScoreboardRpc();
         yield return null;
     }
 
@@ -123,6 +132,7 @@ public class roundManager : NetworkBehaviour
         seesaw.SetActive(true);
         for (int i = 0; i < stones.Count; i++)
         {
+            stones[i].GetComponent<interactableObject>().isDisabled.Value = false;
             Debug.Log("Activating Stone: " + stones[i].name);
             if ((i + 1) % 2 == 0)
             {

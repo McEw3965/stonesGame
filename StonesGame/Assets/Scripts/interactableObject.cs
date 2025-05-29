@@ -63,7 +63,7 @@ public class interactableObject : NetworkBehaviour
 
     private void playStone(bool previousValue, bool newValue)
     {
-        this.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
+        //this.gameObject.GetComponent<Animator>().SetBool("Reveal?", true);
     }
     public override void OnNetworkSpawn()
     {

@@ -136,14 +136,14 @@ public class gameManager : NetworkBehaviour
             if (firstScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = firstStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = -firstStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (firstScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= firstStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = -firstStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = firstStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
@@ -164,14 +164,14 @@ public class gameManager : NetworkBehaviour
             if (secondScale.gameObject == rightScale)
             {
                 leftScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = secondStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = -secondStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
             else if (secondScale.gameObject == leftScale)
             {
                 rightScale.GetComponent<interactableObject>().weight.Value -= secondStoneWeight;
-                seesaw.GetComponent<tiltController>().weight.Value = -secondStoneWeight;
+                seesaw.GetComponent<tiltController>().weight.Value = secondStoneWeight;
                 seesaw.GetComponent<tiltController>().FindTargetRpc();
 
             }
@@ -232,6 +232,7 @@ public class gameManager : NetworkBehaviour
         selectedScale = null;
         player1Ready.Value = false;
         player2Ready.Value = false;
+
     }
 
     [Rpc(SendTo.Server)]
@@ -329,38 +330,31 @@ public class gameManager : NetworkBehaviour
         float rightWeight = rightScale.GetComponent<interactableObject>().weight.Value;
         float leftWeight = leftScale.GetComponent<interactableObject>().weight.Value;
 
-
-
         if (rightWeight >= 20 || leftWeight >= 20) //If scale is over weight limit
         {
             switch(player)
             {
                 case whichPlayer.player1: //If player 1 causes loss, player 2 is the winner and score goes up
-                    scoreManager.Instance.winner = gameManager.whichPlayer.player2;
-                    scoreManager.Instance.player2Score.Value++;
+                    roundManager.Instance.roundWinner = gameManager.whichPlayer.player2;
+                    scoreboardManager.Instance.player2Score.Value++;
                     break;
                 case whichPlayer.player2:
-                    scoreManager.Instance.winner = gameManager.whichPlayer.player1;
-                    scoreManager.Instance.player1Score.Value++;
+                    roundManager.Instance.roundWinner = gameManager.whichPlayer.player1;
+                    scoreboardManager.Instance.player1Score.Value++;
                     break;
             }
 
-            if (scoreManager.Instance.player1Score.Value >= 2 || scoreManager.Instance.player2Score.Value >= 2)
+            if (scoreboardManager.Instance.player1Score.Value >= 2 || scoreboardManager.Instance.player2Score.Value >= 2)
             {
 
                 Debug.Log("Game Over");
-                //roundManager.Instance.disableSceneObjectsRpc();
                 NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             } else
             {
-                //seesaw.gameObject.SetActive(false);
-
                 Debug.Log("Scene relaod being called");
                 roundManager.Instance.callCountdownCoroutineRpc();
                 StopCoroutine(revealStonesCoroutine);
-                //scoreManager.Instance.callReloadScene();
-                //string currentSceneName = SceneManager.GetActiveScene().name;
-                //NetworkManager.SceneManager.LoadScene(currentSceneName, LoadSceneMode.Single);
+
             }
         }
         else
