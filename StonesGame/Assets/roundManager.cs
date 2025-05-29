@@ -29,13 +29,16 @@ public class roundManager : NetworkBehaviour
     [SerializeField]
     public List<GameObject> stones;
 
+    public NetworkVariable<int> turnNum;
 
-    public gameManager.whichPlayer roundWinner;
+
+    public NetworkVariable<gameManager.whichPlayer> roundWinner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         Instance = this;
+        turnNum.Value = 1;
     }
     void Start()
     {
@@ -67,8 +70,8 @@ public class roundManager : NetworkBehaviour
         winnerText.SetActive(true);
         countdownText.SetActive(true);
 
-        winnerText.GetComponent<Text>().text = roundWinner.ToString() + " has won this round";
-        winnerShadow.GetComponent<Text>().text = roundWinner.ToString() + " has won this round";
+        winnerText.GetComponent<Text>().text = roundWinner.Value.ToString() + " has won this round";
+        winnerShadow.GetComponent<Text>().text = roundWinner.Value.ToString() + " has won this round";
 
 
         while (currentTime > 0)
@@ -93,6 +96,7 @@ public class roundManager : NetworkBehaviour
         rightScale.GetComponent<lightProgression>().activateLightsRpc();
         enableSceneObjectsRpc();
         scoreboardManager.Instance.updateScoreboardRpc();
+        turnNum.Value = 1;
         yield return null;
     }
 

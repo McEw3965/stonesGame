@@ -53,14 +53,11 @@ public class gameManager : NetworkBehaviour
     private ulong player2ID;
     public ulong localClientId;
 
-    Text winnerText;
-    Text countdown;
-    Text subheading;
-
     [SerializeField]
     public whichPlayer currentPlayer;
     public whichPlayer playerTorevealFirst = gameManager.whichPlayer.player1;
     public whichPlayer playerToRevealSecond = gameManager.whichPlayer.player2;
+    public NetworkVariable<whichPlayer> winner;
 
 
     public enum whichPlayer
@@ -189,6 +186,7 @@ public class gameManager : NetworkBehaviour
     public void endTurnActionsRpc()
     {
         Debug.Log("Turn Ended");
+        roundManager.Instance.turnNum.Value++;
         if (player1Ready.Value == true || player2Ready.Value == true)
         {
             switch (playerTorevealFirst)
@@ -273,7 +271,6 @@ public class gameManager : NetworkBehaviour
             Debug.Log("Wait for other player to be ready");
         }
 
-
     }
 
     public void callEndTurn()
@@ -332,14 +329,14 @@ public class gameManager : NetworkBehaviour
 
         if (rightWeight >= 20 || leftWeight >= 20) //If scale is over weight limit
         {
-            switch(player)
+            switch (player)
             {
                 case whichPlayer.player1: //If player 1 causes loss, player 2 is the winner and score goes up
-                    roundManager.Instance.roundWinner = gameManager.whichPlayer.player2;
+                    roundManager.Instance.roundWinner.Value = gameManager.whichPlayer.player2;
                     scoreboardManager.Instance.player2Score.Value++;
                     break;
                 case whichPlayer.player2:
-                    roundManager.Instance.roundWinner = gameManager.whichPlayer.player1;
+                    roundManager.Instance.roundWinner.Value = gameManager.whichPlayer.player1;
                     scoreboardManager.Instance.player1Score.Value++;
                     break;
             }
@@ -348,16 +345,32 @@ public class gameManager : NetworkBehaviour
             {
 
                 Debug.Log("Game Over");
+                if (scoreboardManager.Instance.player1Score.Value >= 2)
+                {
+                    winner.Value = whichPlayer.player1;
+                }
+                else
+                {
+                    winner.Value = whichPlayer.player2;
+                }
                 NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
-            } else
+
+            }
+            else
             {
                 Debug.Log("Scene relaod being called");
                 roundManager.Instance.callCountdownCoroutineRpc();
                 StopCoroutine(revealStonesCoroutine);
+                resetVarsRpc();
 
             }
         }
-        else
+        else if (roundManager.Instance.turnNum.Value > 5 && rightWeight < 20 && leftWeight < 20)
+        {
+            Debug.Log("Draw. Loading new round");
+            roundManager.Instance.callCountdownCoroutineRpc();
+
+        } else
         {
             Debug.Log("Next Turn");
         }

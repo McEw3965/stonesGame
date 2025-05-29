@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class interactableObject : NetworkBehaviour
