@@ -68,14 +68,14 @@ public class interactableObject : NetworkBehaviour
     }
     public override void OnNetworkSpawn()
     {
-        isDisabled.OnValueChanged += disableStone;
+        //isDisabled.OnValueChanged += disableStone;
         isPlayed.OnValueChanged += playStone;
         weight.OnValueChanged += updateWeightLabel;
     }
 
     public override void OnNetworkDespawn()
     {
-        isDisabled.OnValueChanged -= disableStone;
+        //isDisabled.OnValueChanged -= disableStone;
         isPlayed.OnValueChanged -= playStone;
         weight.OnValueChanged -= updateWeightLabel;
 
@@ -141,6 +141,30 @@ public class interactableObject : NetworkBehaviour
         }
     }
 
+    [Rpc(SendTo.ClientsAndHost)]
+    public void toggleAcrossNetworkRpc()
+    {
+        if (isDisabled.Value == false)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = true;
+            if (IsServer)
+            {
+                isDisabled.Value = true;
+            }
+        } else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = false;
+            if (IsServer)
+            {
+                isDisabled.Value = false;
+            }
+        }
+    }
+
     //TEXT UPDATING
 
     private void updateWeightLabel(float previousValue, float newValue)
@@ -156,20 +180,24 @@ public class interactableObject : NetworkBehaviour
 
     //TOUCHSCREEN CONTROLS (NEW INPUT SYSTEM)
 
-    [Rpc(SendTo.ClientsAndHost)]
-    private void disableStoneRpc()
-    {
-        if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
-        {
-            this.name = "Player 1 Stone";
-            this.gameObject.SetActive(false);
-        }
-        else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
-        {
-            this.name = "Player 2 Stone";
-            this.gameObject.SetActive(false);
-        }
-    }
+    //[Rpc(SendTo.ClientsAndHost)]
+    //private void disableStoneRpc()
+    //{
+    //    if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
+    //    {
+    //        this.name = "Player 1 Stone";
+    //        //this.gameObject.SetActive(false);
+    //        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    //        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    //    }
+    //    else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
+    //    {
+    //        this.name = "Player 2 Stone";
+    //        //this.gameObject.SetActive(false);
+    //        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    //        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    //    }
+    //}
 
 
     [Rpc(SendTo.Server)]
@@ -221,6 +249,13 @@ public class interactableObject : NetworkBehaviour
         {
             stoneInSlot(gameManager.Instance.player2SelectedStone.gameObject, gameManager.Instance.player2SelectedScale.gameObject);
         }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void toggleStonesRpc()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void stoneInSlot(GameObject stone, GameObject scale)

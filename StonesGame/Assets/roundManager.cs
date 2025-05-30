@@ -123,7 +123,9 @@ public class roundManager : NetworkBehaviour
         {
             if (stones[i] != null)
             {
-                stones[i].SetActive(false);
+                stones[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
             }
         }
     }
@@ -136,7 +138,9 @@ public class roundManager : NetworkBehaviour
         seesaw.SetActive(true);
         for (int i = 0; i < stones.Count; i++)
         {
-            stones[i].GetComponent<interactableObject>().isDisabled.Value = false;
+            //stones[i].GetComponent<interactableObject>().isDisabled.Value = false;
+            stones[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = true;
             Debug.Log("Activating Stone: " + stones[i].name);
             if ((i + 1) % 2 == 0)
             {

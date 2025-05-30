@@ -123,7 +123,8 @@ public class gameManager : NetworkBehaviour
 
         float firstStoneWeight = firstStone.GetComponent<interactableObject>().weight.Value;
         float secondStoneWeight = secondStone.GetComponent<interactableObject>().weight.Value;
-
+        firstStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+        //firstStone.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
         firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
         if (IsServer)
@@ -152,6 +153,9 @@ public class gameManager : NetworkBehaviour
 
         yield return new WaitForSecondsRealtime(3.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
+        firstStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+        secondStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+
         yield return new WaitForSecondsRealtime(1.0f);
 
         if (IsServer)
@@ -176,9 +180,9 @@ public class gameManager : NetworkBehaviour
         }
 
         checkWinCondition(playerToRevealSecond);
-
         yield return new WaitForSecondsRealtime(3.0f);
-        rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
+        secondStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+        //rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
         resetVarsRpc();
     }
 
@@ -222,8 +226,13 @@ public class gameManager : NetworkBehaviour
     private void resetVarsRpc()
     {
 
-        player1SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
-        player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
+        player1SelectedStone.GetComponent<SpriteRenderer>().enabled = false;
+        player2SelectedStone.GetComponent<SpriteRenderer>().enabled = false;
+        player1SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
+        player2SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
+
+
+        //player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
 
         player1SelectedScale = null;
         player2SelectedScale = null;
