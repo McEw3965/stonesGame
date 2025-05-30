@@ -123,8 +123,11 @@ public class roundManager : NetworkBehaviour
         {
             if (stones[i] != null)
             {
-                stones[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                //stones[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                //stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                stones[i].gameObject.GetComponent<interactableObject>().isDisabled.Value = false;
+                stones[i].gameObject.GetComponent<anchorObject>().enabled = true;
+                stones[i].gameObject.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
 
             }
         }
