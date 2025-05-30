@@ -89,7 +89,8 @@ public class gameManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        //endTurnActionsRpc();
+
+
     }
 
     public override void OnNetworkSpawn()

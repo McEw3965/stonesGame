@@ -103,13 +103,19 @@ public class interactableObject : NetworkBehaviour
         {
             Debug.Log("Enabling Stone for player 1. CurrentPlayer: " + currentPlayer);
 
-            this.gameObject.SetActive(true);
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = true;
+
         }
         else
         {
             Debug.Log("Disabling Stone for player 1. CurrentPlayer: " + currentPlayer);
 
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = false;
+
         }
     }
 
@@ -121,12 +127,17 @@ public class interactableObject : NetworkBehaviour
         {
             Debug.Log("Enabling Stone for player 2. CurrentPlayer: " + currentPlayer);
 
-            this.gameObject.SetActive(true);
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = true;
         }
         else
         {
             Debug.Log("Disabling Stone for player 2. CurrentPlayer: " + currentPlayer);
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = false;
+
         }
     }
 
@@ -164,6 +175,10 @@ public class interactableObject : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void assignPlayer1ObjectsRpc()
     {
+        if (gameManager.Instance.player2SelectedStone?.gameObject != null)
+        {
+            gameManager.Instance.player1SelectedStone.gameObject.GetComponent<anchorObject>().enabled = true;
+        }
         if (this.tag == "Stone")
         {
             gameManager.Instance.player1SelectedStone = this.gameObject.GetComponent<NetworkObject>();
@@ -175,13 +190,22 @@ public class interactableObject : NetworkBehaviour
             gameManager.Instance.player1SelectedScale = this.gameObject.GetComponent<NetworkObject>();
             Debug.Log("Player 1 Scale assigned");
 
-        }
 
+            if (gameManager.Instance.player1SelectedStone != null && gameManager.Instance.player1SelectedScale != null)
+            {
+                stoneInSlot(gameManager.Instance.player1SelectedStone.gameObject, gameManager.Instance.player1SelectedScale.gameObject);
+            }
+        }
     }
 
     [Rpc(SendTo.Server)]
     private void assignPlayer2ObjectsRpc()
     {
+        if (gameManager.Instance.player2SelectedStone?.gameObject != null)
+        {
+            gameManager.Instance.player2SelectedStone.gameObject.GetComponent<anchorObject>().enabled = true;
+        }
+
         if (this.tag == "Stone")
         {
             gameManager.Instance.player2SelectedStone = this.gameObject.GetComponent<NetworkObject>();
@@ -191,7 +215,23 @@ public class interactableObject : NetworkBehaviour
         {
             gameManager.Instance.player2SelectedScale = this.gameObject.GetComponent<NetworkObject>();
             Debug.Log("Player 2 Scale assigned");
+        }
 
+        if (gameManager.Instance.player2SelectedStone != null && gameManager.Instance.player2SelectedScale != null)
+        {
+            stoneInSlot(gameManager.Instance.player2SelectedStone.gameObject, gameManager.Instance.player2SelectedScale.gameObject);
+        }
+    }
+
+    private void stoneInSlot(GameObject stone, GameObject scale)
+    {
+        if (stone != null && scale != null) //Change to player1 and player2 selected objects instead! Will need to enable both stones on both screens during play
+        {
+            if (stone.GetComponent<anchorObject>().enabled == true)
+            {
+                stone.GetComponent<anchorObject>().enabled = false;
+            }
+            stone.GetComponent<Transform>().position = scale.transform.position;
         }
     }
 
@@ -200,22 +240,6 @@ public class interactableObject : NetworkBehaviour
         gameManager.Instance.addWeightRpc();
     }
 
-    private void OnMouseOver()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    switch (currentPlayer)
-        //    {
-        //        case gameManager.whichPlayer.player1:
-        //            assignPlayer1ObjectsRpc();
-        //            break;
-
-        //        case gameManager.whichPlayer.player2:
-        //            assignPlayer2ObjectsRpc();
-        //            break;
-        //    }
-        //}
-    }
 
     public void handleTap()
     {
