@@ -89,14 +89,13 @@ public class roundManager : NetworkBehaviour
         }
 
         //currentTime = 5f;
+        turnNum.Value = 1;
         winnerText.SetActive(false);
         countdownText.SetActive(false);
         rightScale.GetComponent<interactableObject>().weight.Value = 10;
         leftScale.GetComponent<interactableObject>().weight.Value = 10;
-        rightScale.GetComponent<lightProgression>().activateLightsRpc();
         enableSceneObjectsRpc();
         scoreboardManager.Instance.updateScoreboardRpc();
-        turnNum.Value = 1;
         yield return null;
     }
 

@@ -14,6 +14,10 @@ public class scoreboardManager : MonoBehaviour
     private GameObject[] player2Points;
     [SerializeField]
     private Sprite[] pointSprites;
+    [SerializeField]
+    private GameObject player1Frame;
+    [SerializeField]
+    private GameObject player2Frame;
 
     public NetworkVariable<int> player1Score;
     public NetworkVariable<int> player2Score;
@@ -48,6 +52,17 @@ public class scoreboardManager : MonoBehaviour
         for (int i = 0; i < player2Score.Value; i++)
         {
             player2Points[i].GetComponent<Image>().sprite = pointSprites[1];
+        }
+
+        switch(gameManager.Instance.playerTorevealFirst)
+        {
+            case gameManager.whichPlayer.player1:
+                player1Frame.GetComponent<SpriteRenderer>().sprite = pointSprites[1];
+                    break;
+
+            case gameManager.whichPlayer.player2:
+                player2Frame.GetComponent<SpriteRenderer>().sprite = pointSprites[1];
+                break;
         }
     }
 }
