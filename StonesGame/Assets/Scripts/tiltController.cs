@@ -19,6 +19,11 @@ public class tiltController : NetworkBehaviour
     [SerializeField]
     public NetworkVariable<bool> isTilting;
 
+    [SerializeField]
+    private AudioClip[] creaks;
+    [SerializeField]
+    private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +41,7 @@ public class tiltController : NetworkBehaviour
         targetQuart = Quaternion.Euler(targetRotation.Value);
         isTilting.Value = true;
         weight.Value = 0f;
+        playAudioRpc();
     }
 
     // Update is called once per frame
@@ -53,5 +59,12 @@ public class tiltController : NetworkBehaviour
         }
     }
 
+    [Rpc(SendTo.ClientsAndHost)]
+    private void playAudioRpc()
+    {
+        int randIndex = Random.Range(0, 1);
+        audioSource.clip = creaks[randIndex];
+        audioSource.Play();
+    }
 
 }

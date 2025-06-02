@@ -49,7 +49,7 @@ public class scoreboardManager : MonoBehaviour
     [Rpc(SendTo.ClientsAndHost)]
     public void revealDisplayRpc()
     {
-        switch (gameManager.Instance.playerTorevealFirst)
+        switch (gameManager.Instance.playerToRevealFirst.Value)
         {
             case gameManager.whichPlayer.player1:
                 player1Name.color = Color.yellow;

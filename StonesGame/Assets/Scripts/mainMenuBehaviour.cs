@@ -66,6 +66,6 @@ public class mainMenuBehaviour : MonoBehaviour
         createSession.SetActive(true);
         //playerList.SetActive(true);
         multiplayerButton.SetActive(false);
-        title.SetActive(false);
+        //title.SetActive(false);
     }
 }

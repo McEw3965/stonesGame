@@ -59,8 +59,8 @@ public class gameManager : NetworkBehaviour
 
     [SerializeField]
     public whichPlayer currentPlayer;
-    public whichPlayer playerTorevealFirst = gameManager.whichPlayer.player1;
-    public whichPlayer playerToRevealSecond = gameManager.whichPlayer.player2;
+    public NetworkVariable<whichPlayer> playerToRevealFirst;
+    public NetworkVariable<whichPlayer> playerToRevealSecond;
     public NetworkVariable<whichPlayer> winner;
 
     public enum whichPlayer
@@ -75,6 +75,9 @@ public class gameManager : NetworkBehaviour
 
         player2Stone.Value = false;
         player2Scale.Value = false;
+
+        playerToRevealFirst.Value = whichPlayer.player1;
+        playerToRevealSecond.Value = whichPlayer.player2;
 
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(networkManager);
@@ -161,7 +164,7 @@ public class gameManager : NetworkBehaviour
         yield return new WaitForSecondsRealtime(1.5f);
 
 
-        checkWinCondition(playerTorevealFirst);
+        checkWinCondition(playerToRevealFirst.Value);
 
 
         yield return new WaitForSecondsRealtime(3.0f);
@@ -197,7 +200,7 @@ public class gameManager : NetworkBehaviour
         yield return new WaitForSecondsRealtime(1.5f);
 
 
-        checkWinCondition(playerToRevealSecond);
+        checkWinCondition(playerToRevealSecond.Value);
         yield return new WaitForSecondsRealtime(3.0f);
         secondStone.GetComponent<interactableObject>().undoParentingRpc();
         secondStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
@@ -215,7 +218,7 @@ public class gameManager : NetworkBehaviour
         roundManager.Instance.turnNum.Value++;
         if (player1Ready.Value == true || player2Ready.Value == true)
         {
-            switch (playerTorevealFirst)
+            switch (playerToRevealFirst.Value)
             {
                 case whichPlayer.player1:
                     revealStonesCoroutine = StartCoroutine(revealStones(player1SelectedStone, player2SelectedStone, player1SelectedScale, player2SelectedScale));
@@ -227,13 +230,13 @@ public class gameManager : NetworkBehaviour
 
             if (player1SelectedStone.GetComponent<interactableObject>().weight.Value > player2SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
-                playerTorevealFirst = whichPlayer.player1;
-                playerToRevealSecond = whichPlayer.player2;
+                playerToRevealFirst.Value = whichPlayer.player1;
+                playerToRevealSecond.Value = whichPlayer.player2;
             }
             else if (player2SelectedStone.GetComponent<interactableObject>().weight.Value > player1SelectedStone.GetComponent<interactableObject>().weight.Value)
             {
-                playerTorevealFirst = whichPlayer.player2;
-                playerToRevealSecond = whichPlayer.player1;
+                playerToRevealFirst.Value = whichPlayer.player2;
+                playerToRevealSecond.Value = whichPlayer.player1;
             }
 
         }
