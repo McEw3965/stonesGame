@@ -24,7 +24,8 @@ public class interactableObject : NetworkBehaviour
 
     private TextMeshPro weightLabel;
 
-
+    [SerializeField]
+    private Transform seeSaw;
 
     private void Awake()
     {
@@ -55,6 +56,18 @@ public class interactableObject : NetworkBehaviour
                 break;
         }
 
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void parentToSeesawRpc()
+    {
+        gameObject.GetComponent<Transform>().SetParent(seeSaw);
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void undoParentingRpc()
+    {
+        gameObject.GetComponent<Transform>().SetParent(null);
     }
 
     private void disableStone(bool previousValue, bool newValue)
@@ -153,7 +166,8 @@ public class interactableObject : NetworkBehaviour
             {
                 isDisabled.Value = true;
             }
-        } else
+        }
+        else
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -165,6 +179,34 @@ public class interactableObject : NetworkBehaviour
         }
     }
 
+    [Rpc(SendTo.ClientsAndHost)]
+    public void enableAcrossNetworkRpc()
+    {
+
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = true;
+        if (IsServer)
+        {
+            isDisabled.Value = true;
+        }
+
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void disableAcrossNetworkRpc()
+    {
+
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        this.gameObject.GetComponentInChildren<TextMeshPro>().enabled = false;
+        if (IsServer)
+        {
+            isDisabled.Value = false;
+        }
+
+    }
+
     //TEXT UPDATING
 
     private void updateWeightLabel(float previousValue, float newValue)
@@ -172,43 +214,25 @@ public class interactableObject : NetworkBehaviour
         if (weight != null && this.tag == "Stone")
         {
             weightLabel.text = weight.Value.ToString();
-        } else
+        }
+        else
         {
             Debug.LogWarning("Cannot update label to null");
         }
     }
 
-    //TOUCHSCREEN CONTROLS (NEW INPUT SYSTEM)
-
-    //[Rpc(SendTo.ClientsAndHost)]
-    //private void disableStoneRpc()
-    //{
-    //    if (currentPlayer == gameManager.whichPlayer.player1 && this.gameObject.layer == 6)
-    //    {
-    //        this.name = "Player 1 Stone";
-    //        //this.gameObject.SetActive(false);
-    //        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-    //        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-    //    }
-    //    else if (currentPlayer == gameManager.whichPlayer.player2 && this.gameObject.layer == 7)
-    //    {
-    //        this.name = "Player 2 Stone";
-    //        //this.gameObject.SetActive(false);
-    //        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-    //        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-    //    }
-    //}
-
 
     [Rpc(SendTo.Server)]
     private void assignPlayer1ObjectsRpc()
     {
-        if (gameManager.Instance.player2SelectedStone?.gameObject != null)
+        if (gameManager.Instance.player1SelectedStone?.gameObject != null)
         {
             gameManager.Instance.player1SelectedStone.gameObject.GetComponent<anchorObject>().enabled = true;
+            gameManager.Instance.player1SelectedStone.gameObject.GetComponent<interactableObject>().undoParentingRpc();
         }
         if (this.tag == "Stone")
         {
+            //gameManager.Instance.selectedStone = this.gameObject;
             gameManager.Instance.player1SelectedStone = this.gameObject.GetComponent<NetworkObject>();
             Debug.Log("Player 1 Stone assigned");
 
@@ -237,11 +261,13 @@ public class interactableObject : NetworkBehaviour
         if (this.tag == "Stone")
         {
             gameManager.Instance.player2SelectedStone = this.gameObject.GetComponent<NetworkObject>();
+            gameManager.Instance.player2Stone.Value = true;
             Debug.Log("Player 2 stone assigned");
         }
         else if (this.tag == "Scale")
         {
             gameManager.Instance.player2SelectedScale = this.gameObject.GetComponent<NetworkObject>();
+            gameManager.Instance.player2Scale.Value = true;
             Debug.Log("Player 2 Scale assigned");
         }
 
@@ -266,6 +292,7 @@ public class interactableObject : NetworkBehaviour
             {
                 stone.GetComponent<anchorObject>().enabled = false;
             }
+            parentToSeesawRpc();
             stone.GetComponent<Transform>().position = scale.transform.position;
         }
     }
@@ -288,6 +315,8 @@ public class interactableObject : NetworkBehaviour
                 assignPlayer2ObjectsRpc();
                 break;
         }
+
+        buttonAssignment.Instance.updateText();
     }
 
     private void focusEffect()

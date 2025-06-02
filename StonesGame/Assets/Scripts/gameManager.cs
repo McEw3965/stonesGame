@@ -26,7 +26,6 @@ public class gameManager : NetworkBehaviour
     [SerializeField]
     private GameObject rightScale;
 
-
     public GameObject selectedStone;
     public GameObject selectedScale;
 
@@ -35,6 +34,11 @@ public class gameManager : NetworkBehaviour
 
     public NetworkObject player2SelectedStone;
     public NetworkObject player2SelectedScale;
+
+    public NetworkVariable<bool> player2Stone;
+    public NetworkVariable<bool> player2Scale;
+
+    //VARIABLES FOR GAME STATE
 
     private GameObject revealFirst;
     private GameObject revealSecond;
@@ -59,7 +63,6 @@ public class gameManager : NetworkBehaviour
     public whichPlayer playerToRevealSecond = gameManager.whichPlayer.player2;
     public NetworkVariable<whichPlayer> winner;
 
-
     public enum whichPlayer
     {
         player1,
@@ -69,6 +72,9 @@ public class gameManager : NetworkBehaviour
     private void Awake()
     {
         networkManager = GameObject.Find("NetworkManager");
+
+        player2Stone.Value = false;
+        player2Scale.Value = false;
 
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(networkManager);
@@ -123,8 +129,8 @@ public class gameManager : NetworkBehaviour
 
         float firstStoneWeight = firstStone.GetComponent<interactableObject>().weight.Value;
         float secondStoneWeight = secondStone.GetComponent<interactableObject>().weight.Value;
-        firstStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
-        //firstStone.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
+        firstStone.GetComponent<interactableObject>().enableAcrossNetworkRpc();
+        secondStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
         firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
         if (IsServer)
@@ -153,8 +159,8 @@ public class gameManager : NetworkBehaviour
 
         yield return new WaitForSecondsRealtime(3.0f);
         secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
-        firstStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
-        secondStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+        firstStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
+        secondStone.GetComponent<interactableObject>().enableAcrossNetworkRpc();
 
         yield return new WaitForSecondsRealtime(1.0f);
 
@@ -181,7 +187,9 @@ public class gameManager : NetworkBehaviour
 
         checkWinCondition(playerToRevealSecond);
         yield return new WaitForSecondsRealtime(3.0f);
-        secondStone.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+        secondStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
+
+        scoreboardManager.Instance.revealDisplay();
         //rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
         resetVarsRpc();
     }
@@ -236,10 +244,15 @@ public class gameManager : NetworkBehaviour
 
         player1SelectedScale = null;
         player2SelectedScale = null;
+        player1SelectedStone = null;
+        player2SelectedStone = null;
+        player2Scale.Value = false;
+        player2Stone.Value = false;
         selectedStone = null;
         selectedScale = null;
         player1Ready.Value = false;
         player2Ready.Value = false;
+        buttonAssignment.Instance.updateText();
 
     }
 

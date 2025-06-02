@@ -3,6 +3,8 @@ using Unity.Netcode;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using mobileInputs;
 
 
 public class roundManager : NetworkBehaviour
@@ -31,12 +33,15 @@ public class roundManager : NetworkBehaviour
 
     public NetworkVariable<int> turnNum;
 
+    public mobileInputActions playerInputs;
+
 
     public NetworkVariable<gameManager.whichPlayer> roundWinner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        playerInputs = new mobileInputActions();    
         Instance = this;
         turnNum.Value = 1;
     }
@@ -62,6 +67,7 @@ public class roundManager : NetworkBehaviour
 
     private IEnumerator countdown()
     {
+        playerInputs.Mobile.Disable();
         currentTime = 5f;
         Debug.Log("Countdown Running");
         //GameObject winnerText = GameObject.Find("Winner Text");
@@ -89,11 +95,19 @@ public class roundManager : NetworkBehaviour
         }
 
         //currentTime = 5f;
+        seesaw.GetComponent<tiltController>().isTilting.Value = false;
+        seesaw.GetComponent<Transform>().rotation = Quaternion.identity;
+
+        playerInputs.Mobile.Enable();
+
         turnNum.Value = 1;
+
         winnerText.SetActive(false);
         countdownText.SetActive(false);
+
         rightScale.GetComponent<interactableObject>().weight.Value = 10;
         leftScale.GetComponent<interactableObject>().weight.Value = 10;
+        
         enableSceneObjectsRpc();
         scoreboardManager.Instance.updateScoreboardRpc();
         yield return null;
@@ -126,7 +140,7 @@ public class roundManager : NetworkBehaviour
                 //stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 stones[i].gameObject.GetComponent<interactableObject>().isDisabled.Value = false;
                 stones[i].gameObject.GetComponent<anchorObject>().enabled = true;
-                stones[i].gameObject.GetComponent<interactableObject>().toggleAcrossNetworkRpc();
+                stones[i].gameObject.GetComponent<interactableObject>().disableAcrossNetworkRpc();
 
             }
         }

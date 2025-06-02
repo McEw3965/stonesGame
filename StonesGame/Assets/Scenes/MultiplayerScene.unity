@@ -429,7 +429,7 @@ RectTransform:
   m_GameObject: {fileID: 75240748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.0802, y: 3.0802, z: 3.0802}
+  m_LocalScale: {x: 3.7335105, y: 3.7335105, z: 3.7335105}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 427292024}
@@ -546,6 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfc81b77c09cf6488dc6e894df8e07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BtnText: End Turn
+  stoneSelected: 0
+  scaleSelected: 0
 --- !u!1 &158839751
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adc58221dbed0542ac3aa70ce3a43aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Name: {fileID: 8069646596843430224}
+  player2Name: {fileID: 4626109122933320110}
   player1Points:
   - {fileID: 8069646596843430223}
   - {fileID: 8069646596843430222}
@@ -780,9 +785,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'End Turn
-
-'
+  m_Text: Select a Stone
 --- !u!222 &424550604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -818,7 +821,7 @@ RectTransform:
   m_GameObject: {fileID: 427292023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24865, y: 0.24865, z: 0.24865}
+  m_LocalScale: {x: 0.18272045, y: 0.18272045, z: 0.18272045}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424550602}
@@ -826,7 +829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: -14.7}
+  m_AnchoredPosition: {x: -0.000015258789, y: -1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427292025
@@ -862,9 +865,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'End Turn
-
-'
+  m_Text: Select a Stone
 --- !u!222 &427292026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1029,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.766, g: 0.5623716, b: 0.52164596, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1528,7 +1529,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.851896
+  orthographic size: 4.853132
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2025,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.766, g: 0.5623716, b: 0.52164596, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.766, g: 0.5623716, b: 0.52164596, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2855,6 +2856,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+--- !u!114 &4626109122933320110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3911844887257431304, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+  m_PrefabInstance: {fileID: 4626109122933320109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5933986068667233215 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5579780558636432347, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
@@ -3037,6 +3049,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 152262530652764455, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
   m_PrefabInstance: {fileID: 8069646596843430220}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8069646596843430224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3069994603866325038, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
+  m_PrefabInstance: {fileID: 8069646596843430220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

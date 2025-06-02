@@ -35,6 +35,7 @@ public class gameOverManager : NetworkBehaviour
 
     public void mainMenuBtn()
     {
+        NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }

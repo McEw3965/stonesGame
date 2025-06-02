@@ -7,6 +7,12 @@ public class scoreboardManager : MonoBehaviour
 {
     public static scoreboardManager Instance { get; private set; }
 
+    [SerializeField]
+    private Text player1Name;
+    [SerializeField]
+    private Text player2Name;
+    [SerializeField]
+    private Text buttonText;
 
     [SerializeField]
     private GameObject[] player1Points;
@@ -41,6 +47,23 @@ public class scoreboardManager : MonoBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
+    public void revealDisplay()
+    {
+        switch (gameManager.Instance.playerTorevealFirst)
+        {
+            case gameManager.whichPlayer.player1:
+                player1Name.color = Color.blue;
+                player2Name.color = Color.white;
+                break;
+
+            case gameManager.whichPlayer.player2:
+                player2Name.color = Color.blue;
+                player1Name.color = Color.white;
+                break;
+        }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
     public void updateScoreboardRpc()
     {
         Debug.Log("Updating scoreboard");
@@ -54,15 +77,6 @@ public class scoreboardManager : MonoBehaviour
             player2Points[i].GetComponent<Image>().sprite = pointSprites[1];
         }
 
-        switch(gameManager.Instance.playerTorevealFirst)
-        {
-            case gameManager.whichPlayer.player1:
-                player1Frame.GetComponent<SpriteRenderer>().sprite = pointSprites[1];
-                    break;
-
-            case gameManager.whichPlayer.player2:
-                player2Frame.GetComponent<SpriteRenderer>().sprite = pointSprites[1];
-                break;
-        }
+        revealDisplay();
     }
 }

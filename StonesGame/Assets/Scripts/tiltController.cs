@@ -17,7 +17,7 @@ public class tiltController : NetworkBehaviour
     private Quaternion targetQuart;
 
     [SerializeField]
-    private NetworkVariable<bool> isTilting;
+    public NetworkVariable<bool> isTilting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
