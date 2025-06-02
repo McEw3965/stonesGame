@@ -129,8 +129,12 @@ public class gameManager : NetworkBehaviour
 
         float firstStoneWeight = firstStone.GetComponent<interactableObject>().weight.Value;
         float secondStoneWeight = secondStone.GetComponent<interactableObject>().weight.Value;
+
         firstStone.GetComponent<interactableObject>().enableAcrossNetworkRpc();
+        firstStone.GetComponent<interactableObject>().parentToSeesawRpc();
         secondStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
+
+
         firstStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
         yield return new WaitForSecondsRealtime(1.0f); //Suspends execution for 2 seconds
         if (IsServer)
@@ -154,15 +158,21 @@ public class gameManager : NetworkBehaviour
             }
         }
 
+        yield return new WaitForSecondsRealtime(1.5f);
+
+
         checkWinCondition(playerTorevealFirst);
 
 
         yield return new WaitForSecondsRealtime(3.0f);
-        secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
+        firstStone.GetComponent<interactableObject>().undoParentingRpc();
         firstStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
-        secondStone.GetComponent<interactableObject>().enableAcrossNetworkRpc();
 
-        yield return new WaitForSecondsRealtime(1.0f);
+        secondStone.gameObject.GetComponent<interactableObject>().isPlayed.Value = true;
+        secondStone.GetComponent<interactableObject>().enableAcrossNetworkRpc();
+        secondStone.GetComponent<interactableObject>().parentToSeesawRpc();
+
+        yield return new WaitForSecondsRealtime(1.5f);
 
         if (IsServer)
         {
@@ -184,12 +194,15 @@ public class gameManager : NetworkBehaviour
 
             }
         }
+        yield return new WaitForSecondsRealtime(1.5f);
+
 
         checkWinCondition(playerToRevealSecond);
         yield return new WaitForSecondsRealtime(3.0f);
+        secondStone.GetComponent<interactableObject>().undoParentingRpc();
         secondStone.GetComponent<interactableObject>().disableAcrossNetworkRpc();
 
-        scoreboardManager.Instance.revealDisplay();
+        scoreboardManager.Instance.revealDisplayRpc();
         //rightScale.gameObject.GetComponent<lightProgression>().activateLightsRpc();
         resetVarsRpc();
     }
@@ -350,7 +363,7 @@ public class gameManager : NetworkBehaviour
         float rightWeight = rightScale.GetComponent<interactableObject>().weight.Value;
         float leftWeight = leftScale.GetComponent<interactableObject>().weight.Value;
 
-        if (rightWeight >= 20 || leftWeight >= 20) //If scale is over weight limit
+        if (rightWeight >= 8 || leftWeight >= 8) //If scale is over weight limit
         {
             switch (player)
             {
@@ -376,6 +389,8 @@ public class gameManager : NetworkBehaviour
                 {
                     winner.Value = whichPlayer.player2;
                 }
+
+                roundManager.Instance.disableSceneObjectsRpc();
                 NetworkManager.SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
 
             }

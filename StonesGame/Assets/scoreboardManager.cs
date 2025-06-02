@@ -47,17 +47,17 @@ public class scoreboardManager : MonoBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void revealDisplay()
+    public void revealDisplayRpc()
     {
         switch (gameManager.Instance.playerTorevealFirst)
         {
             case gameManager.whichPlayer.player1:
-                player1Name.color = Color.blue;
+                player1Name.color = Color.yellow;
                 player2Name.color = Color.white;
                 break;
 
             case gameManager.whichPlayer.player2:
-                player2Name.color = Color.blue;
+                player2Name.color = Color.yellow;
                 player1Name.color = Color.white;
                 break;
         }
@@ -77,6 +77,6 @@ public class scoreboardManager : MonoBehaviour
             player2Points[i].GetComponent<Image>().sprite = pointSprites[1];
         }
 
-        revealDisplay();
+        revealDisplayRpc();
     }
 }

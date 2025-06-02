@@ -25,15 +25,17 @@ public class interactableObject : NetworkBehaviour
     private TextMeshPro weightLabel;
 
     [SerializeField]
-    private Transform seeSaw;
+    private GameObject seeSaw;
 
     private void Awake()
     {
 
         if (this.gameObject.tag == "Scale")
         {
-            weight.Value = 10;
+            weight.Value = 0;
         }
+
+        seeSaw = GameObject.Find("SeeSaw");
 
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
@@ -58,13 +60,13 @@ public class interactableObject : NetworkBehaviour
 
     }
 
-    [Rpc(SendTo.ClientsAndHost)]
+    [Rpc(SendTo.Server)]
     public void parentToSeesawRpc()
     {
-        gameObject.GetComponent<Transform>().SetParent(seeSaw);
+        gameObject.GetComponent<Transform>().SetParent(seeSaw.GetComponent<Transform>());
     }
 
-    [Rpc(SendTo.ClientsAndHost)]
+    [Rpc(SendTo.Server)]
     public void undoParentingRpc()
     {
         gameObject.GetComponent<Transform>().SetParent(null);

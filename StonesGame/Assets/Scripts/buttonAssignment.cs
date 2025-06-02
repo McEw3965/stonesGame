@@ -71,13 +71,13 @@ public class buttonAssignment : MonoBehaviour
             case gameManager.whichPlayer.player1:
                 if (gameManager.Instance.player1SelectedStone == null)
                 {
-                    BtnTextComp[0].text = "Select a stone";
-                    BtnTextComp[1].text = "Select a stone";
+                    BtnTextComp[0].text = "Select a Stone";
+                    BtnTextComp[1].text = "Select a Stone";
                 }
                 else if (gameManager.Instance.player1SelectedScale == null)
                 {
-                    BtnTextComp[0].text = "Selet a side";
-                    BtnTextComp[1].text = "Selet a side";
+                    BtnTextComp[0].text = "Selet a Side";
+                    BtnTextComp[1].text = "Selet a Side";
                 }
                 else if (gameManager.Instance.player1SelectedScale != null && gameManager.Instance.player1SelectedStone != null)
                 {
@@ -92,13 +92,13 @@ public class buttonAssignment : MonoBehaviour
 
                 if (gameManager.Instance.player2Stone.Value == false && gameManager.Instance.player2Scale.Value == false || gameManager.Instance.player2Stone.Value == false && gameManager.Instance.player2Scale.Value == true)
                 {
-                    BtnTextComp[0].text = "Select a stone";
-                    BtnTextComp[1].text = "Select a stone";
+                    BtnTextComp[0].text = "Select a Stone";
+                    BtnTextComp[1].text = "Select a Stone";
                 }
                 else if (gameManager.Instance.player2Scale.Value == false)
                 {
-                    BtnTextComp[0].text = "Selet a side";
-                    BtnTextComp[1].text = "Selet a side";
+                    BtnTextComp[0].text = "Selet a Side";
+                    BtnTextComp[1].text = "Selet a Side";
                 }
                 else if (gameManager.Instance.player2Scale.Value == true && gameManager.Instance.player2Stone.Value == true)
                 {

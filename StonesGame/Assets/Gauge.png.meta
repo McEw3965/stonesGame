@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 1fd92e10711cd9b45addf69823814cb8
+guid: 0dcd1012eb9779b488856e09c59522c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4677972274270621304
-    second: Etched 10_0
+      213: -2321016978629411421
+    second: Gauge_0
   - first:
-      213: -8676932298513325091
-    second: Etched 10_1
+      213: 5857238478133875356
+    second: Gauge_1
+  - first:
+      213: -5951827745148474279
+    second: Gauge_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Etched 10_0
+      name: Gauge_0
       rect:
         serializedVersion: 2
-        x: 1627
-        y: 1080
-        width: 666
-        height: 1186
+        x: 0
+        y: 1073
+        width: 634
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88139f26001841fb0800000000000000
-      internalID: -4677972274270621304
+      spriteID: 3adb42fea571acfd0800000000000000
+      internalID: -2321016978629411421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Etched 10_1
+      name: Gauge_1
       rect:
         serializedVersion: 2
-        x: 2366
-        y: 1062
-        width: 940
-        height: 1195
+        x: 552
+        y: 386
+        width: 187
+        height: 719
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +169,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd3effefb08559780800000000000000
-      internalID: -8676932298513325091
+      spriteID: c925be5ec57194150800000000000000
+      internalID: 5857238478133875356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gauge_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 632
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c6c1e233cd66da0800000000000000
+      internalID: -5951827745148474279
       vertices: []
       indices: 
       edges: []
@@ -186,8 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Etched 10_0: -4677972274270621304
-      Etched 10_1: -8676932298513325091
+      Gauge_0: -2321016978629411421
+      Gauge_1: 5857238478133875356
+      Gauge_2: -5951827745148474279
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

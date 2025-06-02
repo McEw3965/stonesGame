@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d8699a59c38998a46bf88906953a9d8b
+guid: 76cb3015c4051ae4392d0439e2f5bd5c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4936008222037044206
-    second: Etched Curve_0
+      213: 2308950410400462911
+    second: Gauge 2_0
   - first:
-      213: -4212562981397689251
-    second: Etched Curve_1
+      213: 4763885933500630739
+    second: Gauge 2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Etched Curve_0
+      name: Gauge 2_0
       rect:
         serializedVersion: 2
-        x: 285
-        y: 1724
-        width: 12
-        height: 14
+        x: 6
+        y: 1030
+        width: 619
+        height: 966
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eebecea6359308440800000000000000
-      internalID: 4936008222037044206
+      spriteID: f3879e73a2a0b0020800000000000000
+      internalID: 2308950410400462911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Etched Curve_1
+      name: Gauge 2_1
       rect:
         serializedVersion: 2
-        x: 1640
-        y: 759
-        width: 2189
-        height: 1179
+        x: 1
+        y: 0
+        width: 624
+        height: 967
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5c84db9948f985c0800000000000000
-      internalID: -4212562981397689251
+      spriteID: 3d609c03409bc1240800000000000000
+      internalID: 4763885933500630739
       vertices: []
       indices: 
       edges: []
@@ -176,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gauge 2_0: 2308950410400462911
+      Gauge 2_1: 4763885933500630739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
