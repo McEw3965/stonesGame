@@ -159,6 +159,7 @@ public class roundManager : NetworkBehaviour
             stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = true;
             stones[i].gameObject.GetComponent<interactableObject>().undoParentingRpc();
             stones[i].gameObject.GetComponent<Transform>().localScale = new Vector3(1f, 1f, 1f);
+            stones[i].gameObject.GetComponent<interactableObject>().resetPositionRpc();
             Debug.Log("Activating Stone: " + stones[i].name);
             if ((i + 1) % 2 == 0)
             {

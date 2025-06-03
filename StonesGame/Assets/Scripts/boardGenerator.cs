@@ -16,7 +16,7 @@ public class boardGenerator : NetworkBehaviour
     [SerializeField]
     private Sprite[] stoneSprites;
 
-    gameManager.whichPlayer currentPlayer;
+    //gameManager.whichPlayer currentPlayer;
 
     private Vector3 SpawnPoint = new Vector3(2f, 2f, 0f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,19 +43,19 @@ public class boardGenerator : NetworkBehaviour
 
             localClientId = NetworkManager.Singleton.LocalClientId;
 
-            switch (localClientId)
-            {
-                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
-                    currentPlayer = gameManager.whichPlayer.player1;
-                    Debug.Log("Current player is player 1: Board Generator");
-                    break;
+            //switch (localClientId)
+            //{
+            //    case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[0]:
+            //        //currentPlayer = gameManager.whichPlayer.player1;
+            //        Debug.Log("Current player is player 1: Board Generator");
+            //        break;
 
-                case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
-                    currentPlayer = gameManager.whichPlayer.player2;
-                    Debug.Log("Current player is player 2. Board Generator");
+            //    case ulong clientId when clientId == multiplayerManager.Instance.connectedClientIds[1]:
+            //        //currentPlayer = gameManager.whichPlayer.player2;
+            //        Debug.Log("Current player is player 2. Board Generator");
 
-                    break;
-            }
+            //        break;
+            //}
         }
     } 
 
@@ -80,10 +80,10 @@ public class boardGenerator : NetworkBehaviour
 
             Debug.Log("Stone Index before calliing setSpriteOnSpawn: " + stoneIndex);
             var stoneCloneNetworkObject = stoneClone.GetComponent<NetworkObject>();
+            stoneCloneNetworkObject.Spawn();
             stoneCloneNetworkObject.gameObject.GetComponent<networkSpriteChanger>().SetSpriteOnSpawn(stoneIndex);
             stoneCloneNetworkObject.gameObject.name = "Stone " + i + 1;
             stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(6.5f + (offsetAdjustment), 1.25f, 0f);
-            stoneCloneNetworkObject.Spawn();
             stoneCloneNetworkObject.GetComponent<interactableObject>().weight.Value = stoneWeight;
 
 
@@ -93,7 +93,8 @@ public class boardGenerator : NetworkBehaviour
                 offsetAdjustment += 2f;
                 stoneIndex++;
                 stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player1ActiveRpc();
-            } else
+            }
+            else
             {
                 stoneCloneNetworkObject.gameObject.GetComponent<interactableObject>().player2ActiveRpc();
             }

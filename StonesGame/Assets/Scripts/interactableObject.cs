@@ -27,6 +27,8 @@ public class interactableObject : NetworkBehaviour
     [SerializeField]
     private GameObject seeSaw;
 
+    private Vector3 initialPosition;
+
     private void Awake()
     {
 
@@ -86,6 +88,8 @@ public class interactableObject : NetworkBehaviour
         //isDisabled.OnValueChanged += disableStone;
         isPlayed.OnValueChanged += playStone;
         weight.OnValueChanged += updateWeightLabel;
+
+        initialPosition = gameObject.GetComponent<Transform>().position;
     }
 
     public override void OnNetworkDespawn()
@@ -108,6 +112,12 @@ public class interactableObject : NetworkBehaviour
     {
         focusEffect();
 
+    }
+
+    [Rpc(SendTo.Server)]
+    public void resetPositionRpc()
+    {
+        gameObject.GetComponent<Transform>().position = initialPosition;
     }
 
     [Rpc(SendTo.ClientsAndHost)]

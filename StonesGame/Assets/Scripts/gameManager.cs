@@ -257,6 +257,9 @@ public class gameManager : NetworkBehaviour
         player2SelectedStone.GetComponent<SpriteRenderer>().enabled = false;
         player1SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
         player2SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
+        player1SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
+        player2SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
+
 
 
         //player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
