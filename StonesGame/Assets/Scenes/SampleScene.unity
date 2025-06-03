@@ -6173,15 +6173,6 @@ MonoBehaviour:
   sessionCode: {fileID: 702533534}
   title: {fileID: 22141775}
   multiplayerButton: {fileID: 1787746442}
-  Stone: {fileID: 2032818377757623715, guid: 28273003a1d4c75408b92fb45484b4f4, type: 3}
-  stoneClones: []
-  stoneSprites:
-  - {fileID: 2667589067915142571, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
-  - {fileID: 7747454605161465366, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
-  - {fileID: -380787975181734724, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
-  - {fileID: -2777294020172681479, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
-  - {fileID: 2984858500509702482, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
-  - {fileID: 1550679800697994150, guid: 360b41f0171139b4baaadf68b3b416d6, type: 3}
 --- !u!4 &1785153849
 Transform:
   m_ObjectHideFlags: 0
@@ -6501,8 +6492,6 @@ GameObject:
   - component: {fileID: 1863787079}
   - component: {fileID: 1863787081}
   - component: {fileID: 1863787083}
-  - component: {fileID: 1863787084}
-  - component: {fileID: 1863787085}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6531,14 +6520,20 @@ MonoBehaviour:
   player1SelectedScale: {fileID: 0}
   player2SelectedStone: {fileID: 0}
   player2SelectedScale: {fileID: 0}
+  player2Stone:
+    m_InternalValue: 0
+  player2Scale:
+    m_InternalValue: 0
   player1Ready:
     m_InternalValue: 0
   player2Ready:
     m_InternalValue: 0
   localClientId: 0
   currentPlayer: 0
-  playerTorevealFirst: 0
-  playerToRevealSecond: 1
+  playerToRevealFirst:
+    m_InternalValue: 0
+  playerToRevealSecond:
+    m_InternalValue: 0
   winner:
     m_InternalValue: 0
 --- !u!4 &1863787080
@@ -6612,30 +6607,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a2de8fd4beea514db4b6de859c0758b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1863787084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863787078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4201f3c50cd7694fbfe22de7b9e1d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1863787085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863787078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a7464c32be11947868859718d7cef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1969464751

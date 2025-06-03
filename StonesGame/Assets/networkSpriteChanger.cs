@@ -21,7 +21,7 @@ public class networkSpriteChanger : NetworkBehaviour
     private void Awake()
     {
         spriteRendComp = GetComponent<SpriteRenderer>();
-        initialSpriteIndex.Value = 1;
+        initialSpriteIndex = new NetworkVariable<int>(1);
     }
 
     void Start()

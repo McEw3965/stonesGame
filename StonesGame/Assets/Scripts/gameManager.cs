@@ -73,11 +73,14 @@ public class gameManager : NetworkBehaviour
     {
         networkManager = GameObject.Find("NetworkManager");
 
-        player2Stone.Value = false;
-        player2Scale.Value = false;
+        player2Stone = new NetworkVariable<bool>(false);
+        player2Scale = new NetworkVariable<bool>(false);
 
-        playerToRevealFirst.Value = whichPlayer.player1;
-        playerToRevealSecond.Value = whichPlayer.player2;
+        playerToRevealFirst = new NetworkVariable<whichPlayer>(whichPlayer.player1);
+        playerToRevealSecond = new NetworkVariable<whichPlayer>(whichPlayer.player2);
+
+        //playerToRevealFirst.Value = whichPlayer.player1;
+        //playerToRevealSecond.Value = whichPlayer.player2;
 
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(networkManager);

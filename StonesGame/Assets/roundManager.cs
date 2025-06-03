@@ -43,7 +43,7 @@ public class roundManager : NetworkBehaviour
     {
         playerInputs = new mobileInputActions();    
         Instance = this;
-        turnNum.Value = 1;
+        turnNum = new NetworkVariable<int>(1);
     }
     void Start()
     {
