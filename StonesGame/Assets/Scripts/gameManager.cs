@@ -250,17 +250,19 @@ public class gameManager : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    private void resetVarsRpc()
+    public void resetVarsRpc()
     {
 
         player1SelectedStone.GetComponent<SpriteRenderer>().enabled = false;
         player2SelectedStone.GetComponent<SpriteRenderer>().enabled = false;
         player1SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
         player2SelectedStone.GetComponent<BoxCollider2D>().enabled = false;
-        player1SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
-        player2SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
 
+        //player1SelectedStone.GetComponent<anchorObject>().enabled = true;
+        //player2SelectedStone.GetComponent<anchorObject>().enabled = true;
 
+        //player1SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
+        //player2SelectedStone.GetComponent<interactableObject>().resetPositionRpc();
 
         //player2SelectedStone.GetComponent<interactableObject>().isDisabled.Value = true;
 
@@ -392,11 +394,11 @@ public class gameManager : NetworkBehaviour
                 Debug.Log("Game Over");
                 if (scoreboardManager.Instance.player1Score.Value >= 2)
                 {
-                    winner.Value = whichPlayer.player1;
+                    //winner.Value = whichPlayer.player1;
                 }
                 else
                 {
-                    winner.Value = whichPlayer.player2;
+                    //winner.Value = whichPlayer.player2;
                 }
 
                 roundManager.Instance.disableSceneObjectsRpc();
@@ -412,7 +414,7 @@ public class gameManager : NetworkBehaviour
 
             }
         }
-        else if (roundManager.Instance.turnNum.Value > 5 && rightWeight < 20 && leftWeight < 20)
+        else if (roundManager.Instance.turnNum.Value > 5 && rightWeight < 8 && leftWeight < 8)
         {
             Debug.Log("Draw. Loading new round");
             roundManager.Instance.callCountdownCoroutineRpc();

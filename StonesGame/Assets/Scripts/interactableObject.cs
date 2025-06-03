@@ -27,7 +27,7 @@ public class interactableObject : NetworkBehaviour
     [SerializeField]
     private GameObject seeSaw;
 
-    private Vector3 initialPosition;
+    public Vector3 initialPosition;
 
     private void Awake()
     {
@@ -41,6 +41,7 @@ public class interactableObject : NetworkBehaviour
 
         originalScale = this.gameObject.GetComponent<Transform>().localScale;
         focusScale = originalScale + new Vector3(0.3f, 0.3f, 0.3f);
+        //initialPosition = gameObject.GetComponent<Transform>().position;
 
         weightLabel = this.gameObject.GetComponentInChildren<TextMeshPro>();
 
@@ -62,16 +63,26 @@ public class interactableObject : NetworkBehaviour
 
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.ClientsAndHost)]
     public void parentToSeesawRpc()
     {
-        gameObject.GetComponent<Transform>().SetParent(seeSaw.GetComponent<Transform>());
+        gameObject.GetComponent<anchorObject>().enabled = false;
+        if (IsServer)
+        {
+            gameObject.GetComponent<Transform>().SetParent(seeSaw.GetComponent<Transform>());
+        }
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.ClientsAndHost)]
     public void undoParentingRpc()
     {
-        gameObject.GetComponent<Transform>().SetParent(null);
+        if (IsServer)
+        {
+            gameObject.GetComponent<Transform>().SetParent(null);
+        }
+
+        gameObject.GetComponent<anchorObject>().enabled = true;
+
     }
 
     private void disableStone(bool previousValue, bool newValue)
@@ -89,7 +100,6 @@ public class interactableObject : NetworkBehaviour
         isPlayed.OnValueChanged += playStone;
         weight.OnValueChanged += updateWeightLabel;
 
-        initialPosition = gameObject.GetComponent<Transform>().position;
     }
 
     public override void OnNetworkDespawn()
@@ -268,6 +278,7 @@ public class interactableObject : NetworkBehaviour
         if (gameManager.Instance.player2SelectedStone?.gameObject != null)
         {
             gameManager.Instance.player2SelectedStone.gameObject.GetComponent<anchorObject>().enabled = true;
+            gameManager.Instance.player2SelectedStone.gameObject.GetComponent<interactableObject>().undoParentingRpc();
         }
 
         if (this.tag == "Stone")
@@ -304,7 +315,7 @@ public class interactableObject : NetworkBehaviour
             {
                 stone.GetComponent<anchorObject>().enabled = false;
             }
-            parentToSeesawRpc();
+            //parentToSeesawRpc();
             stone.GetComponent<Transform>().position = scale.transform.position;
         }
     }

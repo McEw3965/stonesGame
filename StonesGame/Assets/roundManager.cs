@@ -67,7 +67,7 @@ public class roundManager : NetworkBehaviour
 
     private IEnumerator countdown()
     {
-        playerInputs.Mobile.Disable();
+     //   playerInputs.Mobile.Disable();
         currentTime = 5f;
         Debug.Log("Countdown Running");
         //GameObject winnerText = GameObject.Find("Winner Text");
@@ -95,18 +95,26 @@ public class roundManager : NetworkBehaviour
         }
 
         //currentTime = 5f;
-        seesaw.GetComponent<tiltController>().isTilting.Value = false;
-        seesaw.GetComponent<Transform>().rotation = Quaternion.identity;
 
         playerInputs.Mobile.Enable();
 
-        turnNum.Value = 1;
+        seesaw.GetComponent<Transform>().rotation = Quaternion.identity;
+
+        if (IsServer)
+        {
+
+            seesaw.GetComponent<tiltController>().isTilting.Value = false;
+
+            turnNum.Value = 1;
+
+            rightScale.GetComponent<interactableObject>().weight.Value = 0;
+            leftScale.GetComponent<interactableObject>().weight.Value = 0;
+        }
 
         winnerText.SetActive(false);
         countdownText.SetActive(false);
 
-        rightScale.GetComponent<interactableObject>().weight.Value = 0;
-        leftScale.GetComponent<interactableObject>().weight.Value = 0;
+        //gameManager.Instance.resetVarsRpc();
         
         enableSceneObjectsRpc();
         scoreboardManager.Instance.updateScoreboardRpc();
@@ -158,8 +166,14 @@ public class roundManager : NetworkBehaviour
             stones[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
             stones[i].gameObject.GetComponent<BoxCollider2D>().enabled = true;
             stones[i].gameObject.GetComponent<interactableObject>().undoParentingRpc();
-            stones[i].gameObject.GetComponent<Transform>().localScale = new Vector3(1f, 1f, 1f);
+
+            //TEST
+            //stones[i].gameObject.GetComponent<anchorObject>().anchorOffset.Value = stones[i].gameObject.GetComponent<interactableObject>().initialPosition;
             stones[i].gameObject.GetComponent<interactableObject>().resetPositionRpc();
+
+            stones[i].gameObject.GetComponent<anchorObject>().enabled = true;
+
+            stones[i].gameObject.GetComponent<Transform>().localScale = new Vector3(1f, 1f, 1f);
             Debug.Log("Activating Stone: " + stones[i].name);
             if ((i + 1) % 2 == 0)
             {

@@ -84,6 +84,7 @@ public class boardGenerator : NetworkBehaviour
             stoneCloneNetworkObject.gameObject.GetComponent<networkSpriteChanger>().SetSpriteOnSpawn(stoneIndex);
             stoneCloneNetworkObject.gameObject.name = "Stone " + i + 1;
             stoneCloneNetworkObject.GetComponent<anchorObject>().anchorOffset.Value = new Vector3(6.5f + (offsetAdjustment), 1.25f, 0f);
+            stoneCloneNetworkObject.GetComponent<interactableObject>().initialPosition = transform.position;
             stoneCloneNetworkObject.GetComponent<interactableObject>().weight.Value = stoneWeight;
 
 
