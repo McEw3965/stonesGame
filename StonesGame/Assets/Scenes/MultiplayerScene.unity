@@ -2670,6 +2670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 35484027}
     m_Modifications:
+    - target: {fileID: 541101548755757403, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1099105584229924014, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
       propertyPath: m_Text
       value: Player 2
@@ -2777,6 +2781,10 @@ PrefabInstance:
     - target: {fileID: 5579780558636432347, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039977250641328193, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -91.9
       objectReference: {fileID: 0}
     - target: {fileID: 6295465912806427958, guid: 06500e10b238c5a4a9ecf043bfb967d3, type: 3}
       propertyPath: m_Name
@@ -2933,6 +2941,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 526150201063279364, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 106.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 526150201063279364, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -12.599947
       objectReference: {fileID: 0}
@@ -2973,6 +2985,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4486000477381629081, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505678909342843342, guid: db037fd9c2df7954c8cac008e0f69679, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
