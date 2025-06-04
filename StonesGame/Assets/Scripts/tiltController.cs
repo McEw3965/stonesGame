@@ -27,16 +27,19 @@ public class tiltController : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        targetRotation.Value = new Vector3(0f, 0f, 3.3f);
+        //targetRotation.Value = new Vector3(0f, 0f, 3.3f);
         isTilting.Value = false;
     }
 
     [Rpc(SendTo.Server)]
     public void FindTargetRpc()
     {
-        targetRotation.Value = new Vector3 (0f, 0f, 3.3f);
-        Vector3 tempRotation = targetRotation.Value;
-        tempRotation.z *= weight.Value;
+        targetRotation.Value = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        //Vector3 tempRotation = targetRotation.Value;
+        Vector3 tempRotation = transform.rotation.eulerAngles;
+        Debug.Log("Current Z Rotation: " + tempRotation.z);
+        tempRotation.z += (weight.Value * 3.3f);
+        Debug.Log("Target Z Rotation: " + tempRotation.z);
         targetRotation.Value = tempRotation;
         targetQuart = Quaternion.Euler(targetRotation.Value);
         isTilting.Value = true;

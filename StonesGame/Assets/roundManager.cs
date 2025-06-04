@@ -96,7 +96,7 @@ public class roundManager : NetworkBehaviour
 
         //currentTime = 5f;
 
-        playerInputs.Mobile.Enable();
+       // playerInputs.Mobile.Enable();
 
         seesaw.GetComponent<Transform>().rotation = Quaternion.identity;
 
@@ -168,7 +168,7 @@ public class roundManager : NetworkBehaviour
             stones[i].gameObject.GetComponent<interactableObject>().undoParentingRpc();
 
             //TEST
-            //stones[i].gameObject.GetComponent<anchorObject>().anchorOffset.Value = stones[i].gameObject.GetComponent<interactableObject>().initialPosition;
+            //Debug.Log(stones[i].name + " Initial Position: " + stones[i].GetComponent<interactableObject>().initialPosition);
             stones[i].gameObject.GetComponent<interactableObject>().resetPositionRpc();
 
             stones[i].gameObject.GetComponent<anchorObject>().enabled = true;

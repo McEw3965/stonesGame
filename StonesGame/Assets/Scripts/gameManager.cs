@@ -112,7 +112,8 @@ public class gameManager : NetworkBehaviour
         if (IsServer)
         {
             NetworkManager.Singleton.SceneManager.OnSceneEvent += HandleNetworkSceneEventServer;
-        } else
+        }
+        else
         {
             NetworkManager.Singleton.SceneManager.OnSceneEvent += HandleNetworkSceneEventClient;
         }
@@ -419,7 +420,8 @@ public class gameManager : NetworkBehaviour
             Debug.Log("Draw. Loading new round");
             roundManager.Instance.callCountdownCoroutineRpc();
 
-        } else
+        }
+        else
         {
             Debug.Log("Next Turn");
         }
@@ -429,20 +431,21 @@ public class gameManager : NetworkBehaviour
 
     private void HandleNetworkSceneEventServer(SceneEvent sceneEvent)
     {
-        switch(sceneEvent.SceneEventType)
+        switch (sceneEvent.SceneEventType)
         {
             case SceneEventType.LoadEventCompleted:
-                if(sceneEvent.SceneName == "MultiplayerScene")
+                if (sceneEvent.SceneName == "MultiplayerScene")
                 {
                     player1Ready.Value = false;
                     player2Ready.Value = false;
 
-                    if(IsServer && NetworkManager.Singleton.ConnectedClientsIds.Count > 0)
+                    if (IsServer && NetworkManager.Singleton.ConnectedClientsIds.Count > 0)
                     {
                         if (NetworkManager.Singleton.ConnectedClientsIds[0] == NetworkManager.Singleton.LocalClientId)
                         {
                             currentPlayer = whichPlayer.player1;
-                        } else if (NetworkManager.Singleton.ConnectedClientsIds.Count > 1 && NetworkManager.Singleton.ConnectedClientsIds[1] == NetworkManager.Singleton.LocalClientId)
+                        }
+                        else if (NetworkManager.Singleton.ConnectedClientsIds.Count > 1 && NetworkManager.Singleton.ConnectedClientsIds[1] == NetworkManager.Singleton.LocalClientId)
                         {
                             currentPlayer = whichPlayer.player2;
                         }
@@ -469,22 +472,22 @@ public class gameManager : NetworkBehaviour
 
     private void HandleNetworkSceneEventClient(SceneEvent sceneEvent)
     {
-        switch(sceneEvent.SceneEventType)
+        switch (sceneEvent.SceneEventType)
         {
             case SceneEventType.LoadComplete:
-                if(sceneEvent.SceneName == "MultiplayerScene")
+                if (sceneEvent.SceneName == "MultiplayerScene")
                 {
                     localClientId = NetworkManager.Singleton.LocalClientId;
 
-                    if(multiplayerManager.Instance != null && multiplayerManager.Instance.connectedClientIds != null)
+                    if (multiplayerManager.Instance != null && multiplayerManager.Instance.connectedClientIds != null)
                     {
-                        switch(localClientId)
+                        switch (localClientId)
                         {
                             case ulong clientId when multiplayerManager.Instance.connectedClientIds.Count > 0 && clientId == multiplayerManager.Instance.connectedClientIds[0]:
                                 currentPlayer = whichPlayer.player1;
                                 break;
 
-                                case ulong clientId when multiplayerManager.Instance.connectedClientIds.Count > 1 && clientId == multiplayerManager.Instance.connectedClientIds[1]:
+                            case ulong clientId when multiplayerManager.Instance.connectedClientIds.Count > 1 && clientId == multiplayerManager.Instance.connectedClientIds[1]:
                                 currentPlayer = whichPlayer.player2;
                                 break;
 
@@ -498,8 +501,8 @@ public class gameManager : NetworkBehaviour
                         Debug.LogWarning("MultiplayerManager Instance or clientIds null");
                     }
                     Invoke(nameof(InitialiseSceneObjects), 0.5f);
-                } 
- 
+                }
+
                 break;
 
             case SceneEventType.LoadEventCompleted:
